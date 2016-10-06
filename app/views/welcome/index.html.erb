@@ -7,7 +7,15 @@
 
 <!-- MASONRY STYLE LIST OF THINGS FOR RENT BEGIN -->
 
+<ul id="masonry-container" class="small-block-grid-2 medium-block-grid-4 large-block-grid-6">
 
+<% for i in (1..30) do %>
+	<li>
+    <p><%= ["Item","Thingie","Stuff","Gizmo"].sample %> No <%= i %></p>
+		<img src="assets/images/items/item<%= i %>.jpg" alt="">
+	</li>
+<% end %>
+</ul>
 
 <!-- MASONRY STYLE LIST OF THINGS FOR RENT END -->
 

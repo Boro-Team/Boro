@@ -127,6 +127,8 @@
   <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
   <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'masonry.pkgd.min.js', 'data-turbolinks-track' => true %>
+
 
 
   <!-- GOOGLE MAPS TEST BEGIN -->
@@ -143,16 +145,27 @@
           position: petaling,
           map: map
         });
-      }
-    </script>
-    <script>
-  
+      }  
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&callback=initMap">
     </script>
 
   <!-- GOOGLE MAPS TEST END -->
+
+  <!-- MASONRY SCRIPT BEGIN -->
+
+  <script>$(window).load(function(){
+
+  $('#container').masonry({
+
+    itemSelector: '#container li'
+
+  });
+
+});
+</script> 
+  <!-- MASONRY SCRIPT END -->
   </body>
 </html>
 
