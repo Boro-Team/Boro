@@ -1,4 +1,5 @@
 <h2>Sign up</h2>
+    
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -18,20 +19,9 @@
     <%= f.text_field :last_name %>
   </div>
 
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </div>
+<%= render partial: 'geolocate'%>
 
-  <div class="field">
-    <%= f.label :state_or_provice %><br />
-    <%= f.text_field :state %>
-  </div>
 
-  <div class="field">
-    <%= f.label :country %><br />
-    <%= f.text_field :country %>
-  </div>
 
   <div class="field">
     <%= f.label :password %>
@@ -54,3 +44,8 @@
 <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
 
 <%= render "devise/shared/links" %>
+
+
+
+    
+    
