@@ -128,8 +128,10 @@
   <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
   <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
-  <!-- GOOGLE MAPS TEST BEGIN -->
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.js' %>
 
+
+  <!-- GOOGLE MAPS TEST BEGIN -->
       <script>
       function initMap() {
         var petaling = {lat: 3.134717, lng: 101.629968};  
@@ -143,14 +145,8 @@
         });
       }
     </script>
-
-
-  <!-- GOOGLE MAPS TEST END -->    
-
+ <!-- GOOGLE MAPS TEST END -->    
  <!-- GEOCOMPLETE START-->
- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places"></script>
-  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.js' %>
-
   <script>
       $(function(){
         $("#geocomplete").geocomplete({
@@ -166,6 +162,9 @@
       });
     </script>
  <!-- GEOCOMPLETE END -->
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap"></script>
+
 
   </body>
 </html>
