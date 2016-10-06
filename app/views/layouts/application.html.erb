@@ -26,7 +26,7 @@
     <div class="top-bar-left">     
       <div>
         <ul class="menu">
-          <li href="/">
+          <li>
           <a href="/">
             <%=image_tag("boro_logo_64.png", alt: "Logo Image")%>
           </a>
@@ -119,6 +119,28 @@
   <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
   <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
+
+
+  <!-- GOOGLE MAPS TEST BEGIN -->
+
+      <script>
+      function initMap() {
+        var petaling = {lat: 3.134717, lng: 101.629968};  
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: petaling
+        });
+        var marker = new google.maps.Marker({
+          position: petaling,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&callback=initMap">
+    </script>
+
+  <!-- GOOGLE MAPS TEST END -->
   </body>
 </html>
 

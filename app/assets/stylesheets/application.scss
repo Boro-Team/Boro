@@ -1,0 +1,49 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+// * { display: flex; }
+
+.top-bar.sticky {
+	border-bottom: 1px solid darkgray;
+	}
+
+.hero-body {
+	position: relative;
+	width: 100%;
+	background-color: transparent;
+
+	h2 {
+		position: absolute; 
+	 	top: 200px; 
+	 	left: 0; 
+	 	width: 100%; 
+	}
+
+	h2 span { 
+   color: white; 
+   font: bold 24px/45px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   background: transparent; /* fallback color */
+   background: rgba(41, 159, 194, 0.7);
+   padding: 10px; 
+	}
+
+	#map {
+		z-index: -10;
+		height: 400px;
+		width: 100%;
+   	border-bottom: 1px solid rgb(41, 159, 194);		
+	}
+}
