@@ -90,9 +90,14 @@ body > div.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(3
 
 // TESTING MASONRY
 
-#container > li {
+#masonry-container > li {
 border: 1px solid red; /* !test */
 }
 
+.grid-item { width: 200px; }
+.grid-item--width2 { width: 400px; }
 
+.slider {
+	width: 25%;
+}
 

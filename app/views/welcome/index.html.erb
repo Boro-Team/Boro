@@ -6,13 +6,12 @@
 </div>
 
 <!-- MASONRY STYLE LIST OF THINGS FOR RENT BEGIN -->
+<!-- data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }' -->
 
-<ul id="masonry-container" class="small-block-grid-2 medium-block-grid-4 large-block-grid-6">
-
+<ul id="container"  class="grid small-block-grid-2 medium-block-grid-4 large-block-grid-6">
 <% for i in (1..30) do %>
-	<li>
-    <p><%= ["Item","Thingie","Stuff","Gizmo"].sample %> No <%= i %></p>
-		<img src="assets/images/items/item<%= i %>.jpg" alt="">
+	<li class="<%= ["grid-item","grid-item--width2"].sample %>">
+		<img src="http://loremflickr.com/<%= ["320/240","480/360","150/150"].sample %>?random=<%= i %>" />
 	</li>
 <% end %>
 </ul>
@@ -43,5 +42,19 @@
 		<p>Hey look, here's you right - pink... Pinkman, get it? Here's your cash. You're out on the town, yeah you're partying hardy.</p>
 	</div>
 </div>
+
+  <!-- MASONRY SCRIPT BEGIN -->
+
+<script>$(window).load(function(){
+
+  $('#container').masonry({
+
+    itemSelector: '#container li'
+
+  });
+
+});
+</script> 
+  <!-- MASONRY SCRIPT END -->
 
 
