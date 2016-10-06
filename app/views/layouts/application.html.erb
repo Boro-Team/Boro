@@ -2,9 +2,8 @@
 <html>
 <head>
   <title>Boro</title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'foundation', media: 'all', 'data-turbolinks-track' => true %>
-
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 
@@ -75,9 +74,9 @@
   <% if signed_in? %>   
     <span><a href="#"><%= current_user.first_name || current_user.id %></a></span>
     <ul class="menu">
-      <li><a href="/rentals/<%= current_user.id %>">Your Transaction History</a></li>
-      <hr>   
       <li><a href="/users/<%= current_user.id %>/edit/">Edit Profile</a></li>
+      <hr>   
+      <li><a href="/users/<%= current_user.id %>/edit/"><%= current_user.email %></a></li>
       <hr>    
       <li><a href="#">Account Settings</a></li>
       <hr>
@@ -86,15 +85,15 @@
     <span><a href="#">Sign up / Login</a></span>
     <ul class="dropdown menu" data-dropdown-menu>  
       <li><%= link_to 'Sign in', user_session_path %></li>  
-      <li><%= link_to 'Sign Up / Login', new_user_registration_path, method: :new, class: "nav-item" %></li>  
-      <li><%= link_to "Connect With Facebook", "/auth/facebook" %></li> 
+      <li><%= link_to 'Sign Up / Login', user_registration_path, method: :new, class: "nav-item" %></li>  
+      <li><%= link_to "Connect With Facebook", user_facebook_omniauth_callback_path %></li> 
   <% end %>
     </ul> 
   <% if signed_in? %>
 <!--     < % if current_user.avatars.present? %>
     <li><a href="/users/<%= current_user.id %>" method="get">< %= image_tag current_user.avatars[0].thumb.url % ></a></li>
       < %= current_user.email % > -->
-      <li><a class="" href="/users/< %= current_user.id % >" method="get"><img src="http://placehold.it/64x64" alt=""></a></li>      
+      <li><a class="" href="/users/<%= current_user.id %>" method="get"><img src="http://placehold.it/64x64" alt=""></a></li>      
       <li><%= button_to "Sign out", destroy_user_session_path, class: "button", method: :delete %></li>    
     <!-- < % else %> -->
 
@@ -109,6 +108,7 @@
 
 </div>
 <!-- FOUNDATION END -->
+
     <div id="flash">
       <% flash.each do |key, value| %>
         <div class="flash <%= key %>"><%= value %></div>
@@ -127,32 +127,57 @@
   <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
   <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'masonry.pkgd.min.js', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'freewall', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'%>
 
 
 
-  <!-- GOOGLE MAPS TEST BEGIN -->
+  <!-- GOOGLE MAPS STATIC -->
 
-      <script>
-      function initMap() {
-        var petaling = {lat: 3.134717, lng: 101.629968};  
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: petaling, 
-          styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
-        });
-        var marker = new google.maps.Marker({
-          position: petaling,
-          map: map
-        });
-      }  
-    </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&callback=initMap">
-    </script>
+<script>
+  function initMap() {
+    var petaling = {lat: 3.134717, lng: 101.629968};  
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 12,
+      center: petaling, 
+      styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
+    });
+    var marker = new google.maps.Marker({
+      position: petaling,
+      map: map
+    });
+  }
 
-  <!-- GOOGLE MAPS TEST END -->
+// FREEWALL SCRIPT
+    var temp = "<div class='brick' style='width:{width}px;'><img src='/items/item{index}.jpg' width='100%'></div>";
+    var w = 1, h = 1, html = '', limitItem = 29;
+    for (var i = 0; i < limitItem; ++i) {
+      w = 1 + 3 * Math.random() << 0;
+      html += temp.replace(/\{width\}/g, w*150).replace("{index}", i + 1);
+    }
+    $("#freewall").html(html);
+
+    var wall = new Freewall("#freewall");
+    wall.reset({
+      selector: '.brick',
+      animate: true,
+      cellW: 150,
+      cellH: 'auto',
+      onResize: function() {
+        wall.fitWidth();
+      }
+    });
+
+    var images = wall.container.find('.brick');
+    images.find('img').load(function() {
+      wall.fitWidth();
+    });  
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&callback=initMap">
+</script>
+
+<!-- GOOGLE MAPS TEST END -->
 
   </body>
 </html>

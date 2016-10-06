@@ -11,24 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20161006075741) do
-=======
 ActiveRecord::Schema.define(version: 20161006081136) do
->>>>>>> 4bd24b2a6e2bee9f4be0c958a7f32144ef72316d
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
   create_table "items", force: :cascade do |t|
-=======
-  create_table "authentications", force: :cascade do |t|
-    t.string   "uid"
-    t.string   "provider"
-    t.string   "token"
-    t.integer  "user_id"
->>>>>>> 4bd24b2a6e2bee9f4be0c958a7f32144ef72316d
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
