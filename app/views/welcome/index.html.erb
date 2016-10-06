@@ -1,2 +1,13 @@
-<br><br>HELLO WELCOME
+<% if signed_in? %>
+  <%= current_user.email %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+
+<% end %>
+
+<div class="hero-body">
+  <div id="motto" class="container has-text-centered ">
+    <h2><span>Rent anything from your neighbours<br>  and make money using the stuff you own! </span></h2>
+		<div id="map"></div>	  
+  </div>
+</div>
 

@@ -2,20 +2,155 @@
 <html>
 <head>
   <title>Boro</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'foundation', media: 'all', 'data-turbolinks-track' => true %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 
 
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<%= favicon_link_tag "favicon.ico" %>
+<meta name="apple-mobile-web-app-title" content="Boro">
+<meta name="application-name" content="Boro">
+<meta name="theme-color" content="#ffffff">
+
 
 </head>
+
 <body>
+<!-- FOUNDATION -->
+<div data-sticky-container>
+  <div class="top-bar sticky" data-sticky data-options="marginTop:0;" style="width:100%">
+    <div class="top-bar-left">     
+      <div>
+        <ul class="menu">
+          <li>
+          <a href="/">
+            <%=image_tag("boro_logo_64.png", alt: "Logo Image")%>
+          </a>
+          </li>         
+          <li>
+            <input type="search" placeholder="Where are you ?">
+          </li>
+          <li>
+            <button type="button" class="button">Search</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="title-bar-right">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li>
+          <a href="#">Rent your stuff !</a>
+          <ul class="menu">
+            <li><a href="/items/new">List Your Item</a></li>
+              <hr>     
+            <li><a href="#">Dashboro</a></li>
+              <hr>
+            <li><a href="#">Your Reviews</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#">Messages</a>
+            <ul class="menu">
+              <li><a href="#">Messages</a></li>
+                <hr>
+              <li><a href="#">Notifications</a></li>
+            </ul>
+        </li>
+
+  <li>
+  <% if signed_in? %>   
+    <a href="#"><%= current_user.first_name || current_user.id %></a>
+    <ul class="menu">
+      <li><a href="/rentals/<%= current_user.id %>">Your Transaction History</a></li>
+      <hr>
+      <li><a href="/users/<%= current_user.id %>">Edit Profile</a></li>
+      <hr>
+      <li><a href="#">Account Settings</a></li>
+      <hr>
+      <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'button' %></li>     
+  <% else %>
+    <ul class="dropdown menu" data-dropdown-menu>  
+     <li><%= link_to 'Sign in', new_user_session_path %></li>  
+      <li><%= link_to 'Sign Up / Login', new_user_registration_path, method: :new, class: "nav-item" %></li>     
+     <hr> 
+     <li><%= link_to "Connect With Facebook", "/auth/facebook" %></li> 
+  <% end %>
+    </ul> 
+  <% if signed_in? %>
+   <!--  < % if current_user.avatars.present? %>
+    <li><a href="/users/<%= current_user.id %>" method="get">< %= image_tag current_user.avatars[0].thumb.url % ></a></li>
+      < %= current_user.email % >
+      < %= button_to "Sign out", sign_out_path, method: :delete % >    
+    < %else%>
+      <li><a class="" href="/users/< %= current_user.id % >" method="get"><img src="http://placehold.it/64x64" alt=""></a></li>
+  < %end%> -->
+<% end %>   
+</ul>   
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<%= link_to "Sign Up", new_user_registration_path %>
+ 
 <%= link_to "Sign In", new_user_session_path %>
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-<%= yield %> 
 
-</body>
+      </div>             
+
+    </div>
+
+  </div>
+
+</div>
+<!-- FOUNDATION END -->
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+
+
+
+<%= yield %>
+<!-- Latest compiled and minified JavaScript -->
+  <!-- Hero footer: will stick at the bottom -->
+  <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js' %> 
+  <%= javascript_include_tag 'foundation','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'what-input','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
+  <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
+
+
+  <!-- GOOGLE MAPS TEST BEGIN -->
+
+      <script>
+      function initMap() {
+        var petaling = {lat: 3.134717, lng: 101.629968};  
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: petaling
+        });
+        var marker = new google.maps.Marker({
+          position: petaling,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&callback=initMap">
+    </script>
+
+  <!-- GOOGLE MAPS TEST END -->
+  </body>
 </html>
+
+
