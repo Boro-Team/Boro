@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :address, presence: true
+  validates :state, presence: true
+  validates :country, presence: true
+
 	def self.from_omniauth(auth)
   		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     		user.email = auth.info.email
