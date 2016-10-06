@@ -11,3 +11,6 @@
   </div>
 </div>
 
+<% if signed_in? %>   
+<a href="/users/<%= current_user.id %>/edit/">Edit Profile</a>
+<% end %>
