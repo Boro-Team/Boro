@@ -1,22 +1,15 @@
+<% if signed_in? %>
+  <%= current_user.email %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+
+<% end %>
+
 <div class="hero-body">
   <div id="motto" class="container has-text-centered ">
     <h1><span>Rent anything from your neighbours    <br>  and make money using the stuff you own! </span></h1>
 		<div id="map"></div>	  
   </div>
 </div>
-
-<!-- MASONRY STYLE LIST OF THINGS FOR RENT BEGIN -->
-<!-- data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }' -->
-
-<ul id="container"  class="grid small-block-grid-2 medium-block-grid-4 large-block-grid-6">
-<% for i in (1..30) do %>
-	<li class="<%= ["grid-item","grid-item--width2"].sample %>">
-		<img src="http://loremflickr.com/<%= ["320/240","480/360","150/150"].sample %>?random=<%= i %>" />
-	</li>
-<% end %>
-</ul>
-
-<!-- MASONRY STYLE LIST OF THINGS FOR RENT END -->
 
 <!-- PRE-FOOTER / VISION -->
 
@@ -43,18 +36,7 @@
 	</div>
 </div>
 
-  <!-- MASONRY SCRIPT BEGIN -->
 
-<script>$(window).load(function(){
-
-  $('#container').masonry({
-
-    itemSelector: '#container li'
-
-  });
-
-});
-</script> 
-  <!-- MASONRY SCRIPT END -->
-
-
+<% if signed_in? %>   
+<a href="/users/<%= current_user.id %>/edit/">Edit Profile</a>
+<% end %>
