@@ -1,0 +1,24 @@
+<%= form_for @item do |form| %>
+
+<div>
+  <%= form.label :title %>
+  <%= form.text_field :title, placeholder: "Enter Title" %>
+
+  <%= form.label :description %>
+  <%= form.text_field :description, placeholder: "Describe your good" %>
+
+</div>
+
+<div class="control">
+  <%= form.label :price_per_day %>
+  <%= form.number_field :price_per_day, placeholder: "Enter desired price per day" %>
+</div>
+
+  <%= form.file_field :avatars, multiple: true %>
+
+<div class="submit-field">
+    <%= form.submit %>
+</div>
+
+<% end %>
+

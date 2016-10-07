@@ -48,10 +48,12 @@
       </div>
     </div>
 
+<span><%= link_to "Items Index", items_path %></span>
+
     <div class="title-bar-right">
       <ul class="dropdown menu" data-dropdown-menu>
         <li>
-          <a href="#">Rent your stuff !</a>
+        <%= link_to "List your Item !", new_item_path %>
           <ul class="menu">
             <li><a href="/items/new">List Your Item</a></li>
               <hr>     

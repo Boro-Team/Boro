@@ -17,8 +17,13 @@ ActiveRecord::Schema.define(version: 20161006081136) do
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",         null: false
+    t.string   "description",   null: false
+    t.integer  "price_per_day", null: false
+    t.json     "avatars"
+    t.integer  "user_id",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
