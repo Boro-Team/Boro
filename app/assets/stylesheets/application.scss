@@ -87,26 +87,34 @@ body > div.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(3
 		color: rgb(41, 159, 194);
 	}
 }
-
-// TESTING MASONRY
-
-#masonry-container > li {
-border: 1px solid red; /* !test */
-}
-
-.grid-item { width: 200px; }
-.grid-item--width2 { width: 400px; }
-
-.slider {
-	width: 25%;
-}
+// FREEWALL STYLES
 
 .free-wall {
+	transition: saturate 0.5s ease;
 	margin: 15px;
+	filter: saturate(0.3);
+	filter: hue-rotate(0deg);
+	opacity: 1;
+	
+	&:hover {
+		opacity: 0;
+		transition: opacity 1s ease;
+							
+	// filter: saturate(0);
+	// filter: blur(10px);
+	}
 }
+
 .brick img {
 	margin: 0;
 	display: block;
 }
+
+
+
+
+
+
+
 
 
