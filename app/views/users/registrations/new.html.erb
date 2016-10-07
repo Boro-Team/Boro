@@ -19,9 +19,11 @@
     <%= f.text_field :last_name %>
   </div>
 
-  <div>
-    <%= f.hidden_field :formatted_address %>
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
   </div>
+
 <!-- 
 < %= render partial: 'geolocate'%>
  -->

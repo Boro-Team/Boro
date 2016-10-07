@@ -31,6 +31,9 @@ gem 'devise', '~> 4.1', '>= 4.1.1'
 gem 'figaro'
 gem 'omniauth-facebook'
 
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
+gem 'mini_magick'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
