@@ -22,26 +22,30 @@ ActiveRecord::Schema.define(version: 20161006081136) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                       default: "",    null: false
+    t.string   "encrypted_password",          default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",               default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "address"
-    t.string   "state"
     t.string   "country"
-    t.boolean  "admin",                  default: false
+    t.boolean  "admin",                       default: false
     t.string   "provider"
     t.string   "uid"
+    t.string   "location"
+    t.string   "formatted_address"
+    t.string   "route"
+    t.string   "postal_code"
+    t.string   "locality"
+    t.string   "administrative_area_level_1"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

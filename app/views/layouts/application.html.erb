@@ -112,8 +112,6 @@
       <% end %>
     </div>
 
-
-
 <%= yield %>
 <!-- Latest compiled and minified JavaScript -->
   <!-- Hero footer: will stick at the bottom -->
@@ -124,6 +122,7 @@
   <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
   <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'jquery.geocomplete',  'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'freewall', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'%>
 
@@ -167,21 +166,57 @@
       }
     });
 
+
     var images = wall.container.find('.brick');
     images.find('img').load(function() {
       wall.fitWidth();
     }); 
 
-    $(".brick").click(
+
+  //  GOOGLE MAPS TEST BEGIN 
+
+      function initMap() {
+        var petaling = {lat: 3.134717, lng: 101.629968};  
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: petaling
+        });
+        var marker = new google.maps.Marker({
+          position: petaling,
+          map: map
+        });
+      }
+    </script>
+ <!-- GOOGLE MAPS TEST END -->    
+ <!-- GEOCOMPLETE START-->
+  <script>
+      $(function(){
+        $("#geocomplete").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+          location: "Kuala Lumpur",
+        });
+
+        $("#find").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+      
+
+        $(".brick").click(
       function(){
         $(this).fadeToggle(1000);
-      }); 
-</script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&callback=initMap">
-</script>
+      });
+
+      });
+    </script>
+ <!-- GEOCOMPLETE END -->
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap"></script>
+
 
 <!-- GOOGLE MAPS TEST END -->
+
 
   </body>
 </html>

@@ -7,9 +7,11 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :address, presence: true
-  validates :state, presence: true
-  validates :country, presence: true
+
+  
+
+#  validates :formatted_address, presence: true
+#  validates :country, presence: true
 
 	def self.from_omniauth(auth)
   		where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -21,3 +23,4 @@ class User < ActiveRecord::Base
 	end
 
 end
+

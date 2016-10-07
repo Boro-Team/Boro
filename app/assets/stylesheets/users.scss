@@ -1,3 +1,23 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#geocomplete { width: 100% }
+
+.map_canvas { 
+  width: 600px; 
+  height: 600px; 
+  margin: 10px 20px 10px 0;
+}
+
+#multiple li { 
+  cursor: pointer; 
+  text-decoration: underline; 
+}
+
+.map_canvas { float:left; margin-left: -650px; margin-top: -300px; }
+.new_user { width: 600px; margin-right: 150px; float: right; }
+fieldset { width: 600px; margin-top: 20px}
+fieldset label { display: block; margin: 0.5em 0 0em; }
+fieldset input { width: 95%; }
