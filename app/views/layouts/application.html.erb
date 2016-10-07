@@ -74,9 +74,7 @@
   <% if signed_in? %>   
     <span><a href="#"><%= current_user.first_name || current_user.id %></a></span>
     <ul class="menu">
-      <li><a href="/users/<%= current_user.id %>/edit/">Edit Profile</a></li>
-      <hr>   
-      <li><a href="/users/<%= current_user.id %>/edit/"><%= current_user.email %></a></li>
+      <li><%= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
       <hr>    
       <li><a href="#">Account Settings</a></li>
       <hr>
