@@ -6,11 +6,50 @@
 
 <div class="hero-body">
   <div id="motto" class="container has-text-centered ">
-    <h2><span>Rent anything from your neighbours<br>  and make money using the stuff you own! </span></h2>
+    <h1>
+    	<span class="spaceit">Rent anything from your neighbours</span>
+    	<br>
+    	<span class="spaceit">and make money using the stuff you own!</span>
+    </h1>
 		<div id="map"></div>	  
   </div>
 </div>
 
+<div id="banner">NEAREST BARGAINS</div>
+
+<!-- FREEWALL BEGIN -->
+
+<div id="freewall" class="hue free-wall"></div>
+
+<!-- FREEWALL END -->
+
+<!-- PRE-FOOTER / VISION -->
+
+<div class="row foot-icons">
+	<div class="large-4 columns">
+		<!-- <img src="http://placehold.it/400x300&text=[img]"/> -->
+		<i class="fa fa-wrench" aria-hidden="true"></i>
+		<h4>Rent Anything From Your Neighbours</h4>
+		<p>I took this vo-tech class in high school, woodworking. I took a lot of vo-tech classes, because it was just big jerk-off, but this one time I had this teacher by the name of... Mr... Mr. Pike.</p>
+	</div>
+
+	<div class="large-4 columns">
+		<!-- <img src="http://placehold.it/400x300&text=[img]"/> -->
+		<i class="fa fa-money" aria-hidden="true"></i>
+		<h4>Make Money From Stuff You Own !</h4>
+		<p>You asked me if we were in the meth business or the money business. Neither, I’m in the empire business. I was under the impression that you had this under control. </p>
+	</div>
+
+	<div class="large-4 columns">
+		<!-- <img src="http://placehold.it/400x300&text=[img]"/> -->
+		<i class="fa fa-users" aria-hidden="true"></i>
+		<h4>Strengthen Your Community</h4>
+		<p>Hey look, here's you right - pink... Pinkman, get it? Here's your cash. You're out on the town, yeah you're partying hardy.</p>
+	</div>
+</div>
+
+
 <% if signed_in? %>   
 <a href="/users/<%= current_user.id %>/edit/">Edit Profile</a>
 <% end %>
+
