@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20161006081136) do
     t.string   "last_name"
     t.string   "country"
     t.boolean  "admin",                       default: false
-    t.string   "provider"
-    t.string   "uid"
     t.string   "location"
     t.string   "formatted_address"
     t.string   "route"
     t.string   "postal_code"
     t.string   "locality"
     t.string   "administrative_area_level_1"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
