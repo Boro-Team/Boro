@@ -19,7 +19,42 @@
     <%= f.text_field :last_name %>
   </div>
 
-<%= render partial: 'geolocate'%>
+  <div>
+    <%= f.hidden_field :formatted_address %>
+  </div>
+<!-- 
+< %= render partial: 'geolocate'%>
+ -->
+
+
+
+<div class="map_canvas"></div>
+      <input id="geocomplete" type="text" placeholder="Type in an address" value="Empire State Bldg" />
+      <input id="find" type="button" value="find" />
+
+
+      <fieldset>
+
+        <label>Formatted Address</label>
+        
+        <input name="formatted_address" type="text" value="" readonly>
+
+        <input name="location" type="hidden" value="">
+
+
+        <input name="route" type="hidden" value="">
+
+        <input name="postal_code" type="hidden" value="">
+
+        <input name="locality" type="hidden" value="">
+
+        <input name="country" type="hidden" value="">
+
+        <input name="administrative_area_level_1" type="hidden" value="">
+
+      </fieldset>
+    
+
 
 
   <div class="field">

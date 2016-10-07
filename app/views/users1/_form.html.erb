@@ -15,12 +15,17 @@
 
 <div class="text-field">
   <%= form.label :address %><br>
-  <%= form.text_field :address %>
+  <%= form.text_field :formatted_address %>
 </div>
 
 <div class="text-field">
-  <%= form.label :state %><br>
-  <%= form.text_field :state %>
+  <%= form.label :address %><br>
+  <%= form.text_field :postal_code %>
+</div>
+
+<div class="text-field">
+  <%= form.label :state_or_province %><br>
+  <%= form.text_field :administrative_area_level_1 %>
 </div>
 
 <div class="text-field">
