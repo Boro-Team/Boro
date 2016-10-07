@@ -1,0 +1,41 @@
+  <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+  <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap"></script>
+
+<script src='//cdn.rawgit.com/googlemaps/js-rich-marker/gh-pages/src/richmarker-compiled.js' type='text/javascript'></script>
+
+<script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
+
+asgf
+<br>asgf
+<br>asgf
+<br>asgf
+<br>asgf
+<br>asgf
+<br>asgf
+<br>asgf
+<br>
+
+<div id="zxc"><%= User.last.location %></div>
+<% User.all.each do |u| %>
+<%= u.location %>
+<br>
+<% end %>
+
+
+
+<div style='width: 800px;'>
+  <div id="new_map" style='width: 800px; height: 400px;'></div>
+</div>
+
+
+
+<script type="text/javascript">
+buildMap(<%=raw @hash.to_json %>)
+
+
+
+
+
+</script>

@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  geocoded_by :location
+  after_validation :geocode 
   
 
 #  validates :formatted_address, presence: true

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  resources :users, controller: 'users', only: [:show, :edit, :update, :destroy] 
+  resources :users, controller: 'users', only: [:show, :edit, :update, :destroy, :index] 
   
 
   # Example of regular route:
