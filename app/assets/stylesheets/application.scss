@@ -15,84 +15,114 @@
  */
 // * { display: flex; }
 
-h1, h2, h3, h4, h5, h6, body, span, div, html, .spaceit {
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   font-weight: 300;
-}
+li {
+ 	list-style: none;
+ }
 
-.top-bar.sticky {
-	border-bottom: 1px solid darkgray;
-	}
-
-.hero-body {
+	.hero-body {
 	position: relative;
 	width: 100%;
 	background-color: transparent;
 
-	h1 {
-		position: absolute; 
-	 	top: 10vh; 
-	 	left: 0; 
-	 	width: 100%;
-	 	font-size: 7vw;
-	 	line-height: 1vh; 
+		h1 {
+			position: absolute; 
+		 	top: 10vh; 
+		 	left: 0; 
+		 	width: 100%;
+		 	font-size: 7vw;
+		 	line-height: 1vh; 
+		}
+
+		h1 span { 
+			color: white; 
+			font: bold 24px/45px Helvetica, Sans-Serif; 
+			letter-spacing: -1px;  
+			background: transparent; /* fallback color */
+			background: rgba(41, 159, 194, 0.8);
+			padding: 10px; 
+		}
+
+		#map {
+			z-index: -10;
+			height: 400px;
+			width: 100%;
+	   	border-bottom: 1px solid rgb(41, 159, 194);		
+			background: url("static_map.png");   	
+		}
 	}
 
-	h1 span { 
-   color: white; 
-   font: bold 24px/45px Helvetica, Sans-Serif; 
-   letter-spacing: -1px;  
-   background: transparent; /* fallback color */
-   background: rgba(41, 159, 194, 0.8);
-   padding: 10px; 
-	}
+* {
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+font-weight: 300;
+	html {
+		body {
+			div.sticky-container {
+				z-index: 10000;
+			 	div.top-bar.sticky {
+			 		border-bottom: 1px solid darkgray;
+			    div.title-bar-right {
 
-	#map {
-		z-index: -10;
-		height: 400px;
-		width: 100%;
-   	border-bottom: 1px solid rgb(41, 159, 194);		
-		background: url("static_map.png");   	
+			 		 	ul {
+			 		 		li {
+								margin-right: 20px;
+								}
+			 		 		li:nth-child(3) {
+								span.spaceit {
+
+									a {
+										img {
+										width: 2vw;
+										border-radius: 50%;
+										border: 2px solid rgb(255, 198, 117);
+										}	
+									}
+								}
+
+			 		 			ul {
+			 		 				li:nth-child(1) {
+			 		 					form {
+			 		 						input.button.warning {
+												float: left;
+												width: 100%;
+											}
+			 		 					}
+			 		 				}
+			 		 			}
+			 		 		}
+
+			 		 		li:nth-child(4) {
+			 		 			a {
+			 		 				img {
+									border-radius: 50%;
+									border-color: #BF7000;
+									border-width: 1px;
+									border-style: solid;
+									}
+			 		 			}
+			 		 		}
+			 		 	}
+			 		}
+			 	}
+			}
+		}
 	}
 }
 
 
-body > div.sticky-container > div > div.title-bar-right > ul > li:nth-child(4) > a > img {
-	border-radius: 50%;
-	border-color: rgba(41, 159, 194, 0.7);
-	border-width: 1px;
-	border-style: solid;
-}
 
-body > div.sticky-container > div > div.title-bar-right > ul > li:nth-child(4) > form > input[type="submit"]:nth-child(2){
-
-}
-
-body > div.sticky-container > div > div.title-bar-right > ul {
-	li {
-		margin-right: 20px;
-	}
-}
-
-
-body > div.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(3) > button {
+body > div.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(3) > button,
+body > div.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(2) > input[type="search"] {
 	box-sizing: border-box;
 }
 
-.row.foot-icons {
-	text-align: center;
-	i {
-		margin-top: 10vh;
-		margin-bottom: 5vh;
-		font-size: 10vh;
-		color: #cccccc;
-	}
+
+
+
 // SLOGAN & Space it
 
 	h4 {
 		color: rgb(41, 159, 194);
 	}
-}
 
 .spaceit {
 	margin: 0 1vw;
@@ -106,27 +136,10 @@ body > div.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(3
 	text-align: center;
 	font-size: 2.5vw;
 	color: white;
-	background-color: rgba(255, 160, 25, 0.8); 
+	background-color: rgba(255, 160, 25, 0.6); 
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
 	}
-// FREEWALL STYLES
-
-.free-wall {
-	transition: saturate 0.5s ease;
-	margin: 15px;
-	filter: saturate(0.3);
-	filter: hue-rotate(0deg);
-	opacity: 1;
-	
-	&:hover {
-		// opacity: 0;
-		// transition: opacity 1s ease;
-							
-	// filter: saturate(0);
-	// filter: blur(10px);
-	}
-}
 
 .brick img {
 	margin: 1px 1px;
@@ -135,88 +148,14 @@ body > div.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(3
 	border: 6px solid rgba(41, 159, 194, 0.5);
 }
 
-// body > div.sticky-container > div > div.title-bar-right > ul > li:nth-child(3) {
-// 	z-index: 10;
-// 	* {
-// 		z-index: 10;
-// 	}
-// }
+// FOOTER
 
-#registration {
-	color: dimgray;
-	width: 30vw;
-
-	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-
-	h1 { 
-		text-align: center;
+.row.foot-icons {
+	text-align: center;
+	i {
+		margin-top: 10vh;
 		margin-bottom: 5vh;
-	}
-
-	p {
-		position: relative;
-		text-align: center;
-		width: 100%;
-		border-radius: 0px;
-
-		a {
-			width: 100%;
-
-			i {
-				font-size: 1.3vw;
-				// color: red;
-
-				&:before {
-					text-align: left;
-					// margin-right: 1vw;
-					float: left;
-				}
-			}
-		}
+		font-size: 10vh;
+		color: #cccccc;
 	}
 }
-
-
-#register_email {
-	z-index: 1000;
-	background-color: white;
-	border-radius: 3px;
-	border-color: rgb(41, 159, 194);
-	i {
-		color: rgb(41, 159, 194);
-	}
-}
-
-#register_fb {
-	z-index: 1000;
-	background-color: rgb(59, 89, 152);
-	border-radius: 3px;
-	border-color: rgb(59, 89, 152);
-	i {
-		color: white;
-	}	
-}
-
-#register_already {
-	float: right;
-	color: dimgray;
-	a {
-		background-color: rgb(74, 131, 28);
-		margin-left: 10px;
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-

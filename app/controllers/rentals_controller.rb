@@ -3,7 +3,7 @@ class RentalsController < ApplicationController
 	before_action :set_rental, only: [:update, :edit] # :destroy
 
 	def index 
-    @items = Item.all
+    @rentals = Rental.all
   end	
 
 	def new
@@ -52,10 +52,10 @@ class RentalsController < ApplicationController
 
   def show
     # @user = Rental.where("user_id = ?", current_user.id)
-    # @rental = Rental.find(params[:id])
+    @rental = Rental.find(params[:id])
     # @item = Item.find(@rental.item_id)   
-    @item = Item.all 
-    render 'index'
+    # @item = Item.all 
+    # render 'index'
   end
 
 #   def destroy
