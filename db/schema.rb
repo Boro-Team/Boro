@@ -11,18 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161008095428) do
+=======
+ActiveRecord::Schema.define(version: 20161008071738) do
+>>>>>>> c97ca49a4afd3b6a4d03a6d2890e18d9e6b440e0
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
+<<<<<<< HEAD
     t.string   "title",         null: false
     t.string   "description",   null: false
     t.integer  "price_per_day", null: false
     t.integer  "user_id",       null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+=======
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> c97ca49a4afd3b6a4d03a6d2890e18d9e6b440e0
     t.string   "avatar"
   end
 

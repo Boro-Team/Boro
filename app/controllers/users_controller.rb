@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	def index
     # @users = User.all
     
-    if params[:formatted_address] == ""
+    if params[:formatted_address] == "" or params[:formatted_address]==nil
       @users=User.all
     else
       params[:range] = "20" unless (params[:range].to_i>0)
