@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-before_action :set_item, only: [:show, :update, :edit, :destroy]
+before_action :set_item, only: [:update, :edit, :destroy]
   
   def index
   	@item = Item.all
@@ -74,10 +74,17 @@ before_action :set_item, only: [:show, :update, :edit, :destroy]
  	  redirect_to item_path, :notice => "item #{ex_l} deleted"
   end
 
+
+  def tag
+    @tagged = Item.tagged_with(params[:tag_id])
+    @tag = params[:tag_id]
+  end
+
+
   private
 
   def item_params
-  	params.require(:item).permit(:title, :description, :price_per_day, :user_id, :avatar)
+  	params.require(:item).permit(:title, :description, :price_per_day, :user_id, :avatar, :tag_list)
   end
 
   def set_item

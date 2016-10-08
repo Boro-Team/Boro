@@ -16,6 +16,11 @@
     <%= form.number_field :price_per_day, placeholder: "Enter desired price per day" %>
   </div>
 
+
+
+  <%= form.select :tag_list, options_for_select(["Kitchen", "Renovation", "Construction", "Tools", "Gardening/Lawncare", "Electronics"]), {}, {:multiple => false, :class => "", :style => "" } %>
+
+
   <div class="field">
     <%= form.label :upload_image %><br />
     <%= form.file_field :avatar %> 

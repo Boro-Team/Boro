@@ -1,9 +1,17 @@
+Category: 
+<% @item.tag_list.each do |tag|%>
+<%=link_to tag, tags_path(tag)%><br><br>
+<%end%> 
+
 <h1><%= @item.title %></h1>
 <h2><%= @item.description %></h2>
 <h3><%= @item.price_per_day %></h3>
 <%= image_tag (@item.avatar.large.url) %>
 
   <div>
+
+
+
 <!--   < % if @item.avatars.present? %>
     < % @item.avatars.each do |a| %> -->
 <!--       <img src="< %= a.large.url %>" alt=""> -->

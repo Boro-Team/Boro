@@ -34,6 +34,8 @@ gem 'omniauth-facebook'
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'mini_magick'
 
+gem 'acts-as-taggable-on', '~> 4.0'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
