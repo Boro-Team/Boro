@@ -2,10 +2,26 @@
 <html>
 <head>
   <title>Boro</title>
+
+  <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js' %> 
+  <%= javascript_include_tag 'foundation','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'what-input','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
+  <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'jquery.geocomplete',  'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'freewall', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'%>
+
+
   <%= stylesheet_link_tag 'foundation', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
+ 
+ <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap&callback=buildMap"></script>
+
 
 
 <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
@@ -130,17 +146,6 @@
 <p><a href="/users/sign_up">Sign Up</a></p>
 <!-- Latest compiled and minified JavaScript -->
   <!-- Hero footer: will stick at the bottom -->
-  <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js' %> 
-  <%= javascript_include_tag 'foundation','data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'what-input','data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
-  <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'jquery.geocomplete',  'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'freewall', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'%>
-
 
 
   <!-- GOOGLE MAPS STATIC -->
@@ -223,11 +228,15 @@
         $(this).fadeToggle(1000);
       });
 
+        $("#geo").geocomplete({
+          details: "form",
+          types: ["geocode", "establishment"],
+        });
       });
     </script>
+
  <!-- GEOCOMPLETE END -->
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap"></script>
 
 
 <!-- GOOGLE MAPS TEST END -->
