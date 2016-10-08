@@ -49,4 +49,5 @@
 	<% if current_user.avatar.present? %>
 		<%= image_tag (current_user.avatar.thumb.url)%><br>
 	<% end %>
+	<%= button_to "Sign out", destroy_user_session_path, class: "button", method: :delete %>
 <% end %>
