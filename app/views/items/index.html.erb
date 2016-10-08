@@ -1,6 +1,7 @@
 <table>
 	<tr>
 		<th>Title</th>
+		<th>Category</th>
 		<th>Description</th>
 		<th>Price/Day</th>
 		<th>Edit</th>
@@ -9,6 +10,7 @@
 		<% @item.each do |i| %>
 	<tr>
 		<td><%= link_to "#{i.title}", item_path(i.id) %></td>
+		<td><%= link_to "#{i.tag_list.first}", tags_path(i.tag_list.first) %></td>
 		<td style="text-align: center;"><%= link_to "#{i.description}", item_path(i.id)%></td>
 		<td style="text-align: center;"><%= i.price_per_day %></td>
 			<% if current_user.id == i.user_id %>
