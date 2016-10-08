@@ -65,10 +65,12 @@
       </div>
     </div>
 
+<span><%= link_to "Items Index", items_path %></span>
+
     <div class="title-bar-right">
       <ul class="dropdown menu" data-dropdown-menu>
         <li>
-          <a href="#">Rent your stuff !</a>
+        <%= link_to "List your Item !", new_item_path %>
           <ul class="menu">
             <li><a href="/items/new">List Your Item</a></li>
               <hr>     
@@ -95,15 +97,35 @@
       <hr>    
       <li><a href="#">Account Settings</a></li>
       <hr>
-      <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'alert button' %></li>     
+      <li><%= content_tag(:a, "Sign Out", href: "destroy_user_session_path", "method" => :delete, "class" => "alert button", "data" => { :dropdown => true,  :hover => true, :hover_pane => true }) %></li>  
+
   <% else %>
-    <span><a href="#">Sign up / Login</a></span>
-    <ul class="dropdown menu" data-dropdown-menu>  
-      <li><%= link_to 'Sign in', user_session_path %></li>  
-      <li><%= link_to 'Sign Up / Login', new_user_registration_path, method: :new, class: "nav-item" %></li>  
-      <li><%= link_to "Connect With Facebook", user_facebook_omniauth_callback_path %></li> 
+  <!-- MODAL TEST BEGIN -->
+
+  <span><a class="button medium success" data-open="registration">Signup / Login</a></span>
+
+<!-- This is a modal -->
+<div class="reveal" id="registration" data-reveal>
+  <h1 class="lead">Welcome to the Boro Community !</h1>
+  <!-- <p class="lead">Welcome !</p> -->
+  <p><%= link_to new_user_registration_path, class: "button", id: "register_email", action: :new, method: :get do %>
+    <i class="fi-mail">Sign up with an email address</i>
   <% end %>
-    </ul> 
+  </p>
+  <p><%= link_to user_facebook_omniauth_callback_path, class: "button", id:"register_fb" do %>
+    <i class="fi-social-facebook">Connect With Facebook</i>
+    <% end %>
+  </p>
+  <span id="register_already" class="lead">I already have an account <%= link_to 'Log in', user_session_path, class: "button" %></span>
+  
+  
+  <button class="close-button" data-close aria-label="Close reveal" type="button">
+    <span aria-hidden="true"><a href="/">&times;</a></span>
+  </button>
+</div>
+
+  <% end %>
+     <!-- </ul>  -->
   <% if signed_in? %>
 <!--     < % if current_user.avatars.present? %>
     <li><a href="/users/<%= current_user.id %>" method="get">< %= image_tag current_user.avatars[0].thumb.url % ></a></li>
@@ -128,6 +150,7 @@
     </div>
 
 <%= yield %>
+<p><a href="/users/sign_up">Sign Up</a></p>
 <!-- Latest compiled and minified JavaScript -->
   <!-- Hero footer: will stick at the bottom -->
 

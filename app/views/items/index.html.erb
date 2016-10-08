@@ -1,0 +1,23 @@
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Description</th>
+		<th>Price/Day</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+		<% @item.each do |i| %>
+	<tr>
+		<td><%= i.title %></td>
+		<td style="text-align: center;"><%= i.description %></td>
+		<td style="text-align: center;"><%= i.price_per_day %></td>
+			<% if current_user.id == i.user_id %>
+				<td><%= link_to "Edit", edit_item_path(i.id), method: :get, :class => "button alert" %></td>
+				<td><%= link_to "Delete", item_path(i.id), method: :delete, :class => "button danger" %></td>
+			<% else %>
+				<td>X</td>
+				<td>X</td>
+			<% end %>
+	</tr>
+	<% end %>
+</table>
