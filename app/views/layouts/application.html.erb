@@ -19,9 +19,8 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap"></script>
-
-
+ 
+ <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap&callback=buildMap"></script>
 
 
 
@@ -235,6 +234,33 @@
         $(this).fadeToggle(1000);
       });
 
+      });
+    </script>
+
+     <script>
+      $(function(){
+        
+        $("#geosearch").geocomplete()
+          .bind("geocode:result", function(event, result){
+            $.log("Result: " + result.formatted_address);
+          })
+          .bind("geocode:error", function(event, status){
+            $.log("ERROR: " + status);
+          })
+          .bind("geocode:multiple", function(event, results){
+            $.log("Multiple: " + results.length + " results found");
+          });
+        
+        $("#find").click(function(){
+          $("#geosearch").trigger("geocode");
+        });
+        
+        
+        $("#examples a").click(function(){
+          $("#geosearch").val($(this).text()).trigger("geocode");
+          return false;
+        });
+        
       });
     </script>
  <!-- GEOCOMPLETE END -->

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
 
   resources :users, controller: 'users', only: [:show, :edit, :update, :destroy, :index] 
+  
   resources :items
   
 

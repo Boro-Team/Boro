@@ -13,18 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20161007092133) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
-    t.string   "title",         null: false
-    t.string   "description",   null: false
-    t.integer  "price_per_day", null: false
-    t.json     "avatars"
-    t.integer  "user_id",       null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,12 +44,11 @@ ActiveRecord::Schema.define(version: 20161007092133) do
     t.string   "postal_code"
     t.string   "locality"
     t.string   "administrative_area_level_1"
-    t.float    "latitude"
-    t.float    "longitude"
     t.string   "provider"
     t.string   "uid"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "avatar"
-
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
