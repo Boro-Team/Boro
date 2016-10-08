@@ -13,8 +13,31 @@ before_action :set_item, only: [:update, :edit, :destroy]
       items=Item.all
     else
       items=[]
-      params[:range] = "20" unless (params[:range].to_i>0)
-      users=User.near(params[:formatted_address], params[:range])
+      
+      if params[:range].to_i>0
+        users=User.near(params[:formatted_address], params[:range])
+      else
+        if params[:postal_code] == ""
+          if params[:locality] == ""
+            if params[:administrative_area_level_1] == ""
+              if params[:country] == ""
+                users=User.where(country: params[:country])
+              end
+            else
+              users=User.where(administrative_area_level_1: params[:administrative_area_level_1])
+            end
+          else
+            users=User.where(locality: params[:locality])
+          end
+        else
+          users=User.where(postal_code: params[:postal_code])
+        end
+      end
+
+      users=User.all unless users
+
+      # params[:range] = "20" unless (params[:range].to_i>0)
+      # users=User.near(params[:formatted_address], params[:range])
       users.each do |u|
         items<<u.items
       end

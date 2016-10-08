@@ -8,6 +8,10 @@
   <%= label_tag(:location, "Find items in:") %>
 	<input id="geo" type="text" placeholder="Type in an address" size="90" />
   <%= hidden_field_tag(:formatted_address) %>
+  <%= hidden_field_tag(:postal_code) %>
+  <%= hidden_field_tag(:locality) %>
+  <%= hidden_field_tag(:administrative_area_level_1) %>
+  <%= hidden_field_tag(:country) %>
   <%= label_tag(:range, "Within how many km:") %>
   <%= text_field_tag(:range) %>
   <%= submit_tag("Search") %>
