@@ -4,12 +4,10 @@ class UsersController < ApplicationController
     # @users = User.all
     
     if params[:formatted_address] == "" or params[:formatted_address]==nil
-      byebug
       @users=User.all
     else
       params[:range] = "20" unless (params[:range].to_i>0)
       @users=User.near(params[:formatted_address], params[:range]) 
-      byebug
     end
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
         marker.lat user.latitude
