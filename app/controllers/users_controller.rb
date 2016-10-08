@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.json({:id => user.id })
         marker.json({:title => user.first_name })
-        marker.infowindow user.email
+        marker.infowindow Item.last.search_card
         marker.picture({
          "url" => "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
          "width" =>  32,

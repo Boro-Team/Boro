@@ -2,6 +2,17 @@ class ItemsController < ApplicationController
 before_action :set_item, only: [:update, :edit, :destroy]
   
   def index
+
+
+
+
+
+
+
+
+
+
+    
   	@item = Item.all
     if signed_in?
       items_per_page = 10  
