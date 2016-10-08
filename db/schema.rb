@@ -11,28 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20161007092133) do
-=======
 ActiveRecord::Schema.define(version: 20161008071738) do
->>>>>>> 6431f99bbc4fdd18e04935046b59add8db526c0e
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
-<<<<<<< HEAD
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-=======
-    t.string   "title",         null: false
-    t.string   "description",   null: false
-    t.integer  "price_per_day", null: false
-    t.integer  "user_id",       null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
     t.string   "avatar"
->>>>>>> 6431f99bbc4fdd18e04935046b59add8db526c0e
   end
 
   create_table "users", force: :cascade do |t|
