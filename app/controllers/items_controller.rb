@@ -34,6 +34,7 @@ before_action :set_item, only: [:show, :update, :edit, :destroy]
   end
 
   def create
+    
     @item = current_user.items.new(item_params)  
       respond_to do |format|        
         if @item.save
@@ -70,13 +71,13 @@ before_action :set_item, only: [:show, :update, :edit, :destroy]
     @item = Item.find(params[:id])
     ex_l = @item.id
    	@item.destroy
- 	  redirect_to root_path, :notice => "item #{ex_l} deleted"
+ 	  redirect_to item_path, :notice => "item #{ex_l} deleted"
   end
 
   private
 
   def item_params
-  	params.require(:item).permit(:title, :description, :price_per_day, :user_id)
+  	params.require(:item).permit(:title, :description, :price_per_day, :user_id, :avatar)
   end
 
   def set_item
