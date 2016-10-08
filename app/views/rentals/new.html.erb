@@ -1,0 +1,35 @@
+  <% if flash[:notice] || @errors %>
+  <div data-alert id="flashes">  
+    <span id="flash_notice"><%= flash[:notice] || @errors %></span>
+    <a href="#" class="close">&times;</a>    
+    <%= javascript_tag "$('#flash_notice').effect('highlight',{},1000);" %>
+  <% end %>
+
+  </div>
+
+  <% if flash[:error] || flash[:errors] %>
+    <p id="flash_errors" ><%= flash[:error] || flash[:errors] %></p>
+    <%= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
+  <% end %>
+
+
+
+    <% if @errors %>
+<div data-alert id="flashes">
+    <p id="flash_errors"><%= @errors[0] %></p>
+    <%= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
+  <% end %>
+
+  <% flash[:error] = flash[:errors] = flash[:notice] = nil %>   
+</div>
+
+    </p>  <%= render partial: '/rentals/form'  %>
+		
+
+<!--     <div class="other-links">
+      < %= link_to t(".sign_in"), sign_in_path %>
+    </div>  -->
+
+
+
+    

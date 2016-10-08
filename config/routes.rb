@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users, controller: 'users', only: [:show, :edit, :update, :destroy] 
-  resources :items
+  
+  resources :items do
+    resources :rentals, :only => [:create, :new, :show]
+  end
   
 
   # Example of regular route:

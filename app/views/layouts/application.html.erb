@@ -2,8 +2,9 @@
 <html>
 <head>
   <title>Boro</title>
-  <%= stylesheet_link_tag 'foundation', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'foundation.min', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/foundation-datepicker/1.5.3/css/foundation-datepicker.min.css' %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 
@@ -14,6 +15,17 @@
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 <%= favicon_link_tag "favicon.ico" %>
+
+<%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'foundation.min','data-turbolinks-track' => true %>
+<%= javascript_include_tag 'what-input','data-turbolinks-track' => true %>
+<%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>    
+<%= javascript_include_tag 'jquery.geocomplete',  'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'freewall', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'%>
+<%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/foundation-datepicker/1.5.3/js/foundation-datepicker.min.js' %>
+
 <meta name="apple-mobile-web-app-title" content="Boro">
 <meta name="application-name" content="Boro">
 <meta name="theme-color" content="#ffffff">
@@ -80,9 +92,10 @@
       <hr>    
       <li><a href="#">Account Settings</a></li>
       <hr>
-      <li><%= content_tag(:a, "Sign Out", href: "destroy_user_session_path", "method" => :delete, "class" => "alert button", "data" => { :dropdown => true,  :hover => true, :hover_pane => true }) %></li>  
+      <li><%= link_to "Sign Out", destroy_user_session_path(current_user) %></li>  
 
   <% else %>
+  
   <!-- MODAL TEST BEGIN -->
 
   <span><a class="button medium success" data-open="registration">Signup / Login</a></span>
@@ -130,16 +143,9 @@
 <p><a href="/users/sign_up">Sign Up</a></p>
 <!-- Latest compiled and minified JavaScript -->
   <!-- Hero footer: will stick at the bottom -->
-  <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js' %> 
-  <%= javascript_include_tag 'foundation','data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'what-input','data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'app',  'data-turbolinks-track' => true %>        
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
-  <%= javascript_include_tag 'https://use.fontawesome.com/61b8a9195a.js','data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'jquery.geocomplete',  'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'freewall', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'%>
+
+<!--   < %= javascript_include_tag 'https://code.jquery.com/ui/1.12.0/jquery-ui.min.js' %> -->  
+
 
 
 
