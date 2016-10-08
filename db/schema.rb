@@ -16,18 +16,14 @@ ActiveRecord::Schema.define(version: 20161007083146) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authentications", force: :cascade do |t|
-    t.string   "uid"
-    t.string   "provider"
-    t.string   "token"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "items", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",         null: false
+    t.string   "description",   null: false
+    t.integer  "price_per_day", null: false
+    t.json     "avatars"
+    t.integer  "user_id",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,14 +43,14 @@ ActiveRecord::Schema.define(version: 20161007083146) do
     t.string   "last_name"
     t.string   "country"
     t.boolean  "admin",                       default: false
-    t.string   "provider"
-    t.string   "uid"
     t.string   "location"
     t.string   "formatted_address"
     t.string   "route"
     t.string   "postal_code"
     t.string   "locality"
     t.string   "administrative_area_level_1"
+    t.string   "provider"
+    t.string   "uid"
     t.string   "avatar"
   end
 

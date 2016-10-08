@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :users, controller: 'users', only: [:show, :edit, :update, :destroy] 
+  resources :items
   
 
   # Example of regular route:
