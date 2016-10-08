@@ -2,29 +2,52 @@ class ItemsController < ApplicationController
 before_action :set_item, only: [:update, :edit, :destroy]
   
   def index
-
-
-
-
-
-
-
-
-
-
-    
   	@item = Item.all
     if signed_in?
       items_per_page = 10  
       params[:page] = 1 unless params[:page] 
       first_item ||= (params[:page].to_i - 1) * items_per_page
-      items = Item.all 
+
+
+    if params[:formatted_address] == "" or params[:formatted_address]==nil
+      items=Item.all
+    else
+      items=[]
+      params[:range] = "20" unless (params[:range].to_i>0)
+      users=User.near(params[:formatted_address], params[:range])
+      users.each do |u|
+        items<<u.items
+      end
+      items.flatten!
+    end
+
       @nb_pages_needed = items.count / items_per_page
       if params[:tag]
-        @item = Item.tagged_with(params[:tag])
+        @item=[]
+        items.each do |i|
+          @item<<i if i.tag_list.include?(params[:tag])
+        end
       else    
-        @items = items[first_item...(first_item + items_per_page)]
+        @item = items[first_item...(first_item + items_per_page)]
       end
+
+
+      @hash = Gmaps4rails.build_markers(@item) do |item, marker|
+          marker.lat item.user.latitude
+          marker.lng item.user.longitude
+          marker.json({:id => item.id })
+          marker.json({:title => item.title })
+          marker.infowindow item.search_card
+          marker.picture({
+           "url" => "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+           "width" =>  32,
+           "height" => 32})
+      end
+
+
+
+
+
     else
       flash[:notice] = "Please Log In or Sign Up"
       redirect_to root_path
