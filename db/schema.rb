@@ -11,12 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161008095428) do
+=======
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20161007092133) do
+=======
+ActiveRecord::Schema.define(version: 20161008071738) do
+>>>>>>> 6431f99bbc4fdd18e04935046b59add8db526c0e
+>>>>>>> 1d09794bc4ab6b2b25896ed469e7913f68bc3e2f
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
+<<<<<<< HEAD
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+=======
     t.string   "title",         null: false
     t.string   "description",   null: false
     t.integer  "price_per_day", null: false
@@ -24,6 +36,7 @@ ActiveRecord::Schema.define(version: 20161008095428) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "avatar"
+>>>>>>> 6431f99bbc4fdd18e04935046b59add8db526c0e
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -78,6 +91,8 @@ ActiveRecord::Schema.define(version: 20161008095428) do
     t.string   "administrative_area_level_1"
     t.string   "provider"
     t.string   "uid"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "avatar"
   end
 
