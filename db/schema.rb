@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20161008095428) do
     t.string   "country"
     t.boolean  "admin",                       default: false
     t.string   "formatted_address"
+    t.string   "location"
     t.string   "route"
     t.string   "postal_code"
     t.string   "locality"

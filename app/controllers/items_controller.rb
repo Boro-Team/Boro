@@ -20,9 +20,7 @@ before_action :set_item, only: [:update, :edit, :destroy]
         if params[:postal_code] == ""
           if params[:locality] == ""
             if params[:administrative_area_level_1] == ""
-              if params[:country] == ""
                 users=User.where(country: params[:country])
-              end
             else
               users=User.where(administrative_area_level_1: params[:administrative_area_level_1])
             end
