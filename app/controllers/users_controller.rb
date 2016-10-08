@@ -3,13 +3,13 @@ class UsersController < ApplicationController
 	def index
     # @users = User.all
     
-
-    if params[:location]
-      @users=User.near(params[:location], params[:range])  
-    else
+    if params[:formatted_address] == ""
       @users=User.all
+    else
+      params[:range] = "20" unless (params[:range].to_i>0)
+      @users=User.near(params[:formatted_address], params[:range]) 
     end
-    
+    byebug
     @hash = Gmaps4rails.build_markers(@users) do |user, marker|
         marker.lat user.latitude
         marker.lng user.longitude

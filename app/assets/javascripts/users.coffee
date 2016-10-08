@@ -38,7 +38,7 @@ class RichMarkerBuilder extends Gmaps.Google.Builders.Marker #inherit from built
 	handler = Gmaps.build 'Google', { builders: { Marker: RichMarkerBuilder} } #dependency injection
 
 	#then standard use
-	handler.buildMap { provider: {}, internal: {id: 'new_map'} }, ->
+	handler.buildMap { provider: {}, internal: {id: 'search_map'} }, ->
 	  markers = handler.addMarkers(markers)
 	  handler.bounds.extendWith(markers)
 	  handler.fitMapToBounds()
