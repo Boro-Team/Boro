@@ -32,7 +32,10 @@ before_action :set_item, only: [:update, :edit, :destroy]
         end
       end
 
-      users=User.all unless users
+      if users==[] or users==nil
+        users=User.all
+        @no_user_error = "No items found in your search area. All locations displayed"
+      end
 
       # params[:range] = "20" unless (params[:range].to_i>0)
       # users=User.near(params[:formatted_address], params[:range])
