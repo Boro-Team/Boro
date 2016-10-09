@@ -31,11 +31,13 @@
 
 <!-- NOTICES & ALERTS -->
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<!-- <p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p> -->
+
 
 	<div class="anchor" data-sticky-container>
-	  <div class="top-bar sticky" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1">
+	<!-- <div class="callout alert">< %= display_flash_messages %></div> -->
+	  <div class="top-bar sticky" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="2">
 	    <div class="top-bar-left">     
 	      <div>
 	        <ul class="menu">
@@ -112,9 +114,7 @@
 	              <%= link_to "Edit Profile", edit_user_registration_path(current_user) %>
 	            </li>  
 	            <li>
-	              <a href="#">
-	                Account Settings
-	              </a>
+								<%= link_to "Account Settings", edit_user_registration_path(current_user) %>
 	            </li>
 	            <li>
 	            	<%= button_to "Sign out", destroy_user_session_path, class: "button", method: :delete %>

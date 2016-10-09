@@ -129,7 +129,11 @@ button, input[type="search"] {
 	height: 5vh;
  }
 
-
+#error_explanation {
+	margin-top: 10px;
+	background-color: pink;
+	border: 3px solid red;
+}
 
 
 // SLOGAN & Space it

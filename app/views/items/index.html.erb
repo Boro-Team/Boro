@@ -1,5 +1,6 @@
 <table>
 	<tr>
+		<th style="text-align: center;">Pic</th>
 		<th>Title</th>
 		<th>Description</th>
 		<th>Price/Day</th>
@@ -9,6 +10,7 @@
 	</tr>
 		<% @items.each do |i| %>
 	<tr>
+		<td><%= image_tag (i.avatar.thumb.url) %></td>	
 		<td><%= link_to "#{i.title}", item_path(i.id) %></td>
 		<td style="text-align: center;"><%= link_to "#{i.description}", item_path(i.id)%></td>
 		<td style="text-align: center;"><%= i.price_per_day %></td>
