@@ -15,6 +15,6 @@ Category:
 <!--   < % if @item.avatars.present? %>
     < % @item.avatars.each do |a| %> -->
 <!--       <img src="< %= a.large.url %>" alt=""> -->
-      <%= link_to "Edit", edit_item_path(@item.id), method: :get %>
+      <%= link_to "Edit", edit_item_path(@item.id), method: :get %><br>
       <%= link_to "Delete", item_path(@item.id), method: :delete %>
   </div>

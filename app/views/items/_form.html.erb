@@ -14,7 +14,11 @@
   <%= form.number_field :price_per_day, placeholder: "Enter desired price per day" %>
 </div>
 
-  <%= form.file_field :avatars, multiple: true %>
+<div class="field">
+  <%= form.label :upload_image %><br />
+  <%= form.file_field :avatar %> 
+</div>
+
 
 <div class="submit-field">
     <%= form.submit %>
