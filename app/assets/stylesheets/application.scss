@@ -53,7 +53,9 @@ li {
 		}
 	}
 
-	body > div.anchor.sticky-container > div.top-bar.sticky.is-stuck.is-at-top > div.title-bar-right > ul > li:nth-child(4) > a
+	.anchor.sticky-container {
+		height: 4.44%;
+	}
 
 * {
 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -61,8 +63,10 @@ font-weight: 300;
 box-sizing: border-box;
 	html {
 		body {
+			div.anchor.sticky-container,
 			div.sticky-container {
-				z-index: 10000;
+				// position: fixed;
+				// z-index: 10000;
 			 	div.top-bar.sticky {
 			 		border-bottom: 1px solid darkgray;
 			    div.title-bar-right {
@@ -107,8 +111,11 @@ box-sizing: border-box;
 }
 
 body > div.anchor.sticky-container > div.top-bar.sticky.is-stuck.is-at-top > div.top-bar-left > div > ul > li:nth-child(1) > a,
-body > div.anchor.sticky-container > div.top-bar.sticky.is-anchored.is-at-top > div.top-bar-left > div > ul > li:nth-child(1) > a 
- {
+body > div.anchor.sticky-container > div.top-bar.sticky.is-anchored.is-at-top > div.top-bar-left > div > ul > li:nth-child(1) > a,
+body > div.anchor.sticky-container > div > div.top-bar-left > div > ul, 
+body > div.anchor.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(1) > a > img,
+body > div > div.top-bar.sticky > div.top-bar-left > div > ul > li:nth-child(1) > a > img,
+{
 	height: 5.5vh;
 	width: 5.5vh;
 }
@@ -177,4 +184,5 @@ button, input[type="search"] {
 		color: #cccccc;
 	}
 }
+
 
