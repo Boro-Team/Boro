@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 before_action :set_item, only: [:update, :edit, :destroy]
   
   def index
+    @index_page = true 
   	@item = Item.all
     if signed_in?
       items_per_page = 10  
@@ -138,6 +139,17 @@ before_action :set_item, only: [:update, :edit, :destroy]
     @tag = params[:tag_id]
   end
 
+# 1. In the terminal, run 'elasticsearch'
+# 2. In a separate tab in the terminal, run 'rake searchkick:reindex CLASS=Item'
+  def search  
+    @index_page = false 
+    @item = Item.search(params[:term], fields: ["title", "description"], mispellings: {below: 5})
+    if @item.blank?
+      redirect_to items_path, flash:{danger: "no successful search result"}
+    else
+      render :index
+    end
+  end
 
   private
 

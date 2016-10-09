@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
 	has_many :rentals
 
 	acts_as_taggable # Alias for acts_as_taggable_on :tags
+	searchkick match: :word_start, searchable: [:title, :description]
 
 	def search_card
 		if self.avatar.medium.url
