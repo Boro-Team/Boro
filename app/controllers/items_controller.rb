@@ -129,7 +129,7 @@ before_action :set_item, only: [:update, :edit, :destroy]
     @item = Item.find(params[:id])
     ex_l = @item.id
    	@item.destroy
- 	  redirect_to item_path, :notice => "item #{ex_l} deleted"
+ 	  redirect_to items_path, :notice => "item #{ex_l} deleted"
   end
 
 
