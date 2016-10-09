@@ -113,11 +113,10 @@ body > div.anchor.sticky-container > div.top-bar.sticky.is-anchored.is-at-top > 
 	width: 5.5vh;
 }
 
-// body > div.anchor.sticky-container > div.top-bar.sticky.is-at-top.is-stuck,
-// body > div.anchor.sticky-container > div.top-bar.sticky.is-anchored.is-at-top {
-// 	height: 7vh;
-// 	width: 100%
-// }
+body > div.anchor.sticky-container > div.top-bar.sticky.is-anchored.is-at-top > div.title-bar-right > ul > li:nth-child(2) > a,
+body > div.anchor.sticky-container > div.top-bar.sticky.is-at-top.is-stuck > div.title-bar-right > ul > li:nth-child(2) > a {
+	margin-right: 3vw;
+}
 
 
 button, input[type="search"] {
