@@ -118,7 +118,7 @@ class @Gmaps.Objects.Handler
   _default_marker_options: ->
     _.clone {
       singleInfowindow:  true
-      maxRandomDistance: 100
+      maxRandomDistance: 150
       clusterer:
         maxZoom:  30
         gridSize: 25
