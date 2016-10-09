@@ -9,4 +9,4 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 
-Rails.application.config.assets.precompile += %w( jquery.js what-input.js foundation.js modernizr.min.js search.js foundation.css foundation-icons.css foundation-datepicker.js app.js jquery.geocomplete.js foundation-datepicker.js freewall.js )
+Rails.application.config.assets.precompile += %w( jquery.js what-input.js modernizr.min.js search.js app.js jquery.geocomplete.js freewall.js )

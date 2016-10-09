@@ -38,9 +38,14 @@
 //   maxDate: "+1y +1d"
 //   });
 
+
 var nowTemp = new Date();
 var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+$('#rental_start_date').fdatepicker({
+  format: 'dd-mm-yyyy'
+});
 var checkin = $('#rental_start_date').fdatepicker({
+  format: 'dd-mm-yyyy',
   onRender: function (date) {
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
   }
@@ -53,7 +58,9 @@ var checkin = $('#rental_start_date').fdatepicker({
   checkin.hide();
   $('#rental_end_date')[0].focus();
 }).data('datepicker');
+
 var checkout = $('#rental_end_date').fdatepicker({
+  format: 'dd-mm-yyyy',
   onRender: function (date) {
     return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
   }
@@ -69,7 +76,7 @@ var checkout = $('#rental_end_date').fdatepicker({
     date = new Date(input);
     return date;
   };
-
+debugger;
   $("#rental_start_date").change(function(){
     date_debut = parseDate($("#rental_start_date").val());
     $("#chin").html(date_debut);
