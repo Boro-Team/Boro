@@ -11,27 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161008095428) do
-=======
-ActiveRecord::Schema.define(version: 20161008071738) do
->>>>>>> c97ca49a4afd3b6a4d03a6d2890e18d9e6b440e0
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
-<<<<<<< HEAD
     t.string   "title",         null: false
     t.string   "description",   null: false
     t.integer  "price_per_day", null: false
+    t.json     "avatars"
     t.integer  "user_id",       null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-=======
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
->>>>>>> c97ca49a4afd3b6a4d03a6d2890e18d9e6b440e0
     t.string   "avatar"
   end
 
@@ -79,17 +71,17 @@ ActiveRecord::Schema.define(version: 20161008071738) do
     t.string   "last_name"
     t.string   "country"
     t.boolean  "admin",                       default: false
-    t.string   "location"
     t.string   "formatted_address"
+    t.string   "location"
     t.string   "route"
     t.string   "postal_code"
     t.string   "locality"
     t.string   "administrative_area_level_1"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "provider"
     t.string   "uid"
     t.string   "avatar"
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
