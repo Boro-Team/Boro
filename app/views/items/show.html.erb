@@ -7,7 +7,7 @@
 <h3><%= @item.price_per_day %> MYR</h3>
 
 <%= image_tag (@item.avatar.medium.url) %>
-<p><%= link_to "RENT THIS", new_item_rental_path(@item.id), :class => "button success" %></p>
+<p><%= link_to "RENT THIS", new_item_rental_path(@item.id), method: :get, :class => "button success" %></p>
 
 <div>
 <!--   < % if @item.avatars.present? %>

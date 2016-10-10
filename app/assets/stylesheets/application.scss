@@ -18,6 +18,10 @@
 @import "bootstrap";
 @import "bootstrap-datepicker";
 
+.invisible_span {
+	display: none;
+}
+
 body > nav > div > div.navbar-header > a > img {
 	display: flex;
 }

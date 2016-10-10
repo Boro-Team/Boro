@@ -9,12 +9,12 @@ class RentalsController < ApplicationController
 	def new
 		@item = Item.find(params[:item_id])
 		@rental = Rental.new
+    @disabledDays = @rental.disabledDates
 	end
 
   def create
     @item = Item.find(params[:item_id])  
     @rental = @item.rentals.new(rental_params) 
-    byebug
     @rental.user_id = current_user.id 
     @rental.total_price = (@rental.end_date - @rental.start_date) * @item.price_per_day
 
@@ -47,8 +47,6 @@ class RentalsController < ApplicationController
       flash[:error] = @rental.errors
       redirect_to new_item_rental_path(@item.id)
     end
-
-
   end
 
   def show
@@ -75,8 +73,8 @@ class RentalsController < ApplicationController
 
 private
   def rental_params
-    params[:rental][:start_date] = Date.parse(params[:rental][:start_date].to_s)
-    params[:rental][:end_date] = Date.parse(params[:rental][:end_date].to_s)
+    params[:rental][:start_date] = Date.parse(params[:rental][:start_date])
+    params[:rental][:end_date] = Date.parse(params[:rental][:end_date])
     params.require(:rental).permit(:start_date, :end_date, :total_price, :price_per_day, :item_id, :user_id, :approval_status) 
   end
 
