@@ -23,10 +23,26 @@
 @import "welcome";
 @import "drop-down-menu";
 
+
+#registration {
+	justify-content: middle;
+	display: flex;
+	max-width: 30vw;
+	max-height: 40vh;
+	text-align: center;
+	margin: 0;
+}
+#register_already > a {
+	text-align: center;
+	max-width: 5vw;
+}
 .invisible_span {
 	display: none;
 }
 
+body > nav > div {
+	font-family: "Comfortaa";	
+}
 // body > nav > div > div.navbar-header > a > img {
 // 	display: flex;
 // }

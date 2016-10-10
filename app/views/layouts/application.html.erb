@@ -14,6 +14,7 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <%= favicon_link_tag "favicon.ico" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'jquery.geocomplete', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track' => true %>
@@ -22,6 +23,7 @@
   <%= javascript_include_tag 'bootstrap-datepicker', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'what-input','data-turbolinks-track' => true %>
+  <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap&callback=buildMap"></script>
   <meta name="apple-mobile-web-app-title" content="Boro">
   <meta name="application-name" content="Boro">
   <meta name="theme-color" content="#ffffff">
@@ -48,26 +50,6 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <!-- <li class="active"><a href="#">List your item<span class="sr-only">List your item desktop</span></a></li> -->
-<!--         <li class="dropdown">
-          <a href="<%= edit_user_registration_path(current_user) %>" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-          < % if signed_in? %> 
-          < %= current_user.first_name || "Your Profile" %><span class="caret"></span></a>
-
-          <ul class="dropdown-menu">
-            <li>< %= link_to "Edit Profile", edit_user_registration_path(current_user) %></li>
-            <li role="separator" class="divider"></li>
-            <li>< %= button_to "Sign out", destroy_user_session_path, class: "button", method: :delete %></li>
-          < % else %>
-          <a class="button medium success" data-open="registration">
-            Signup / Login
-          </a>
-          < % end %>
-          </ul>
-
-        </li> -->
-      </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Where are you?">
@@ -78,13 +60,13 @@
       <span class="form-group"><a class="btn btn-default" href="/items">Items' List</a></span>
       <span><a class="btn btn-default" href="/users">Users Around Me</a></span>
       <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="/items/new">List your Truc<span class="sr-only">List your Gizmo</span></a></li>
+      <li class="active"><a href="/items/new">List your Items<span class="sr-only">List your Gizmo</span></a></li>
       <!-- AVATAR -->
 
       <% if signed_in? %>
         <% if current_user.avatar.present? %>
         <li>
-          <a href="#">
+          <a href="/users/<%= current_user.id %>">
             <%= image_tag current_user.avatar.thumb.url, :id => "avatar", :class=> "img-circle"%>  
           </a>
         </li>
@@ -92,7 +74,7 @@
         <% else %>
 
         <li>
-          <a href="/users/<%= current_user.id %>"" method="get">
+          <a href="/users/<%= current_user.id %>" method="get">
             <img id="avatar" src="http://placehold.it/64x64">
           </a>
         </li>      
@@ -124,6 +106,7 @@
         <button type="button success" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registration">
           Signup / Login
         </button>
+
         <% end %>
         </li>
       </ul>
@@ -238,6 +221,16 @@
       });
     </script>
 
+<!-- ADDED THOSE SCRIPTS FROM /USERS/INDEX.HTML.ERB -->
+  <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+  <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
+
+
+<script src='//cdn.rawgit.com/googlemaps/js-rich-marker/gh-pages/src/richmarker-compiled.js' type='text/javascript'></script>
+
+<script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
+
+
  <!-- GEOCOMPLETE END -->
 
 
@@ -246,7 +239,7 @@
 
 <!-- MODAL REGISTRATION -->
 
-<div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -257,19 +250,19 @@
       </div>
 
       <p class="modal-body">
-        <%= link_to new_user_registration_path, class: "button", id: "register_email", action: :new, method: :get do %>
+        < %= link_to new_user_registration_path, class: "button", id: "register_email", action: :new, method: :get do %>
         <i class="fi-mail">Sign up with an email address</i>
-        <% end %>
+        < % end %>
       </p>
 
       <p>
-        <%= link_to user_facebook_omniauth_callback_path, class: "button", id:"register_fb" do %>
+        < %= link_to user_facebook_omniauth_callback_path, class: "button", id:"register_fb" do %>
         <i class="fi-social-facebook">Connect With Facebook</i>
-        <% end %>
+        < % end %>
       </p>
 
       <span id="register_already" class="lead">
-        I already have an account <%= link_to 'Log in', user_session_path, class: "button" %> 
+        I already have an account < %= link_to 'Log in', user_session_path, class: "button" %> 
       </span>
 
       <div class="modal-footer">
@@ -277,6 +270,8 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<%=  render '/users/modal' %>
 
 </body>

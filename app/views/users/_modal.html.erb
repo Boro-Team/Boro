@@ -1,0 +1,31 @@
+<div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Welcome to your Boro </h4>
+      </div>
+      <p id="register_email" class="modal-body">
+        <%= link_to new_user_registration_path, class: "button", action: :new, method: :get do %>
+        <i class="fi-mail">Sign up with an email address</i>
+        <% end %>
+      </p>
+
+      <p id="register_fb">
+        <%= link_to user_facebook_omniauth_callback_path, class: "button" do %>
+        <i class="fi-social-facebook">Connect With Facebook</i>
+        <% end %>
+      </p>
+
+      <p id="register_already" class="lead">
+        I already have an account <%= link_to 'Log in', user_session_path, class: "btn btn-primary" %> 
+      </p>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
