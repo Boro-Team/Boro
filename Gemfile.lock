@@ -87,12 +87,9 @@ GEM
     geocoder (1.4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-<<<<<<< HEAD
+    gmaps4rails (2.1.2)
     google-webfonts-rails (0.0.4)
       activesupport (> 3.2.0, < 5.0)
-=======
-    gmaps4rails (2.1.2)
->>>>>>> 18d199898b8f6dfbb7237cde20372bf499213269
     hashie (3.4.4)
     i18n (0.7.0)
     jbuilder (2.6.0)
@@ -214,23 +211,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< HEAD
+  acts-as-taggable-on (~> 4.0)
   bootstrap-datepicker-rails
   bootstrap-sass (~> 3.3.6)
-=======
-  acts-as-taggable-on (~> 4.0)
->>>>>>> 18d199898b8f6dfbb7237cde20372bf499213269
   byebug
   carrierwave (>= 1.0.0.beta, < 2.0)
   coffee-rails (~> 4.1.0)
   devise (~> 4.1, >= 4.1.1)
   figaro
-<<<<<<< HEAD
-  google-webfonts-rails
-=======
   geocoder
   gmaps4rails
->>>>>>> 18d199898b8f6dfbb7237cde20372bf499213269
+  google-webfonts-rails
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick

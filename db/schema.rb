@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20161008094140) do
-=======
 ActiveRecord::Schema.define(version: 20161008095428) do
->>>>>>> 18d199898b8f6dfbb7237cde20372bf499213269
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +20,13 @@ ActiveRecord::Schema.define(version: 20161008095428) do
     t.string   "title",         null: false
     t.string   "description",   null: false
     t.integer  "price_per_day", null: false
+    t.json     "avatars"
     t.integer  "user_id",       null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "avatar"
   end
 
-<<<<<<< HEAD
   create_table "rentals", force: :cascade do |t|
     t.date     "start_date"
     t.date     "end_date"
@@ -42,7 +38,6 @@ ActiveRecord::Schema.define(version: 20161008095428) do
     t.datetime "updated_at",                      null: false
   end
 
-=======
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -70,7 +65,6 @@ ActiveRecord::Schema.define(version: 20161008095428) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
->>>>>>> 18d199898b8f6dfbb7237cde20372bf499213269
   create_table "users", force: :cascade do |t|
     t.string   "email",                       default: "",    null: false
     t.string   "encrypted_password",          default: "",    null: false
@@ -88,17 +82,17 @@ ActiveRecord::Schema.define(version: 20161008095428) do
     t.string   "last_name"
     t.string   "country"
     t.boolean  "admin",                       default: false
-    t.string   "location"
     t.string   "formatted_address"
+    t.string   "location"
     t.string   "route"
     t.string   "postal_code"
     t.string   "locality"
     t.string   "administrative_area_level_1"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "provider"
     t.string   "uid"
     t.string   "avatar"
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

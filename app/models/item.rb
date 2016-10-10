@@ -21,7 +21,7 @@ class Item < ActiveRecord::Base
 	  	return booked_dates
 	end
 
-end
+# end
 	acts_as_taggable # Alias for acts_as_taggable_on :tags
 	searchkick match: :word_start, searchable: [:title, :description]
 
