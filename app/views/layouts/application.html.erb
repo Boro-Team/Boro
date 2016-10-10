@@ -55,7 +55,12 @@
           </a>
           </li>         
           <li>
-            <input type="search" placeholder="Where are you ?">
+
+  <%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
+    <%= text_field_tag :term, params[:term], placeholder:"Where item are you looking for?" %>
+    <%= f.submit 'search', class: 'btn btn-primary' %>
+  <% end %>
+
           </li>
           <li>
             <button type="button" class="button">Search</button>

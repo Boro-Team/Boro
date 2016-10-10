@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :items
   
    get "/items/tags/:tag_id" => "items#tag", as: "tags"
+   get '/search', to: 'items#search'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
