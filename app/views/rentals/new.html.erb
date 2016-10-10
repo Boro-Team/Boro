@@ -1,0 +1,63 @@
+  <% if flash[:notice] || @errors %>
+
+  <div data-alert id="flashes">  
+    <span id="flash_notice"><%= flash[:notice] || @errors %></span>
+    <a href="#" class="close">&times;</a>    
+    <%= javascript_tag "$('#flash_notice').effect('highlight',{},1000);" %>
+  <% end %>
+  </div>
+
+  <% if flash[:error] %>
+    <% d = flash[:error] %>
+    
+    <% d.each do |k,v| %>
+      <% if k = "base" %>
+        <% jours = v[0].to_s %>
+        <p id="datw" style="visibility: hidden;"><%= jours %></p>
+      <% end %>
+    <% end %>
+      
+    <% flash.each do |key, value| %>
+      <p id="flash_errors" ><%= value %> is already booked.</p>
+    <% end %>      
+    <%= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
+  <% end %>
+
+
+
+<!--     < % if @errors %>
+<div data-alert id="flashes">
+    <p id="flash_errors">< %= @errors[0] %></p>
+    < %= javascript_tag "$('#flash_errors').effect('highlight',{},3000);" %>
+  < % end %>
+
+  < % flash[:error] = flash[:errors] = flash[:notice] = nil %>   
+</div> -->
+<p id="dat"><%= @disabledDays %></p>
+
+    </p>  <%= render partial: '/rentals/form', locals: { days: @disabledDates }  %>
+
+
+
+<!-- < % if flash[:base] %> -->
+<!-- < % m = flash[:base].flatten.split(',') %> -->
+<!-- < %= m.each do |date| %> -->
+<!-- <p class="booked_dates">Already booked on < %= date %></p> -->
+<!-- < % end %> -->
+<!-- < % end %> -->
+
+<!-- < % if @rental.errors[:base] %> -->
+<!-- < % m = @rental.errors[:base] %> -->
+<!-- < %= m.each do |date| %> -->
+<!-- <p class="booked_dates">Already booked on < %= date %></p> -->
+<!-- < % end %> -->
+<!-- < % end %> -->
+
+
+<!--     <div class="other-links">
+      < %= link_to t(".sign_in"), sign_in_path %>
+    </div>  -->
+
+
+
+    

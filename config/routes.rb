@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-
   resources :users, controller: 'users', only: [:show, :edit, :update, :destroy, :index] 
   
-  resources :items
+  resources :items do
+    resources :rentals, :only => [:create, :new, :show]
+  end
   
    get "/items/tags/:tag_id" => "items#tag", as: "tags"
    get '/search', to: 'items#search'

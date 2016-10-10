@@ -5,16 +5,21 @@ Category:
 
 <h1><%= @item.title %></h1>
 <h2><%= @item.description %></h2>
-<h3><%= @item.price_per_day %></h3>
-<%= image_tag (@item.avatar.large.url) %>
 
-  <div>
+<% if current_user.id != @item.user_id %>
+<% end %>
 
+<h3><%= @item.price_per_day %> MYR</h3>
 
+<%= image_tag (@item.avatar.medium.url) %>
+<p><%= link_to "RENT THIS", new_item_rental_path(@item.id), method: :get, :class => "button success" %></p>
+
+<div>
 
 <!--   < % if @item.avatars.present? %>
-    < % @item.avatars.each do |a| %> -->
+  < % @item.avatars.each do |a| %> -->
 <!--       <img src="< %= a.large.url %>" alt=""> -->
-      <%= link_to "Edit", edit_item_path(@item.id), method: :get %><br>
-      <%= link_to "Delete", item_path(@item.id), method: :delete %>
-  </div>
+    <%= link_to "Edit", edit_item_path(@item.id), method: :get %>
+    <%= link_to "Delete", item_path(@item.id), method: :delete %>
+</div>
+

@@ -1,0 +1,88 @@
+  <!-- ANOTHER FORM IN RAILS -->
+  <h2></h2>
+  <h1><%= @item.title %></h1>
+
+  <%= form_for ([@item, @rental]) do |form| %>
+      
+
+  <h3>Delivery Date:</h3>
+      <%= form.label :start_date %>
+      <%= form.text_field :start_date, :id => "rental_start_date", :class => "datepicker", :data => { :provide => "datepicker" } %>
+
+<!--     <input id="rental_start_date" type="text" data-provide='datepicker'> -->
+
+
+  <h3>Return Date:</h3>
+      <%= form.label :end_date %>
+      <%= form.text_field :end_date, :id => "rental_end_date", :class => "datepicker", :data => { :provide => "datepicker" } %>
+
+    <!-- <input id="rental_end_date" type="text" data-provide='datepicker' > -->
+
+      
+  <h1>Price per day:</h1><span id="p_p_d" class="title is-1"><%= @item.price_per_day %></span>
+
+  <p >Total price:</p><div id="totalprice">0</div>
+
+    <%= form.submit %>
+    <% end %>    
+<!-- END OF THE FORM -->
+<p id="chin" class="title is-2"></p>
+<p id="chout" class="title is-2"></p>
+
+<script>
+var dates = $("#dat").html();
+var results = dates.match(/(\d{4}-\d{2}-\d{2})/g);
+
+$("#rental_start_date").datepicker({ 
+  title: "First Day of Rental",
+  todayHighlight: true,
+  format: "DDdd-MM-yyyy",
+  datesDisabled: dates,
+  yearRange: "2016:+1",  
+  startDate: "+1d",
+  endDate: "+1y +1d"
+  });
+$("#rental_end_date").datepicker({
+  title: "Last Day of Rental",
+  format: "DDdd-MM-yyyy",
+  datesDisabled: dates,  
+  yearRange: "2016:+1",
+  startDate: "+1d",
+  endDate: "+1y +1d"
+  });
+
+  var date_debut, date_fin; 
+
+  // Calculate the DURATION
+
+  var parseDate = function(input){
+    date = Date.parse(input);
+    return date;
+  };
+
+  $("#rental_start_date").change(function(){
+    date_debut = parseDate($("#rental_start_date").val());
+    $("#chin").html(date_debut);
+    if (date_fin != undefined){
+      $('#totalprice').html(calculateDuration(date_debut, date_fin));
+    }
+  });
+
+  $("#rental_end_date").change(function(){
+    date_fin = parseDate($("#rental_end_date").val()); 
+    $("#chout").html(date_fin);
+    if (date_debut != undefined){
+      $('#totalprice').html(calculateDuration(date_debut, date_fin));
+    };
+  });
+
+  var calculateDuration = function(date_debut, date_fin){
+    var price = $("#p_p_d").html();
+    var ppd = parseFloat(price);
+
+    var duration = Math.ceil((date_fin - date_debut) / (1000 * 3600 * 24));
+    return total = duration * ppd;
+  }
+</script>
+
+

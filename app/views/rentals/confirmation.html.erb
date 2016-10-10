@@ -1,0 +1,20 @@
+<h3>Your Rental has been accepted and registered !</h3>
+
+    <p>Item name: <%= link_to @rental.item.title, item_path(@rental.item) %></p>
+
+    <p>From: <%= @rental.start_date %></p>
+
+    <p>To: <%= @rental.end_date %></p>
+
+<!--     <strong>Payment Status:</strong>
+      < % if (! @rental.payments) || (@rental.payments.where(status: :authorized).count == 0)  %>
+      <span class="button is-primary"> NOT PAID </span>
+      <span class="button is-danger">
+        < %= link_to "Cancel this rental", rental_path(@rental), :confirm => "Are you sure?", :method => :delete, :class => "button is-danger", remote: true %>      
+      </span>
+
+       < %= link_to 'Pay Now' , new_payment_path + "?id=" + @rental.id.to_s, class: "button is-warning"  %>
+      < % else %>
+ --><span class="button is-success">PAID</span>
+    <!-- < % end %> -->
+  

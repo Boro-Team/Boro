@@ -20,10 +20,22 @@ ActiveRecord::Schema.define(version: 20161008095428) do
     t.string   "title",         null: false
     t.string   "description",   null: false
     t.integer  "price_per_day", null: false
+    t.json     "avatars"
     t.integer  "user_id",       null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "avatar"
+  end
+
+  create_table "rentals", force: :cascade do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "approval_status", default: false
+    t.float    "total_price"
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -70,17 +82,17 @@ ActiveRecord::Schema.define(version: 20161008095428) do
     t.string   "last_name"
     t.string   "country"
     t.boolean  "admin",                       default: false
-    t.string   "location"
     t.string   "formatted_address"
+    t.string   "location"
     t.string   "route"
     t.string   "postal_code"
     t.string   "locality"
     t.string   "administrative_area_level_1"
+    t.float    "latitude"
+    t.float    "longitude"
     t.string   "provider"
     t.string   "uid"
     t.string   "avatar"
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

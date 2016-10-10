@@ -1,3 +1,4 @@
+<table id="table_index">
 <% if @index_page %>
 
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
@@ -29,30 +30,34 @@
 <br>
 <table>
 	<tr>
+		<th style="text-align: center;">Pic</th>
 		<th>Title</th>
 		<th>Category</th>
 		<th>Description</th>
 		<th>Price/Day</th>
-		<th>Edit</th>
-		<th>Delete</th>
+		<th style="text-align: center;">Show</th>
+		<th style="text-align: center;">Edit</th>
+		<th style="text-align: center;">Delete</th>
 	</tr>
 		<% @item.each do |i| %>
 	<tr>
+		<td><%= image_tag (i.avatar.thumb.url) %></td>	
 		<td><%= link_to "#{i.title}", item_path(i.id) %></td>
 		<td><%= link_to "#{i.tag_list.first}", tags_path(i.tag_list.first) %></td>
 		<td style="text-align: center;"><%= link_to "#{i.description}", item_path(i.id)%></td>
 		<td style="text-align: center;"><%= i.price_per_day %></td>
+		<td style="text-align: center;"><%= link_to "Show", item_path(i.id), method: :get, :class => "button success" %></td>
+
 			<% if current_user.id == i.user_id %>
-				<td><%= link_to "Edit", edit_item_path(i.id), method: :get, :class => "button alert" %></td>
-				<td><%= link_to "Delete", item_path(i.id), method: :delete, :class => "button danger" %></td>
+				<td style="text-align: center;"><%= link_to "Edit", edit_item_path(i.id), method: :get, :class => "button warning" %></td>
+				<td style="text-align: center;""><%= link_to "Delete", item_path(i.id), method: :delete, :class => "button alert" %></td>
 			<% else %>
-				<td>X</td>
-				<td>X</td>
-			<% end %>
+				<td style="text-align: center;"><%= link_to "Book", new_item_rental_path(i.id), method: :get, :class => "button" %></td>
+<!-- 				<td style="text-align: center;"">< %= link_to "Delete", item_path(i.id), method: :delete, :class => "button alert" %></td>
+ -->	<% end %>
 	</tr>
 	<% end %>
 </table>
-
 
 <script type="text/javascript">
 buildMap(<%=raw @hash.to_json %>)

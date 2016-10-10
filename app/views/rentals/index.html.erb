@@ -1,0 +1,5 @@
+<%= @rentals.each do |r| %>
+item = Item.find(r.item_id)
+user = User.find(r.user_id)
+<%= item.title %> rented by <%= user.firstname %> <%= user.lastname %> for <%= r.end_date - r.start_date %> days, <%= total_price %> MYR.
+<% end %>

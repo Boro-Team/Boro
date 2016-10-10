@@ -2,5 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+tbody { 
+	tr { 
+		td {
+			text-align: center;
+		}
+	}
+}
+
+// FREEWALL STYLES
+
+.free-wall {
+	transition: saturate 0.5s ease;
+	margin: 15px;
+	filter: saturate(0.3);
+	filter: hue-rotate(0deg);
+	opacity: 1;
+	
+	&:hover {
+		// opacity: 0;
+		// transition: opacity 1s ease;
+							
+	// filter: saturate(0);
+	// filter: blur(10px);
+	}
+}
+
+#table_index > tbody > tr:nth-child(2) > td > img {
+	background-color: red;
+}
 
 .marker_container {border: 1px solid black; padding: 5px; background: white; }

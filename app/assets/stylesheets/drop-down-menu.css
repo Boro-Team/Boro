@@ -1,0 +1,67 @@
+
+.menu-container{
+width:960px;
+height:50px;
+background:#693D3D;
+margin:80px auto;
+font-family:corbel;
+
+}
+
+
+ul.menu li{
+float:left;
+padding:15px;
+list-style:none;
+width: 80px;
+height:20px;
+text-align:left;
+
+
+}
+
+ul.menu li a{
+color:#fff;
+text-decoration:none;
+}
+
+ul.menu li:hover{
+/*#2e2728*/
+color:#fff;
+text-decoration:none;
+
+}
+
+ul.menu ul{
+background:#46211A;
+position:relative;
+top:15px;
+display:none;
+width:70px;
+right:15px;
+
+
+
+
+}
+
+
+ul.menu  ul li{
+float:none;
+position:relative;
+left:-40px;
+padding:5px 15px 5px 15px;
+border-top:1px solid #fff;
+/*width:150px;*/
+
+}
+
+.current{
+background-color:#46211A;
+
+}
+.with-child::after{
+content:'\25be';
+color:#ffffff;
+
+}
