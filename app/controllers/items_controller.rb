@@ -35,7 +35,7 @@ before_action :set_item, only: [:update, :edit, :destroy]
 
       if users==[] or users==nil
         users=User.all
-        @no_user_error = "No items found in your search area. All locations displayed"
+        @error = "No items found in your search area. All locations displayed"
       end
 
       # params[:range] = "20" unless (params[:range].to_i>0)
@@ -145,7 +145,8 @@ before_action :set_item, only: [:update, :edit, :destroy]
     @index_page = false 
     @item = Item.search(params[:term], fields: ["title", "description"], mispellings: {below: 5})
     if @item.blank?
-      redirect_to items_path, flash:{danger: "no successful search result"}
+      @error = "No items found in this search phrase"
+      render :index
     else
       render :index
     end
