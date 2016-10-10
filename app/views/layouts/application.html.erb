@@ -94,7 +94,7 @@
       <% end %>
 
       <!-- AVATAR -->
-        <li class="dropdown">
+        <div class="dropdown">
         <% if signed_in? %> 
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <%= current_user.first_name %> 
@@ -111,7 +111,7 @@
             Sign Up / Login
           </button>
         <% end %>
-        </li>
+        </div>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
