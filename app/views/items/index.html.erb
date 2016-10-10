@@ -20,8 +20,6 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<%= @no_user_error if @no_user_error %>
-
 <div style='width: 800px;'>
   <div id="search_map" style='width: 800px; height: 500px;'></div>
 </div>
@@ -58,6 +56,8 @@
 	</tr>
 	<% end %>
 </table>
+
+<%= @error if @error %>
 
 <script type="text/javascript">
 buildMap(<%=raw @hash.to_json %>)
