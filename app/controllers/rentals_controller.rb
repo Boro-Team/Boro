@@ -8,8 +8,8 @@ class RentalsController < ApplicationController
 
 	def new
 		@item = Item.find(params[:item_id])
-		@rental = Rental.new
-    @disabledDays = @rental.disabledDates
+    @disabledDays = @item.disabledDates
+    @rental = Rental.new    
 	end
 
   def create

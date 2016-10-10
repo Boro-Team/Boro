@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Boro</title>
+  <title>bORO</title>
   <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'drop-down-menu', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
+  <%= google_webfonts_init({google: ['Comfortaa']}) %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
@@ -18,7 +19,7 @@
   <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'drop-down-menu', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'freewall', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'bootstrap-datepicker', 'data-turbolinks-track' => true %>'
+  <%= javascript_include_tag 'bootstrap-datepicker', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'what-input','data-turbolinks-track' => true %>
   <meta name="apple-mobile-web-app-title" content="Boro">
@@ -38,8 +39,8 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="/">
-        <%=image_tag("boro_logo_64.png", alt: "Logo Image")%>        
+      <a id="logo" class="navbar-brand" href="/">boro
+<!--         < %=image_tag("boro_logo_64.png", alt: "Logo Image")%>   -->      
       </a>
     </div>
 

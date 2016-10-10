@@ -38,6 +38,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'bootstrap-datepicker-rails'
 
+gem 'google-webfonts-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

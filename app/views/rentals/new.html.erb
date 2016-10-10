@@ -13,7 +13,7 @@
     <% d.each do |k,v| %>
       <% if k = "base" %>
         <% jours = v[0].to_s %>
-        <p id="dat" style="visibility: hidden;"><%= jours %></p>
+        <p id="datw" style="visibility: hidden;"><%= jours %></p>
       <% end %>
     <% end %>
       
@@ -33,11 +33,12 @@
 
   < % flash[:error] = flash[:errors] = flash[:notice] = nil %>   
 </div> -->
+<p id="dat"><%= @disabledDays %></p>
 
     </p>  <%= render partial: '/rentals/form', locals: { days: @disabledDates }  %>
 
 
-		
+
 <!-- < % if flash[:base] %> -->
 <!-- < % m = flash[:base].flatten.split(',') %> -->
 <!-- < %= m.each do |date| %> -->

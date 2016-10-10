@@ -6,19 +6,18 @@ class Rental < ActiveRecord::Base
 	
 	validate :date_is_valid?, :item_is_available?
 
-	def disabledDates
-	  i_id = self.item_id
-  	rental = Rental.where("item_id = ?", i_id)
-  	# desired_array = *((self.Date.today)..(self.Date.today + 365))
-  	booked_days = []  	
+	# def disabledDates
+	#   i_id = self.item_id
+ #  	rental = Rental.where("item_id = ?", i_id)
+ #  	booked_days = []  	
 
-  	rental.each do |r|
-  		booked_array = *(r.start_date..r.end_date)  
-			booked_days << booked_array 	 
-		end
+ #  	rental.each do |r|
+ #  		booked_array = *(r.start_date..r.end_date)  
+	# 		booked_days << booked_array 	 
+	# 	end
 	  	
-	  	booked_days = booked_days.flatten 
-	end
+	#   	booked_days = booked_days.flatten 
+	# end
 
   
 	def date_is_valid?

@@ -29,27 +29,23 @@
 <p id="chin" class="title is-2"></p>
 <p id="chout" class="title is-2"></p>
 
-<!-- < %= @disabledDates.each do |d| %>
-<span class="invisible_span" data-date-dates-disabled=< %= d %>></span>
-< % end %>
- -->
-
 <script>
 var dates = $("#dat").html();
 var results = dates.match(/(\d{4}-\d{2}-\d{2})/g);
 
 $("#rental_start_date").datepicker({ 
-  title: "Blab bla bla",
+  title: "First Day of Rental",
   todayHighlight: true,
   format: "DDdd-MM-yyyy",
-  datesDisabled: results,
+  datesDisabled: dates,
   yearRange: "2016:+1",  
   startDate: "+1d",
   endDate: "+1y +1d"
   });
 $("#rental_end_date").datepicker({
+  title: "Last Day of Rental",
   format: "DDdd-MM-yyyy",
-  datesDisabled: results,  
+  datesDisabled: dates,  
   yearRange: "2016:+1",
   startDate: "+1d",
   endDate: "+1y +1d"
