@@ -1,0 +1,6 @@
+<br>Category: <%= @tag %><br><br>
+
+<% @tagged.each do |t|%>
+	<a href="/tags/<%=t.id%>"><%= t.title %></a><br>
+	Price: <%= t.price_per_day %><br>
+	<% end %>

@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  geocoded_by :location
+  after_validation :geocode 
   
 
 #  validates :formatted_address, presence: true
@@ -27,5 +29,26 @@ class User < ActiveRecord::Base
   		end
 	end
 
+#This code below gets around Devise being weird about not letting users saving without entering passwords
+  def update_with_password(params, *options)
+    current_password = params.delete(:current_password)
+
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation) if params[:password_confirmation].blank?
+    end
+
+    result = if params[:password].blank? || valid_password?(current_password)
+      update_attributes(params, *options)
+    else
+      self.assign_attributes(params, *options)
+      self.valid?
+      self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+      false
+    end
+
+    clean_up_passwords
+    result
+  end
 end
 

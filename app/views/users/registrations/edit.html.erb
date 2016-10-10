@@ -12,24 +12,24 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
+<!--   <div class="field">
+    < %= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    < %= f.password_field :password, autocomplete: "off" %>
+    < % if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    < % end %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    < %= f.label :password_confirmation %><br />
+    < %= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
+    < %= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    < %= f.password_field :current_password, autocomplete: "off" %>
+  </div> -->
 
 <div class="field">
     <%= f.label :first_name %><br />
@@ -50,8 +50,6 @@
 <!-- 
 < %= render partial: 'geolocate'%>
  -->
-
-
 
 <div class="map_canvas"></div>
       <input id="geocomplete" type="text" placeholder="Type in an address" value="Empire State Bldg" />

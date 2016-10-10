@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise', '~> 4.1', '>= 4.1.1'
 
+gem 'searchkick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -40,11 +42,16 @@ gem 'bootstrap-datepicker-rails'
 
 gem 'google-webfonts-rails'
 
+gem 'acts-as-taggable-on', '~> 4.0'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'geocoder'
+gem 'gmaps4rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

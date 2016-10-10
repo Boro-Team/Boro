@@ -15,12 +15,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.location = params[:location]
     @user.formatted_address = params[:formatted_address]
     @user.route = params[:route]
+    @user.postal_code = params[:postal_code]
     @user.locality = params[:locality]
     @user.administrative_area_level_1 = params[:administrative_area_level_1]
     @user.save
   
   end
 
+  def update
+    super
+
+    @user.country = params[:country]
+    @user.location = params[:location]
+    @user.formatted_address = params[:formatted_address]
+    @user.route = params[:route]
+    @user.postal_code = params[:postal_code]
+    @user.locality = params[:locality]
+    @user.administrative_area_level_1 = params[:administrative_area_level_1]
+    @user.save
+     
+  end
   # GET /resource/edit
   # def edit
   #   super
