@@ -17,180 +17,200 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datepicker";
+@import "items";
+@import "rentals";
+@import "users";
+@import "welcome";
+@import "drop-down-menu";
 
 .invisible_span {
 	display: none;
 }
 
-body > nav > div > div.navbar-header > a > img {
-	display: flex;
-}
-li {
- 	list-style: none;
- }
+// body > nav > div > div.navbar-header > a > img {
+// 	display: flex;
+// }
+// li {
+//  	list-style: none;
+//  }
 
-	.hero-body {
-	position: relative;
-	width: 100%;
-	background-color: transparent;
+// 	.hero-body {
+// 	position: relative;
+// 	width: 100%;
+// 	background-color: transparent;
 
-		h1 {
-			position: absolute; 
-		 	top: 10vh; 
-		 	left: 0; 
-		 	width: 100%;
-		 	font-size: 7vw;
-		 	line-height: 1vh; 
-		}
+// 		h1 {
+// 			position: absolute; 
+// 		 	top: 10vh; 
+// 		 	left: 0; 
+// 		 	width: 100%;
+// 		 	font-size: 7vw;
+// 		 	line-height: 1vh; 
+// 		}
 
-		h1 span { 
-			color: white; 
-			font: bold 24px/45px Helvetica, Sans-Serif; 
-			letter-spacing: -1px;  
-			background: transparent; /* fallback color */
-			background: rgba(41, 159, 194, 0.8);
-			padding: 10px; 
-		}
+// 		h1 span { 
+// 			color: white; 
+// 			font: bold 24px/45px Helvetica, Sans-Serif; 
+// 			letter-spacing: -1px;  
+// 			background: transparent; /* fallback color */
+// 			background: rgba(41, 159, 194, 0.8);
+// 			padding: 10px; 
+// 		}
 
-		#map {
-			z-index: -10;
-			height: 400px;
-			width: 100%;
-	   	border-bottom: 1px solid rgb(41, 159, 194);		
-			background: url("static_map.png");   	
-		}
-	}
+// 		#map {
+// 			z-index: -10;
+// 			height: 400px;
+// 			width: 100%;
+// 	   	border-bottom: 1px solid rgb(41, 159, 194);		
+// 			background: url("static_map.png");   	
+// 		}
+// 	}
 
-	.anchor.sticky-container {
-		height: 4.44%;
-	}
+// 	.anchor.sticky-container {
+// 		height: 4.44%;
+// 	}
 
 * {
 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 font-weight: 300;
 box-sizing: border-box;
-	html {
-		body {
-			div.anchor.sticky-container,
-			div.sticky-container {
-				// position: fixed;
-				// z-index: 10000;
-			 	div.top-bar.sticky {
-			 		border-bottom: 1px solid darkgray;
-			    div.title-bar-right {
-
-			 		 	ul {
-			 		 		li {
-								margin-right: 20px;
-								}
-			 		 		li:nth-child(3) {
-								span.spaceit {
-
-									a {
-										img {
-										}	
-									}
-								}
-
-			 		 			ul {
-			 		 				li:nth-child(1) {
-			 		 					form {
-			 		 						input.button.warning {
-												float: left;
-												width: 100%;
-											}
-			 		 					}
-			 		 				}
-			 		 			}
-			 		 		}
-
-			 		 		li:nth-child(4) {
-			 		 			a {
-			 		 				img {
-									}
-			 		 			}
-			 		 		}
-			 		 	}
-			 		}
-			 	}
-			}
-		}
-	}
 }
+// 	html {
+// 		body {
+// 			div.anchor.sticky-container,
+// 			div.sticky-container {
+// 				// position: fixed;
+// 				// z-index: 10000;
+// 			 	div.top-bar.sticky {
+// 			 		border-bottom: 1px solid darkgray;
+// 			    div.title-bar-right {
 
-body > div.anchor.sticky-container > div.top-bar.sticky.is-stuck.is-at-top > div.top-bar-left > div > ul > li:nth-child(1) > a,
-body > div.anchor.sticky-container > div.top-bar.sticky.is-anchored.is-at-top > div.top-bar-left > div > ul > li:nth-child(1) > a,
-body > div.anchor.sticky-container > div > div.top-bar-left > div > ul, 
-body > div.anchor.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(1) > a > img,
-body > div > div.top-bar.sticky > div.top-bar-left > div > ul > li:nth-child(1) > a > img,
-{
-	height: 5.5vh;
-	width: 5.5vh;
-}
+// 			 		 	ul {
+// 			 		 		li {
+// 								margin-right: 20px;
+// 								}
+// 			 		 		li:nth-child(3) {
+// 								span.spaceit {
 
-body > div.anchor.sticky-container > div.top-bar.sticky.is-anchored.is-at-top > div.title-bar-right > ul > li:nth-child(2) > a,
-body > div.anchor.sticky-container > div.top-bar.sticky.is-at-top.is-stuck > div.title-bar-right > ul > li:nth-child(2) > a {
-	margin-right: 3vw;
-}
+// 									a {
+// 										img {
+// 										}	
+// 									}
+// 								}
+
+// 			 		 			ul {
+// 			 		 				li:nth-child(1) {
+// 			 		 					form {
+// 			 		 						input.button.warning {
+// 												float: left;
+// 												width: 100%;
+// 											}
+// 			 		 					}
+// 			 		 				}
+// 			 		 			}
+// 			 		 		}
+
+// 			 		 		li:nth-child(4) {
+// 			 		 			a {
+// 			 		 				img {
+// 									}
+// 			 		 			}
+// 			 		 		}
+// 			 		 	}
+// 			 		}
+// 			 	}
+// 			}
+// 		}
+// 	}
+// }
+
+// body > div.anchor.sticky-container > div.top-bar.sticky.is-stuck.is-at-top > div.top-bar-left > div > ul > li:nth-child(1) > a,
+// body > div.anchor.sticky-container > div.top-bar.sticky.is-anchored.is-at-top > div.top-bar-left > div > ul > li:nth-child(1) > a,
+// body > div.anchor.sticky-container > div > div.top-bar-left > div > ul, 
+// body > div.anchor.sticky-container > div > div.top-bar-left > div > ul > li:nth-child(1) > a > img,
+// body > div > div.top-bar.sticky > div.top-bar-left > div > ul > li:nth-child(1) > a > img,
+// {
+// 	height: 5.5vh;
+// 	width: 5.5vh;
+// }
+
+// body > div.anchor.sticky-container > div.top-bar.sticky.is-anchored.is-at-top > div.title-bar-right > ul > li:nth-child(2) > a,
+// body > div.anchor.sticky-container > div.top-bar.sticky.is-at-top.is-stuck > div.title-bar-right > ul > li:nth-child(2) > a {
+// 	margin-right: 3vw;
+// }
 
 
-button, input[type="search"] {
-	box-sizing: border-box;
-}
+// button, input[type="search"] {
+// 	box-sizing: border-box;
+// }
 
-#avatar { 
-	border: 1px double orange;
-	border-radius: 50%;
-	height: 5vh;
- }
+// #avatar { 
+// 	border: 1px double orange;
+// 	border-radius: 50%;
+// 	height: 5vh;
+//  }
 
-#error_explanation {
-	margin-top: 10px;
-	background-color: pink;
-	border: 3px solid red;
-}
-
-
-// SLOGAN & Space it
-
-	h4 {
-		color: rgb(41, 159, 194);
-	}
-
-.spaceit {
-	margin: 0 1vw;
-}
+// #error_explanation {
+// 	margin-top: 10px;
+// 	background-color: pink;
+// 	border: 3px solid red;
+// }
 
 
-// BANNER
+// // SLOGAN & Space it
 
-#banner {
-	width: 100%;
-	text-align: center;
-	font-size: 2.5vw;
-	color: white;
-	background-color: rgba(255, 160, 25, 0.6); 
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-  font-weight: 300;
-	}
+// 	h4 {
+// 		color: rgb(41, 159, 194);
+// 	}
 
-.brick img {
-	margin: 1px 1px;
-	display: block;
-	border-sizing: content-box; 
-	border: 6px solid rgba(41, 159, 194, 0.5);
-}
+// .spaceit {
+// 	margin: 0 1vw;
+// }
 
-// FOOTER
 
-.row.foot-icons {
-	text-align: center;
-	i {
-		margin-top: 10vh;
-		margin-bottom: 5vh;
-		font-size: 10vh;
-		color: #cccccc;
-	}
-}
+// // BANNER
+
+// #banner {
+// 	width: 100%;
+// 	text-align: center;
+// 	font-size: 2.5vw;
+// 	color: white;
+// 	background-color: rgba(255, 160, 25, 0.6); 
+//   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+//   font-weight: 300;
+// 	}
+
+// .brick img {
+// 	margin: 1px 1px;
+// 	display: block;
+// 	border-sizing: content-box; 
+// 	border: 6px solid rgba(41, 159, 194, 0.5);
+// }
+
+// // FOOTER
+
+// .row.foot-icons {
+// 	text-align: center;
+// 	i {
+// 		margin-top: 10vh;
+// 		margin-bottom: 5vh;
+// 		font-size: 10vh;
+// 		color: #cccccc;
+// 	}
+// }
+
+// #bs-example-navbar-collapse-1 > form {
+// 	width: 30%;
+// }
+
+
+// #bs-example-navbar-collapse-1 > ul.nav.navbar-nav.navbar-right > li:nth-child(2) > a > img{
+// 	border: 3px solid pink;
+// }
+
+// #bs-example-navbar-collapse-1 {
+// 	height: 30px;
+// }
+
 
 

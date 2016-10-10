@@ -27,3 +27,7 @@ tbody {
 	// filter: blur(10px);
 	}
 }
+
+#table_index > tbody > tr:nth-child(2) > td > img {
+	background-color: red;
+}
