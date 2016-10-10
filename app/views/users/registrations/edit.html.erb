@@ -52,15 +52,15 @@
  -->
 
 <div class="map_canvas"></div>
-      <input id="geocomplete" type="text" placeholder="Type in an address" value="Empire State Bldg" />
-      <input id="find" type="button" value="find" />
+      <input id="geoedit" type="text" placeholder="Type in an address" value="" />
+      <input id="editfind" type="button" value="find" />
 
 
       <fieldset>
 
         <label>Formatted Address</label>
         
-        <input name="formatted_address" type="text" value="" readonly>
+        <input id="editloc" name="formatted_address" type="text" value="<%= @user.formatted_address %>" readonly>
 
         <input name="location" type="hidden" value="">
 

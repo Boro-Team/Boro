@@ -13,7 +13,7 @@
 
 .map_canvas { 
   width: 600px; 
-  height: 600px; 
+  height: 400px; 
   margin: 10px 20px 10px 0;
 }
 
@@ -22,8 +22,9 @@
   text-decoration: underline; 
 }
 
-.map_canvas { float:left; margin-left: -650px; margin-top: -300px; }
+.map_canvas { float:left; margin-left: -650px; margin-top: -200px; }
 .new_user { width: 600px; margin-right: 150px; float: right; }
+.edit_user { width: 600px; margin-right: 150px; float: right; }
 fieldset { width: 600px; margin-top: 20px}
 fieldset label { display: block; margin: 0.5em 0 0em; }
 fieldset input { width: 95%; }

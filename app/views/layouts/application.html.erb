@@ -199,6 +199,8 @@
  <!-- GEOCOMPLETE START-->
   <script>
       $(function(){
+
+
         $("#geocomplete").geocomplete({
           map: ".map_canvas",
           details: "form",
@@ -209,6 +211,19 @@
         $("#find").click(function(){
           $("#geocomplete").trigger("geocode");
         });
+
+        var userlocation = $("#editloc").val()
+        $("#geoedit").geocomplete({
+          map: ".map_canvas",
+          details: "form",
+          types: ["geocode", "establishment"],
+          location: userlocation,
+        });
+
+        $("#editfind").click(function(){
+          $("#geocomplete").trigger("geocode");
+        });
+
       
 
         $(".brick").click(
