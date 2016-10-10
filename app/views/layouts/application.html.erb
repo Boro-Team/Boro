@@ -14,7 +14,6 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <%= favicon_link_tag "favicon.ico" %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'jquery.geocomplete', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track' => true %>
@@ -23,10 +22,11 @@
   <%= javascript_include_tag 'bootstrap-datepicker', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'what-input','data-turbolinks-track' => true %>
-  <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap&callback=buildMap"></script>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
   <meta name="apple-mobile-web-app-title" content="Boro">
   <meta name="application-name" content="Boro">
   <meta name="theme-color" content="#ffffff">
+  <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap&callback=buildMap"></script>
 
 </head>
 <body>
