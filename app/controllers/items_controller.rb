@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 before_action :set_item, only: [:update, :edit, :destroy]
   
   def index
+    @error=[]
     @index_page = true 
   	@item = Item.all
     if signed_in?
@@ -11,9 +12,9 @@ before_action :set_item, only: [:update, :edit, :destroy]
 
 
     if params[:formatted_address] == "" or params[:formatted_address]==nil
-      items=Item.all
+      areaitems=Item.all
     else
-      items=[]
+      areaitems=[]
       
       if params[:range].to_i>0
         users=User.near(params[:formatted_address], params[:range])
@@ -35,16 +36,32 @@ before_action :set_item, only: [:update, :edit, :destroy]
 
       if users==[] or users==nil
         users=User.all
-        @error = "No items found in your search area. All locations displayed"
+        @error << "No items found in your search area. All locations displayed"
       end
 
       # params[:range] = "20" unless (params[:range].to_i>0)
       # users=User.near(params[:formatted_address], params[:range])
       users.each do |u|
-        items<<u.items
+        areaitems<<u.items
       end
-      items.flatten!
+      areaitems.flatten!
     end
+
+
+
+    searchitems = Item.search(params[:term], fields: ["title", "description"], mispellings: {below: 5})
+    if searchitems.blank?
+      @error << "No items found in this search phrase, all items displayed"
+      items=areaitems
+    else
+      items=areaitems&searchitems
+    #   render :index
+    # else
+    #   render :index
+    end
+
+    
+
 
       @nb_pages_needed = items.count / items_per_page
       if params[:tag]
