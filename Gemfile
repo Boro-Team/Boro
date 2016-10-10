@@ -36,7 +36,7 @@ gem 'mini_magick'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
-gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.4.1'
+gem 'bootstrap-datepicker-rails'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

@@ -7,12 +7,17 @@
 
   <h3>Delivery Date:</h3>
       <%= form.label :start_date %>
-      <%= form.text_field :start_date, :id => "rental_start_date" %>
+      <%= form.text_field :start_date, :id => "rental_start_date", :data => { :provide => "datepicker" } %>
+
+<!--     <input id="rental_start_date" type="text" data-provide='datepicker'> -->
 
 
   <h3>Return Date:</h3>
       <%= form.label :end_date %>
-      <%= form.text_field :end_date, :id => "rental_end_date" %>
+      <%= form.text_field :end_date, :id => "rental_end_date", :data => { :provide => "datepicker" } %>
+
+    <!-- <input id="rental_end_date" type="text" data-provide='datepicker' > -->
+
       
   <h1>Price per day:</h1><span id="p_p_d" class="title is-1"><%= @item.price_per_day %></span>
 
@@ -25,58 +30,28 @@
 <p id="chout" class="title is-2"></p>
 
 <script>
-// $("#rental_start_date").fdatepicker({ 
-//   format: "yy/mm/dd"
-//   yearRange: "2016:+1",
-//   minDate: new Date(),
-//   maxDate: "+1y +1d"
-//   });
-// $("#rental_end_date").fdatepicker({
-//   format: "yy/mm/dd"
-//   yearRange: "2016:+1",
-//   minDate: new Date(),
-//   maxDate: "+1y +1d"
-//   });
-
-
-var nowTemp = new Date();
-var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-$('#rental_start_date').fdatepicker({
-  format: 'dd-mm-yyyy'
-});
-var checkin = $('#rental_start_date').fdatepicker({
-  format: 'dd-mm-yyyy',
-  onRender: function (date) {
-    return date.valueOf() < now.valueOf() ? 'disabled' : '';
-  }
-}).on('changeDate', function (ev) {
-  if (ev.date.valueOf() > checkout.date.valueOf()) {
-    var newDate = new Date(ev.date)
-    newDate.setDate(newDate.getDate() + 1);
-    checkout.update(newDate);
-  }
-  checkin.hide();
-  $('#rental_end_date')[0].focus();
-}).data('datepicker');
-
-var checkout = $('#rental_end_date').fdatepicker({
-  format: 'dd-mm-yyyy',
-  onRender: function (date) {
-    return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-  }
-}).on('changeDate', function (ev) {
-  checkout.hide();
-}).data('datepicker');
+$("#rental_start_date").datepicker({ 
+  format: "DDdd-MM-yyyy",
+  yearRange: "2016:+1",  
+  startDate: "+1d",
+  endDate: "+1y +1d"
+  });
+$("#rental_end_date").datepicker({
+  format: "DDdd-MM-yyyy",
+  yearRange: "2016:+1",
+  startDate: "+1d",
+  endDate: "+1y +1d"
+  });
 
   var date_debut, date_fin; 
 
   // Calculate the DURATION
 
   var parseDate = function(input){
-    date = new Date(input);
+    date = Date.parse(input);
     return date;
   };
-debugger;
+
   $("#rental_start_date").change(function(){
     date_debut = parseDate($("#rental_start_date").val());
     $("#chin").html(date_debut);
@@ -95,10 +70,10 @@ debugger;
 
   var calculateDuration = function(date_debut, date_fin){
     var price = $("#p_p_d").html();
-    var ppn = parseFloat(price);
+    var ppd = parseFloat(price);
 
     var duration = Math.ceil((date_fin - date_debut) / (1000 * 3600 * 24));
-    return total = duration * ppn;
+    return total = duration * ppd;
   }
 </script>
 

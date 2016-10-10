@@ -193,7 +193,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-datepicker-rails (~> 1.6, >= 1.6.4.1)
+  bootstrap-datepicker-rails
   bootstrap-sass (~> 3.3.6)
   byebug
   carrierwave (>= 1.0.0.beta, < 2.0)
