@@ -1,4 +1,4 @@
-<table id="table_index">
+
 <% if @index_page %>
 
 <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
@@ -8,6 +8,7 @@
 
 
 <%= form_tag("/items", method: "get") do %>
+	<%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
   <%= label_tag(:location, "Find items in:") %>
 	<input id="geo" type="text" placeholder="Type in an address" size="90" />
   <%= hidden_field_tag(:formatted_address) %>
@@ -19,6 +20,8 @@
   <%= text_field_tag(:range) %>
   <%= submit_tag("Search") %>
 <% end %>
+
+<%= @error if @error %>
 
 <div style='width: 800px;'>
   <div id="search_map" style='width: 800px; height: 500px;'></div>
