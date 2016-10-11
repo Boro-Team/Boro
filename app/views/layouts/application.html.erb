@@ -94,24 +94,25 @@
       <% end %>
 
       <!-- AVATAR -->
-        <div class="dropdown">
+        <div class="dropdown dropdown-menu-left">
         <% if signed_in? %> 
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.first_name %> 
-            <span class="caret"></span>
-          </a>
-
-          <ul class="dropdown-menu">
-            <li><%= link_to "Edit Profile", edit_user_registration_path(current_user.id) %></li>
-            <li><a href="#">Messages</a></li>
-            <li><%= button_to "Sign out", destroy_user_session_path, class: "button", method: :delete %></li>
-          </ul>            
-        <% else %>
-          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <%= current_user.first_name %> 
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><%= link_to "Edit Profile", edit_user_registration_path(current_user.id) %></li>
+    <li><a href="#">Messages</a></li>
+    <li><a href="/users/registration">Something else here</a></li>
+    <li role="separator" class="divider"></li>
+    <li><%= button_to "Sign out", destroy_user_session_path, class: "button", method: :delete %></li>
+  </ul>
+        <% else %>  
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registration">
             Sign Up / Login
           </button>
-        <% end %>
-        </div>
+        <% end %>        
+</div>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -227,7 +228,7 @@
  <!-- GEOCOMPLETE END -->
 
 
-<%= render '/users/myModal' %>
+<%= render '/users/registration' %>
 
 
 
