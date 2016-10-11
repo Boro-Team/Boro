@@ -1,0 +1,22 @@
+<%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
+    <div class="form-group">
+
+
+
+
+      <%= f.hidden_field :user_id, value:"#{@item.user_id}" %>
+
+
+    </div>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, value:"#{@item.title}", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :message %>
+      <%= f.text_area :body, class: 'form-control',placeholder: "Type your message here", rows: 4  %>
+    </div>
+
+    <%= f.submit "Send Message", class: "btn btn-success" %>
+
+<% end %>
