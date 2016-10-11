@@ -26,6 +26,47 @@
 @import "drop-down-menu";
 
 
+.hero_container {
+	padding-top: 30px;
+	padding-bottom:420px;
+	background-color:lightblue;
+
+	color:white;
+	font-size: 18px;
+
+	background: url(https://static.pexels.com/photos/34692/pexels-photo.jpg) no-repeat center center;
+	/*background-repeat: no-repeat;*/
+    background-size: cover;
+    /*background-position: fixed;*/
+	text-align: center;
+	height: 600px;
+	font-family:Helvetica; 
+	width: 100%;
+	z-index: 1000;
+}
+
+.titles {
+	background-color: #FFFFF3;
+	color: #030301;
+	font-family:Helvetica; 
+	text-align: center;
+}
+
+.sets {
+	background-color: lighten(#B7AD99, 20%);
+	color: #030301;
+	font-family:Helvetica; 
+	text-align: center;
+}
+
+.col-sm-6{
+	font-size: 26px;
+}
+
+.col-sm-3{
+	font-size: 18px;
+}
+
 #registration {
 	justify-content: center;
 	display: flex;
@@ -48,6 +89,7 @@
 }
 body{
 	padding-top:75px;
+	background-color: #FFFFF3;
 }
 
 .invisible_span {
@@ -56,6 +98,10 @@ body{
 
 body > nav > div {
 	font-family: "Comfortaa";	
+}
+
+.navbar{
+	background-color: lighten(#B7AD99, 20%);
 }
 
 .profile_pic {	
@@ -91,7 +137,5 @@ footer.footer-distributed {
 		margin-bottom: 5vh;
 	}
 }
-
-
 
 
