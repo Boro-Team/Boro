@@ -50,5 +50,16 @@ class User < ActiveRecord::Base
     clean_up_passwords
     result
   end
+
+
+  def search_card
+    if self.avatar.medium.url
+      avatar=self.avatar.medium.url
+      return '<a href="/users/'+self.id.to_s+'"><img style="max-width: 50px; max-height: 50px"src='+avatar+'>Lending '+self.items.count.to_s+' items!</a><br>'
+    else
+      return '<a href="/users/'+self.id.to_s+'">Lending '+self.items.count.to_s+' items!</a><br>'
+    end
+  end
+
 end
 
