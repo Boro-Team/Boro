@@ -65,12 +65,33 @@ body > nav > div {
   border-radius: 50%;
 }
 
-body > div.container {
-	// display: flex;
-	// flex-direction: row;
-	// flex-wrap: wrap;
-	// justify-content: space-around;
+footer.footer-distributed {
+	display: flex;
+	margin-left: 2vw;
+	margin-right: 2vw;
+	margin-top: 10vh;
+	margin-bottom: 5vh;
+	text-align: center;
+	justify-content: center;
+
+	h2 {
+		font-size: 4vh;
+	}
+
+	p {
+		color: #030301;
+		width: 18vw;
+		font-size: 1vh;
+		margin: 0 5vw;
+	}
+
+	i {
+		font-size: 7vh;
+		color: #00d9c0;
+		margin-bottom: 5vh;
+	}
 }
+
 
 
 
