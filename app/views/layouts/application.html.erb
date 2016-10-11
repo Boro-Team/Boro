@@ -14,9 +14,10 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <%= favicon_link_tag "favicon.ico" %>
+  <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'jquery.geocomplete', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track' => true %>
+
   <%= javascript_include_tag 'drop-down-menu', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'freewall', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'bootstrap-datepicker', 'data-turbolinks-track' => true %>
@@ -30,24 +31,9 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Boro and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
 
-      <a id="logo" class="navbar-brand" href="/">boro
-<!--         < %=image_tag("boro_logo_64.png", alt: "Logo Image")%>   -->      
-      </a>
 
-    </div>
-
+<<<<<<< HEAD
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
@@ -117,6 +103,57 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+=======
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          <div class="nav navbar-nav navbar-left">
+          <li><a id="logo" class="navbar-brand" href="/">boro</a></li>
+          </div>
+
+          
+
+          <li style="padding-top: 9px"><%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
+          <%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
+          <%= f.submit 'search', class: 'btn btn-primary' %>
+          <% end %></li>
+
+          <div class="nav navbar-nav navbar-right" style="position: absolute;
+            right: 30px;"> 
+
+            <li><a class="btn btn-default" href="/items">Local Rentables</a></li>
+            <li><a class="btn btn-default" href="/users">Users Around Me</a></li>
+            <li><a class="btn btn-default" href="/items/new">Rent Your Things!</a></li>
+
+            <% if signed_in? %>
+             <!-- DROPDOWN MENU BELOW -->
+            <li class="dropdown">
+
+            <% if current_user.avatar.present? %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.thumb.url, :class => "profile_pic" %><span class="caret"></span></a>
+              <%else%>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
+              <%end%>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
+              </ul>
+            </li>
+              <% else %>
+            <li><a href="/users/sign_up">Sign Up</a></li>
+            <li><a href="/users/sign_in">Log In</a></li>
+            <% end %>
+            
+            </div>
+          </ul>
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+>>>>>>> 809c9a539b856065cc35e615fe6cd37446db9857
 
 <%= yield %>
 

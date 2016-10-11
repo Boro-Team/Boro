@@ -23,6 +23,7 @@
 @import "welcome";
 @import "drop-down-menu";
 
+<<<<<<< HEAD
 
 // #registration {
 // 	justify-content: center;
@@ -44,6 +45,11 @@
 // 	max-width: 5vw;
 // 	}
 // }
+=======
+body{
+	padding-top:40px;
+}
+>>>>>>> 809c9a539b856065cc35e615fe6cd37446db9857
 
 .invisible_span {
 	display: none;
@@ -256,6 +262,12 @@ body > nav > div {
 // 	height: 30px;
 // }
 
+.profile_pic {	
+  width: 40px;
+  height: 40px;
+  border: 2px solid;
+  border-radius: 50%;
+}
 
 
 
