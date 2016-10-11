@@ -20,12 +20,17 @@ for u in (1..30)
 	longitude = RandomLocation.near_by(3.134857, 101.629915, 10000)[1]
 
 	User.create(:first_name => firstname , :last_name => lastname, :email => Faker::Internet.free_email, :password => "123456", :latitude => latitude, :longitude => longitude, :avatar => "image-#{u}.thumb.url", :admin => false)
+
 end
 
+categories = ["Kitchen", "Renovation", "Construction", "Tools", "Gardening/Lawncare", "Electronics"]
 # Item
 for i in (1..30)
 	toTen = *(1..10)
-	Item.create(:title => items[i], :description => Faker::Hipster.sentences(1)[0], :avatar => "item#{i}", :price_per_day => toTen.sample, :user_id => i)
+	x = Item.new(:title => items[i], :description => Faker::Hipster.sentences(1)[0], :avatar => "item#{i}", :price_per_day => toTen.sample, :user_id => i)
+	x.tag_list.push(categories.sample)
+	x.save 
+
 end
 
 # Rental
