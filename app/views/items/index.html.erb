@@ -44,9 +44,7 @@
 	<tr>
 		<td><%= image_tag (i.avatar.thumb.url) %></td>	
 		<td><%= link_to "#{i.title}", item_path(i.id) %></td>
-		
-			<td><%= link_to "#{i.tag_list.first}", tags_path(i.tag_list.first) %></td>
-
+		<td><%= link_to "#{i.tag_list.first}", tags_path(i.tag_list.first) %></td>
 		<td style="text-align: center;"><%= link_to "#{i.description}", item_path(i.id)%></td>
 		<td style="text-align: center;"><%= i.price_per_day %></td>
 		<td style="text-align: center;"><%= link_to "Show", item_path(i.id), method: :get, :class => "button success" %></td>
