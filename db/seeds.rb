@@ -19,21 +19,25 @@ for u in (1..30)
 	latitude 	= RandomLocation.near_by(3.134857, 101.629915, 10000)[0]
 	longitude = RandomLocation.near_by(3.134857, 101.629915, 10000)[1]
 
-	User.create(:first_name => firstname , :last_name => lastname, :email => Faker::Internet.free_email, :password => "123456", :latitude => latitude, :longitude => longitude, :avatar => "image-#{u}", :admin => false)
+	User.create(:first_name => firstname , :last_name => lastname, :email => Faker::Internet.free_email, :password => "123456", :latitude => latitude, :longitude => longitude, :avatar => File.open(Rails.root + "public/profiles/image-#{u}.png"), :admin => false)
+
 end
 
 categories = ["Kitchen", "Renovation", "Construction", "Tools", "Gardening/Lawncare", "Electronics"]
 # Item
 for i in (1..30)
 	toTen = *(1..10)
-	x = Item.new(:title => items[i], :description => Faker::Hipster.sentences(1)[0], :avatar => "item#{i}", :price_per_day => toTen.sample, :user_id => i)
+	x = Item.new(:title => items[i], :description => Faker::Hipster.sentences(1)[0], :avatar => File.open(Rails.root + "public/items/item#{i}.jpg"), :price_per_day => toTen.sample, :user_id => i)
 	x.tag_list.push(categories.sample)
 	x.save 
+
 end
 
 # Rental
 for r in (1..30)
 	buffer = *(1..60)
+	user = *(1..30)
+	n_r = r*(-1)
 	startdate = Date.today + buffer.sample # in the 2 next months
 	enddate = startdate + [1,2,3].sample # duration 0f up to 3 days
 	duration = enddate - startdate
@@ -44,10 +48,8 @@ for r in (1..30)
 								:end_date 	=> enddate, 
 								:approval_status => true, 
 								:item_id => r, 
-								:user_id => (-r), 
+								:user_id => user[n_r], 
 								:total_price => tot )
 end
-
-
 
 
