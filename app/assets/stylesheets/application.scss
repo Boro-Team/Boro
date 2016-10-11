@@ -14,7 +14,9 @@
  */
 // * { display: flex; }
 
-.ljhj {color: #B7AD99;}
+body > div.container > div:nth-child(6) {
+	display: flex;
+}
 
 @import "bootstrap-sprockets";
 @import "bootstrap";

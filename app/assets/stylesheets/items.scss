@@ -1,6 +1,23 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body > div.container > div:nth-child(6) {
+	width: 55.5vw;
+
+
+	#search_map {
+		width: 100vw;
+		height: 34.7vw;
+
+		box-shadow: -10px 5px 0 0 lighten(#00d9c0, 30%),
+								-20px 10px 0 0 lighten(#ff4365, 30%),
+								-30px 20px 0 0 lighten(rgb(40, 96, 144),30%);
+
+			div{
+			}
+	}
+}
+
 
 tbody { 
 	tr { 
@@ -10,8 +27,11 @@ tbody {
 	}
 }
 
+
 body > div.container > div:nth-child(6) {
-	display: block;
+	// display: block;
+	display: flex;
+	width: 50vw;
 	margin: 0 auto;
 }
 
@@ -27,18 +47,67 @@ body > div.container > div:nth-child(6) {
 	opacity: 1;
 	
 	&:hover {
-		// opacity: 0;
-		// transition: opacity 1s ease;
-							
-	// filter: saturate(0);
-	// filter: blur(10px);
+
 	}
 }
 
-#table_index > tbody > tr:nth-child(2) > td > img {
-	background-color: red;
+body > div.container > table > tbody > tr:nth-child(4) > td:nth-child(6),
+body > div.container > table > tbody > tr:nth-child(4) > td:nth-child(7),
+body > div.container > table > tbody > tr:nth-child(3) > td:nth-child(8) {}
+
+
+// .marker_container {border: 3px solid green; padding: 2px; background: white; border-radius: 10px; font-size: 14px;}
+
+#geo { width: 50%; }
+
+body {
+	background-color: #fffff3;
 }
 
-.marker_container {border: 3px solid green; padding: 2px; background: white; border-radius: 10px; font-size: 14px;}
 
-#geo { width: 300px; }
+table {
+	border-spacing: 20px;
+}
+th {
+	text-align: center;
+}
+
+tr {
+	height: 10vh;
+	font-size: 16px;
+}
+td { 
+	width: 10vw;
+	color: #030301;
+	background-color: transparent;
+	transition: background-color color 0.5s ease;
+	content: "";
+
+	&:hover {
+		color: #fffff3;		
+		// background-color: darken(#fffff3, 10%);	
+		// border-radius: 20%;	
+		// transition: background-color border-radius color 1.5s ease;
+		font-size: 1vw;
+		&:before {
+		// 	text-indent: 1vw;
+		// 	display: inline-flex;
+		// 	content: '\2665';
+		// 	font-size: 1vw;
+		// 	color: pink;
+		// transition: content 1 ease;
+	}}
+
+	img {
+	width: 50px;
+	height: 50px;
+	}
+}
+
+.btn-danger {
+	background-color: #FF4365;
+}
+
+.btn-success {
+	background-color: #00d9c0;
+}
