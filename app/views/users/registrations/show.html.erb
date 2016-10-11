@@ -1,0 +1,42 @@
+User:
+  <% if @user.avatar.present? %>
+	  <span>
+	  	<%= @user.first_name %> <%= @user.last_name %>
+	    <img src="< %= @user.avatar.url %>" class="img-circle" alt="">
+	  </span>
+	<% else %>
+		<img class="avatar" src="http://placehold.it/64x64">
+	<% end %>
+
+<h2>has <a href="/items"><%= @user.items.count %></a> to rent</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Pic</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Price (MYR)</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @user.items.each do |i|%>
+<% counter = 0 %>
+  <tr>
+    <th scope="row"><%= counter++ %></th>
+    <td><%= i.avatar.thumb.url %></td>
+    <td><%= i.title %></td>
+    <td><%= i.description %></td>
+    <td><%= i.price_per_day %> <b>MYR</b></td>
+  </tr>
+<!-- < % if current_user.id != @user.user_id %> -->
+<% end %>
+
+<div>
+
+
+    <%= link_to "Edit", edit_user_path(@user.id), method: :get %>
+    <%= link_to "Delete", user_path(@user.id), method: :delete %>
+</div>
+

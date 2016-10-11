@@ -72,7 +72,7 @@
       <% if signed_in? %>
         <% if current_user.avatar.present? %>
         <li>
-          <%= link_to edit_user_registration_path(current_user.id), method: "get" do %>
+          <%= link_to user_path(current_user.id), method: "get" do %> <!-- edit_user_registration_path(current_user.id) -->
             <%= image_tag current_user.avatar.thumb.url, :id => "avatar", :class=> "img-circle"%>  
             <% end %>
           </a>
@@ -82,7 +82,7 @@
 
         <li>
           <%= link_to edit_user_path(current_user.id), method: "get" do %>
-            <img id="avatar" src="http://placehold.it/64x64">
+            <img id="avatar" class="img-circle" src="http://placehold.it/64x64">
           <% end %>
         </li>      
       
@@ -228,7 +228,7 @@
  <!-- GEOCOMPLETE END -->
 
 
-<%= render '/users/registration' %>
+<!-- < %= render '/users/registration' %> -->
 
 
 

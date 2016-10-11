@@ -16,29 +16,33 @@ for u in (1..30)
 	lastname  = Faker::Name.last_name
 	name 			= firstname + " " + lastname 
 	email 		= firstname + "." + lastname + "@boro.com"
-	latitude 	= RandomLocation.near_by(3.134857, 101.629915, 10000).latitude
-	longitude = RandomLocation.near_by(3.134857, 101.629915, 10000).longitude
+	latitude 	= RandomLocation.near_by(3.134857, 101.629915, 10000)[0]
+	longitude = RandomLocation.near_by(3.134857, 101.629915, 10000)[1]
 
-	User.create(:name => Faker::Name.name, :email => Faker::Internet.free_email, :password => "123456", :latitude => latitude, :longitude => longitude, :avatars => ["image-#{u}"], :admin => false)
+	User.create(:first_name => firstname , :last_name => lastname, :email => Faker::Internet.free_email, :password => "123456", :latitude => latitude, :longitude => longitude, :avatar => "image-#{u}.thumb.url", :admin => false)
 end
 
 # Item
 for i in (1..30)
-	Item.create(:title => items[i], :description => Faker::Hipster.sentences(1)[0], :avatars => ["item#{i}"], :price_per_day => (1..10).sample, :user_id => i)
+	toTen = *(1..10)
+	Item.create(:title => items[i], :description => Faker::Hipster.sentences(1)[0], :avatar => "item#{i}", :price_per_day => toTen.sample, :user_id => i)
 end
 
 # Rental
-for i in (1..30)
+for r in (1..30)
 	buffer = *(1..60)
 	startdate = Date.today + buffer.sample # in the 2 next months
 	enddate = startdate + [1,2,3].sample # duration 0f up to 3 days
 	duration = enddate - startdate
+	ppd = Item.find(r).price_per_day
+	tot = ppd * duration
 
-	Rental.create(:start_date => startdate, :end_date => enddate, :approval_status => true, )
-# start_date
-# end_date
-# user_id
-# item_id
-# total_price
+	Rental.create(:start_date => startdate, 
+								:end_date 	=> enddate, 
+								:approval_status => true, 
+								:item_id => r, 
+								:user_id => (-r), 
+								:total_price => tot )
+end
 
 
