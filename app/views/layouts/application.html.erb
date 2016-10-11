@@ -33,77 +33,6 @@
 <body>
 
 
-<<<<<<< HEAD
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-    <%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
-      <%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
-      <%= f.submit 'search', class: 'btn btn-primary' %>
-    <% end %>
-
-    <span class="form-group"><a class="btn btn-default" href="/items">Items' List</a></span>
-    <span><a class="btn btn-default" href="/users">Users Around Me</a></span>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active">
-          <a href="/items/new">
-            List an item
-              <span class="sr-only">
-                List your Gizmo
-              </span>
-          </a>
-        </li>
-      <!-- AVATAR -->
-
-      <% if signed_in? %>
-        <% if current_user.avatar.present? %>
-        <li>
-          <%= link_to user_path(current_user.id), method: "get" do %> <!-- edit_user_registration_path(current_user.id) -->
-            <%= image_tag current_user.avatar.thumb.url, :id => "avatar", :class=> "img-circle"%>  
-            <% end %>
-          </a>
-        </li>
-
-        <% else %>
-
-        <li>
-          <%= link_to edit_user_path(current_user.id), method: "get" do %>
-            <img id="avatar" class="img-circle" src="http://placehold.it/64x64">
-          <% end %>
-        </li>      
-      
-        <% end %>
-
-        <li>
-          <%= button_to "Sign out", destroy_user_session_path, class: "button", method: :delete %>
-        </li> 
-      <% end %>
-
-      <!-- AVATAR -->
-        <div class="dropdown dropdown-menu-left">
-        <% if signed_in? %> 
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    <%= current_user.first_name %> 
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><%= link_to "Edit Profile", edit_user_registration_path(current_user.id) %></li>
-    <li><a href="#">Messages</a></li>
-    <li><a href="/users/registration">Something else here</a></li>
-    <li role="separator" class="divider"></li>
-    <li><%= button_to "Sign out", destroy_user_session_path, class: "button", method: :delete %></li>
-  </ul>
-        <% else %>  
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#registration">
-            Sign Up / Login
-          </button>
-        <% end %>        
-</div>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-=======
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
@@ -153,7 +82,6 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
->>>>>>> 809c9a539b856065cc35e615fe6cd37446db9857
 
 <%= yield %>
 
@@ -264,10 +192,40 @@
 
  <!-- GEOCOMPLETE END -->
 
+<!-- MODAL REGISTRATION -->
 
-<!-- < %= render '/users/registration' %> -->
+<!-- <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Welcome to your Boro </h4>
+      </div>
 
+      <p class="modal-body">
+        <%= link_to new_user_registration_path, class: "button", id: "register_email", action: :new, method: :get do %>
+        <i class="fi-mail">Sign up with an email address</i>
+        <% end %>
+      </p>
 
+      <p>
+        <%= link_to user_facebook_omniauth_callback_path, class: "button", id:"register_fb" do %>
+        <i class="fi-social-facebook">Connect With Facebook</i>
+        <% end %>
+      </p>
+
+      <span id="register_already" class="lead">
+        I already have an account <%= link_to 'Log in', user_session_path, class: "button" %> 
+      </span>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
 
 </body>
 </html>
