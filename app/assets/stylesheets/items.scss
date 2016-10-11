@@ -10,6 +10,13 @@ tbody {
 	}
 }
 
+body > div.container > div:nth-child(6) {
+	display: block;
+	margin: 0 auto;
+}
+
+
+
 // FREEWALL STYLES
 
 .free-wall {
