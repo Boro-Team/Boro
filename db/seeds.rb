@@ -51,3 +51,4 @@ for r in (1..30)
 								:user_id => user[n_r], 
 								:total_price => tot )
 end
+

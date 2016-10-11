@@ -14,7 +14,7 @@ class UsersController < ApplicationController
         marker.lng user.longitude
         marker.json({:id => user.id })
         marker.json({:title => user.first_name })
-        marker.infowindow Item.last.search_card
+        marker.infowindow user.search_card
         marker.picture({
          "url" => "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
          "width" =>  32,
@@ -36,6 +36,11 @@ class UsersController < ApplicationController
   	redirect_to edit_user_path(current_user.id)
 		end
 	end 
+
+  def show
+    @user = User.find(params[:id])
+    render "/users/registrations/show"
+  end
 
 
   private
