@@ -293,7 +293,14 @@ body > nav:after {
 	border-bottom: 1px solid black;
 }
 
-		
-
-		
-
+.set-pic{
+	height: 200px;
+	width: 260px;
+	border: 3px solid;
+	border-color: $black;
+	filter: saturate(100%)
+}
+ 
+.set-pic:hover {
+  filter: saturate(10%)
+}
