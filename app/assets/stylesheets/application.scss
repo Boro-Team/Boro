@@ -91,8 +91,8 @@ body > div.container > div:nth-child(6) {
 
 
 #navright > li.dropdown > a {
-	top: -10px;
-	position: fixed;
+	float: right;
+	top: -20px;
 }
 
 #new_item {
@@ -172,6 +172,7 @@ body > div.container > div:nth-child(6) {
 
 body > nav > div {
 	font-family: "Comfortaa";	
+	height: 4rem;
 }
 
 .navbar{
@@ -336,7 +337,49 @@ body > nav:after {
 }
 
 
+<<<<<<< HEAD
+// TOP BAR
+
+body > nav {
+	padding-bottom: 1.5rem;
+		border-bottom: 1px solid black;
+}
+
+#navbar > ul > div.nav.navbar-nav.navbar-left {
+	width: 50%;
+	display: inline;
+	margin: 0;
+	background-color: transparent;
+}
+
+#navright > a {
+	width: 3.25rem;
+	height: 3.25rem;
+	display: inline;
+}
+
+#navbar > ul > div.nav.navbar-nav.navbar-left > li > form {
+	background-color: transparent;
+	border: none;
+}
+
+#dd {
+	top: 3.125rem;
+}
+
+#navright > li.dropdown.open > ul > li:nth-child(3) > a {
+	&:hover{
+		background-color: #3b5998;
+		color: #f7f7f7;
+	}
+}
+
+#p_p_d {
+	font-family: "Comfortaa";
+}
+
 .new-item-title{
     background-color: rgba(255, 255, 0, 0.5);
     text-align: center;
 }
+

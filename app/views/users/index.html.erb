@@ -15,7 +15,7 @@
   <%= hidden_field_tag(:formatted_address) %>
   <%= label_tag(:range, "Within how many km:") %>
   <%= select_tag("range", "<option>0</option><option>10</option><option>20</option><option>50</option><option>100</option>".html_safe,class:"form-control")%>
-  <%= submit_tag("Search") %>
+  <%= submit_tag("Search", class: 'btn btn-primary') %>
 <% end %>
 </div>
 
