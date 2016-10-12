@@ -19,7 +19,7 @@ for u in (1..30)
 	latitude 	= RandomLocation.near_by(3.134857, 101.629915, 10000)[0]
 	longitude = RandomLocation.near_by(3.134857, 101.629915, 10000)[1]
 
-	User.create(:first_name => firstname , :last_name => lastname, :email => Faker::Internet.free_email, :password => "123456", :latitude => latitude, :longitude => longitude, :avatar => File.open(Rails.root + "public/profiles/image-#{u}.png"), :admin => false)
+	User.create(:first_name => firstname , :last_name => lastname, :email => email, :password => "123456", :latitude => latitude, :longitude => longitude, :avatar => File.open(Rails.root + "public/profiles/image-#{u}.png"), :admin => false)
 
 end
 
