@@ -1,11 +1,23 @@
 <div class="container">
  
 <% if @user != current_user %>
+<h2 class="new-item-title"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>'s Profile</h2>
+
+
+<table class="search_items table table-striped">
+    <tr>
+  
+      <th style="text-align: left; margin-top: auto">
+        <i class="fa fa-location-arrow fa-3 large_fav"></i><span style="font-size: 20px"><%= @user.formatted_address %></span>
+        </th>
+
+    <tr>
+      <th style="text-align: center;">
   <% if @user.avatar.present? %>
-	  <h2><%= @user.first_name %> <%= @user.last_name %>
+	  <h2><%= @user.first_name.capitalize %>
 	    <img src="<%= @user.avatar.thumb.url %>" class="img-circle" alt="">
 	<% else %>
-		<h2><%= @user.first_name %> <%= @user.last_name %>
+		<h2><%= @user.first_name.capitalize %>
 	<% end %>
 has <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for rent</h2>
 <% else %> 
@@ -17,31 +29,56 @@ has <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for 
   <% end %>
 You have <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for rent</h2>
 <% end %>
+</th>
+</table>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th style="text-align: center;">#</th>
-      <th style="text-align: center;">Pic</th>
-      <th style="text-align: center;">Title</th>
-      <th style="text-align: center;">Description</th>
-      <th style="text-align: center;">Price (MYR)</th>
+      <th style="text-align: center;"><h3>Photo</h3></th>
+      <th style="text-align: center;"><h3>Item</h3></th>
+      <th style="text-align: center;"><h3>Description</h3></th>
+      <th style="text-align: center;"><h3>Price (MYR)</h3></th>
     </tr>
   </thead>
   <tbody>
 <% @user.items.each do |i|%>
-<% counter = 0 %>
   <tr style="text-align: center;">
-    <th scope="row"><%= counter += 1 %></th>
     <td><img src="<%= i.avatar.thumb %>" alt=""></td>
-    <td><a href="/items/<%= i.id %>"><%= i.title %></a></td>
-    <td><%= i.description %></td>
-    <td><%= i.price_per_day %> <b>MYR</b></td>
+    <td><a href="/items/<%= i.id %>"><h3><%= i.title %></h3></a></td>
+    <td><p><%= truncate(i.description, length: 160) %></p></td>
+    <td><h3>
+      <%= i.price_per_day %>MYR
+    </h3></td>
   </tr>
 <% end %>
 
 
 </tbody>
 </table>
+<% if @user == current_user %>
 <br><h2 style="margin-left: 12REM"> Your rental history </h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center;"><h3>Item</h3></th>
+      <th style="text-align: center;"><h3>Start Date</h3></th>
+      <th style="text-align: center;"><h3>End Date</h3></th>
+      <th style="text-align: center;"><h3>Total Price</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @user.rentals.each do |i|%>
+  <tr style="text-align: center;">
+    <td><a href="/items/<%= i.id %>"><h3><%= i.item.title %></h3></a></td>
+    <td><h3><%= i.start_date %></h3></td>
+    <td><h3><%= i.end_date %></h3></td>
+    <td><h3>
+      <%= i.total_price %>MYR
+    </h3></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<% end %> 
 </div>
-
