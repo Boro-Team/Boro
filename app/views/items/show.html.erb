@@ -32,10 +32,12 @@
 
 <hr>
 <div class="col-md-12" style="padding-top: 20px">
-   <div class="col-md-3 col-md-offset-2s">
+   <div class="col-md-3">
+   </div>
+   <div class="col-md-4">
       <h3>Rent now from:</h3>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-4">
       <h2><%= link_to @item.user.first_name, user_path(@item.user.id)%></h2>
       <% if @item.user.avatar.present? %>
         <span>
@@ -45,7 +47,7 @@
         <img class="avatar" src="http://placehold.it/64x64">
       <% end %>
     </div>
-    <div class="col-md-3" style="text-align: center;">
+    <div class="col-md-4" style="text-align: center;">
     <br>
     <%= link_to "Enquire", new_conversation_path(item_id: @item.id), class: "btn btn-info" %>
     <br>
