@@ -10,20 +10,12 @@
   <h3>Delivery Date:</h3>
       <%= form.label :start_date %>
       <%= form.text_field :start_date, :id => "rental_start_date", :class => "datepicker" %> 
-      <!-- , :data => { :provide => "datepicker" }  -->
-
-<!--     <input id="rental_start_date" type="text" data-provide='datepicker'> -->
-
 
   <h3>Return Date:</h3>
       <%= form.label :end_date %>
       <%= form.text_field :end_date, :id => "rental_end_date", :class => "datepicker" %>
-      <!-- , :data => { :provide => "datepicker" } -->
-
-    <!-- <input id="rental_end_date" type="text" data-provide='datepicker' > -->
-
       
-  <h1>Price per day:</h1><span id="p_p_d" class="title is-1"><%= @item.price_per_day %></span>
+  <h1>Price per day:<span id="p_p_d" class="title is-1"> <%= @item.price_per_day %></span>MYR</h1>
 
   <p >Total price:</p><div id="totalprice">0</div>
 

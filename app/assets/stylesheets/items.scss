@@ -93,20 +93,18 @@ body > div.container > table > tbody > tr:nth-child(3) > td:nth-child(8) {}
 
 .info_window {border: 3px solid green; padding: 2px; background: white; border-radius: 10px; font-size: 14px;}
 
-#geo { width: 50%; }
+// #geo { width: 50%; }
 
-table {
+table #item_table {
 	border-spacing: 20px;
-}
-th {
+	th {
 	text-align: center;
 }
 
 tr {
 	height: 10vh;
 	font-size: 16px;
-}
-td { 
+	td { 
 	width: 10vw;
 	color: #030301;
 	background-color: transparent;
@@ -126,13 +124,18 @@ td {
 		// 	font-size: 1vw;
 		// 	color: pink;
 		// transition: content 1 ease;
-	}}
+	}
+}
 
 	img {
 	width: 50px;
 	height: 50px;
 	}
 }
+}
+}
+
+
 
 .btn-danger {
 	background-color: #FF4365;
