@@ -1,7 +1,9 @@
 <div class="media">
   <div class="media-left">
     <a href="<%= user_path(conversation.originator) %>">
+      <% if conversation.originator.avatar.thumb.url %>
       <img class="media-object" src=<%= conversation.originator.avatar.thumb.url %> alt="...">
+      <% end %>
     </a>
   </div>
   <div class="media-body">
