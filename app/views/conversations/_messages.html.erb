@@ -4,9 +4,11 @@
     <div class="media">
       <div class="media-left">
         <!-- user avators can go here -->
+        <% if message.sender.avatar.thumb.url %>
         <a href="<%= user_path(message.sender) %>">
           <img class="media-object" src=<%= message.sender.avatar.thumb.url %> alt="...">
         </a>
+        <% end %>
       </div>
       <div class="media-body">
         <h4 class="media-heading">

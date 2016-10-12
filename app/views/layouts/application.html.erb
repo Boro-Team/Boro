@@ -89,6 +89,7 @@
                     <%= link_to "Messages", mailboxes_inbox_path %>
                     <span class="label label-danger message_block"><%=unread_messages_count%></span>
                   </li>
+                  <li><%= link_to "Rental History", user_path(current_user)%></li>
                   <li><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></li>
                   <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
                 </ul>
