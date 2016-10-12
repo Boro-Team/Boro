@@ -2,7 +2,6 @@
 <html>
 <head>
    <title>bORO</title>
-   <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
   <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'drop-down-menu', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
@@ -15,7 +14,6 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <%= favicon_link_tag "favicon.ico" %>
-  <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places"></script> 
   <%= javascript_include_tag 'jquery', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'jquery.geocomplete', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'bootstrap', 'data-turbolinks-track' => true %>
@@ -29,8 +27,8 @@
   <meta name="apple-mobile-web-app-title" content="Boro">
   <meta name="application-name" content="Boro">
   <meta name="theme-color" content="#ffffff">
-  
-  
+  <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB39iSJL86w7qssvZjO0-yd4gYm5c2gpa4&libraries=places&callback=initMap&callback=buildMap"></script> 
+
 </head>
 <body>
 
@@ -42,56 +40,60 @@
         <div id="navbar" class="navbar-collapse collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <ul class="nav navbar-nav">
             <div class="nav navbar-nav navbar-left">
-              <li>
-              	<a id="logo" class="navbar-brand" href="/">
-                	<span>b</span><span>o</span><span>r</span><span>o</span>
-                </a>
+              <li><a id="logo" class="navbar-brand" href="/">
+                <span>b</span><span>o</span><span>r</span><span>o</span></a>
               </li>
             </div>
 
-            <li>
-            	<%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
-            	<%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
-           		<%= f.submit 'search', class: 'btn btn-primary' %>
-           		<% end %>
+            <li><%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
+            <%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
+            <%= f.submit 'search', class: 'btn btn-primary' %>
+            <% end %>
+              
             </li>
 
-	          <div id="navright" class="nav navbar-nav navbar-right"> 
-	            <li><a class="btn" href="/items">Local Rentables</a></li> 
-	            <li><a class="btn" href="/users">Users in the <span>b</span><span>o</span><span>r</span><span>o</span></a></li> 
-	            <li><a class="btn" href="/items/new">Rent Your Things!</a></li> 
+<!--           <form class="new_item input-group" id="new_item" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+          <input class="form-control" type="text" name="term" id="term" placeholder="What are you looking for?">
+          <span class="input-group-btn"><input type="submit" name="commit" value="search" class="btn btn-primary btn btn-default"></span>
+          </form> -->
 
 
-	             <!-- DROPDOWN MENU BELOW -->
-	            <li class="dropdown">
-	            <% if signed_in? %>
-	            	<% if current_user.avatar.present? %>
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.thumb.url, :class => "img-circle profile_pic" %><span class="caret"></span></a>
+          <div id="navright" class="nav navbar-nav navbar-right"> 
+            <li><a class="btn" href="/items">Local Rentables</a></li> 
+            <li><a class="btn" href="/users">Users Around Me</a></li> 
+            <li><a class="btn" href="/items/new">Rent Your Things!</a></li> 
+
+            <% if signed_in? %>
+             <!-- DROPDOWN MENU BELOW -->
+            <li class="dropdown">
+
+            <% if current_user.avatar.present? %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.thumb.url, :class => "profile_pic" %><span class="caret"></span></a>
               <%else%>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt=""><span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
               <%end%>
-	              <ul class="dropdown-menu">
-	                <li><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></li>
-	                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
-	              </ul>
-	            </li>
-	              <% else %>
-	            <li><a href="/users/sign_up">Sign Up</a></li>
-	            <li><a href="/users/sign_in">Log In</a></li>
-	            <% end %>
-	            
-	            </div>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
+              </ul>
+            </li>
+              <% else %>
+            <li><a href="/users/sign_up">Sign Up</a></li>
+            <li><a href="/users/sign_in">Log In</a></li>
+            <% end %>
+            
+            </div>
           </ul>
 
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-<!-- <div class="container"> -->
+<div class="container">
   <%= yield %>
-<!-- </div> -->
+</div>
 
 
-<!-- <p><a href="/users/sign_up">Sign Up</a></p> -->
+<p><a href="/users/sign_up">Sign Up</a></p>
 
   <!-- GOOGLE MAPS STATIC -->
 
@@ -156,6 +158,8 @@
  <!-- GEOCOMPLETE START-->
   <script>
       $(function(){
+
+
         $("#geocomplete").geocomplete({
           map: ".map_canvas",
           details: "form",
