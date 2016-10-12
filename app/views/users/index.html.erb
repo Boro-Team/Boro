@@ -27,14 +27,15 @@
 
 <div class="container">
 
-  <hgroup class="mb20">
-			<h1>Search Results</h1>
+  <hgroup class="mb20 fluid-container">
+			<h1 class="col-lg-12" style="text-align: center; margin-top: 4.5rem;">Search Results</h1>
 			<h2 class="lead"><strong class="text-danger">3</strong> Users were found for the search for <strong class="text-danger">USER</strong></h2>								
 	</hgroup>
 
     <section class="col-xs-12 col-sm-6 col-md-12">
     <% @users.each do |u| %>
-		<article class="search-result row">
+		<article class="row">
+		<div class="col-xs-12 col-sm-12 col-md-3"></div>
 			<div class="col-xs-12 col-sm-12 col-md-3">
 				<%= link_to image_tag(u.avatar.thumb.url, class: "img-circle") + "#{u.first_name} #{u.last_name}", user_path(u.id) %>
 			</div>
@@ -43,16 +44,13 @@
 					<li>
 					<i class="fa fa-calendar"></i>Joined on <span><%= u.created_at.strftime("%d %B %Y") %></span></li>
 					<li><i class="fa fa-time"></i>From <span><%= u.locality %></span></li>
-					<li><i class="fa fa-tags"></i>Has <span><%= u.items.count %> item<%= puts "s" if (u.items.count > 0) %> for rent</span></li>
+					<li><i class="fa fa-tags"></i>Has <span><%= u.items.count %> item<%= "s" unless (u.items.count == 1) %> for rent</span></li>
 				</ul>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-				<h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>						
-                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
-			</div>
+	
 			<span class="clearfix borda"></span>
 		</article>
+		<hr>
 		<% end %>
 	</section>
 </div>
