@@ -1,31 +1,32 @@
+<h2 class="new-item-title">Rent your stuff !</h2>
 <div class="row">
-    <div class="center-block col-md-4" style="float: none;">
-   
+    <div class="center-block col-md-4" style="float: none; padding-left: 11.5REM;">
+      
 <% if signed_in? %>
-<h2>Rent your stuff !</h2>
+
 <%= form_for @item do |form| %>
 
   <div><br>
     <%= form.label :title %>
-    <%= form.text_field :title, placeholder: "Enter Title" %>
+    <%= form.text_field :title, placeholder: "Enter Title", class: "form-control form-control-lg" %>
     <br><br>
     <%= form.label :description %>
-    <%= form.text_field :description, placeholder: "Describe your good" %>
+    <%= form.text_field :description, placeholder: "Describe your good", class: "form-control form-control-lg"%>
 
   </div>
-
+  <br><br>
   <div class="control">
     <%= form.label :price_per_day %>
-    <%= form.number_field :price_per_day, placeholder: "Enter desired price per day" %>
+    <%= form.number_field :price_per_day, placeholder: "Enter desired price per day", class: "form-control form-control-lg"%>
   </div>
 
-  <br>
+  <br><br>
   <%= form.label :category %>
   <%= form.select :tag_list, options_for_select(["Kitchen", "Renovation", "Construction", "Tools", "Gardening/Lawncare", "Electronics"]), {}, {:multiple => false, :class => "", :style => "" } %>
   <br><br>
 
   <div class="field">
-    <%= form.label :upload_image %><br />
+    <%= form.label :upload_image %><br>
     <%= form.file_field :avatar %> 
   </div><br>
 
