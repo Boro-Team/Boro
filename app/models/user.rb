@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :items
+  has_many :rentals
 
   mount_uploader :avatar, AvatarUploader
 

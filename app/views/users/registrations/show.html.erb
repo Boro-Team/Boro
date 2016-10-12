@@ -1,4 +1,6 @@
 <div class="container">
+ 
+<% if @user != current_user %>
 <h2 class="new-item-title"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>'s Profile</h2>
 
 
@@ -18,6 +20,15 @@
 		<h2><%= @user.first_name.capitalize %>
 	<% end %>
 has <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for rent</h2>
+<% else %> 
+  <% if @user.avatar.present? %>
+    <h2>
+      <img src="<%= @user.avatar.thumb.url %>" class="img-circle" alt="">
+  <% else %>
+    <h2>
+  <% end %>
+You have <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for rent</h2>
+<% end %>
 </th>
 </table>
 
@@ -25,7 +36,7 @@ has <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for 
   <thead>
     <tr>
       <th style="text-align: center;"><h3>Photo</h3></th>
-      <th style="text-align: center;"><h3>Title</h3></th>
+      <th style="text-align: center;"><h3>Item</h3></th>
       <th style="text-align: center;"><h3>Description</h3></th>
       <th style="text-align: center;"><h3>Price (MYR)</h3></th>
     </tr>
@@ -45,12 +56,29 @@ has <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for 
 
 </tbody>
 </table>
-</div>
-
-
-<% if @user==current_user %>
-  <div>
-
-  <%= link_to "Edit Profile", edit_user_registration_path(@user.id), method: :get, class: "btn btn-warning" %>
-</div>
+<% if @user == current_user %>
+<br><h2 style="margin-left: 12REM"> Your rental history </h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center;"><h3>Item</h3></th>
+      <th style="text-align: center;"><h3>Start Date</h3></th>
+      <th style="text-align: center;"><h3>End Date</h3></th>
+      <th style="text-align: center;"><h3>Total Price</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @user.rentals.each do |i|%>
+  <tr style="text-align: center;">
+    <td><a href="/items/<%= i.id %>"><h3><%= i.item.title %></h3></a></td>
+    <td><h3><%= i.start_date %></h3></td>
+    <td><h3><%= i.end_date %></h3></td>
+    <td><h3>
+      <%= i.total_price %>MYR
+    </h3></td>
+  </tr>
 <% end %>
+</tbody>
+</table>
+<% end %> 
+</div>
