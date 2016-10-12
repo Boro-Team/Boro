@@ -2,7 +2,7 @@
   <% if flash[:notice] || @errors %>
 
   <div data-alert id="flashes">  
-    <span id="flash_notice"><%= flash[:notice] || @errors %></span>
+    <span id="flash_notice" class="flash error"><%= flash[:notice] || @errors %></span>
     <a href="#" class="close">&times;</a>    
     <%= javascript_tag "$('#flash_notice').effect('highlight',{},1000);" %>
   <% end %>
