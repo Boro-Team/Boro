@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'drop-down-menu', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
-  <%= google_webfonts_init({google: ['Comfortaa']}) %>
+  <%= google_webfonts_init({google: ['Comfortaa','Open Sans']}) %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
@@ -32,30 +32,35 @@
 </head>
 <body>
 
-
     <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-          <div class="nav navbar-nav navbar-left">
-          <li><a id="logo" class="navbar-brand" href="/">boro</a></li>
-          </div>
+            <div class="nav navbar-nav navbar-left">
+              <li><a id="logo" class="navbar-brand" href="/">
+                <span>b</span><span>o</span><span>r</span><span>o</span></a>
+              </li>
+            </div>
 
-          
+            <li><%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
+            <%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
+            <%= f.submit 'search', class: 'btn btn-primary' %>
+            <% end %>
+              
+            </li>
 
-          <li style="padding-top: 9px"><%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
-          <%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
-          <%= f.submit 'search', class: 'btn btn-primary' %>
-          <% end %></li>
+<!--           <form class="new_item input-group" id="new_item" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+          <input class="form-control" type="text" name="term" id="term" placeholder="What are you looking for?">
+          <span class="input-group-btn"><input type="submit" name="commit" value="search" class="btn btn-primary btn btn-default"></span>
+          </form> -->
 
-          <div class="nav navbar-nav navbar-right" style="position: absolute;
-            right: 30px;"> 
 
-            <li><a class="btn btn-default" href="/items">Local Rentables</a></li>
-            <li><a class="btn btn-default" href="/users">Users Around Me</a></li>
-            <li><a class="btn btn-default" href="/items/new">Rent Your Things!</a></li>
+          <div id="navright" class="nav navbar-nav navbar-right"> 
+            <li><a class="btn" href="/items">Local Rentables</a></li> 
+            <li><a class="btn" href="/users">Users Around Me</a></li> 
+            <li><a class="btn" href="/items/new">Rent Your Things!</a></li> 
 
             <% if signed_in? %>
              <!-- DROPDOWN MENU BELOW -->
@@ -192,41 +197,5 @@
     </script>
 
  <!-- GEOCOMPLETE END -->
-
-<!-- MODAL REGISTRATION -->
-
-<!-- <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Welcome to your Boro </h4>
-      </div>
-
-      <p class="modal-body">
-        < %= link_to new_user_registration_path, class: "button", id: "register_email", action: :new, method: :get do %>
-        <i class="fi-mail">Sign up with an email address</i>
-        < % end %>
-      </p>
-
-      <p>
-        < %= link_to user_facebook_omniauth_callback_path, class: "button", id:"register_fb" do %>
-        <i class="fi-social-facebook">Connect With Facebook</i>
-        < % end %>
-      </p>
-
-      <span id="register_already" class="lead">
-        I already have an account < %= link_to 'Log in', user_session_path, class: "button" %> 
-      </span>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 </body>
 </html>

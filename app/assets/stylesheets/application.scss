@@ -14,10 +14,6 @@
  */
 // * { display: flex; }
 
-body > div.container > div:nth-child(6) {
-	display: flex;
-}
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-datepicker";
@@ -27,6 +23,83 @@ body > div.container > div:nth-child(6) {
 @import "welcome";
 @import "drop-down-menu";
 
+$font-stack: "Open Sans", Helvetica;
+$title : "Comfortaa"; 
+
+$beige	: #b7ad99;
+$pink		: #ff4365;
+$black	: #030301;
+$green	: #00d9c0;
+$gray		: #fffff3;
+
+body {
+	display: flex;
+	font-family: $font-stack;
+	color: $black;
+	background-color: lighten($gray, 2%); 	
+
+	.container-fluid{
+		display: flex;
+		border-sizing: border-box;
+	}
+
+	#navbar > ul {
+	margin-top: 0.6rem;
+}
+
+	#logo { 
+		margin-top: -0.5rem;
+		span:nth-child(1) { color: $green;}
+		span:nth-child(2) { color: $pink;}
+		span:nth-child(3) { color: darken($gray, 50%);}
+		span:nth-child(4) { color: white; }
+	}
+
+	#new_item > input.btn.btn-primary {
+		border-radius: 0px;
+		border: 1px solid rgb(40, 96, 144);
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $title;
+	}
+
+	input, form, a {
+		font-family: $font-stack;
+	}
+
+	nav.navbar-default { 
+		background-color: darken($beige, 78%);
+		a.btn {
+			color: lighten($green, 70%);
+		}
+	}
+}
+
+body > div.container > div:nth-child(6) {
+	display: flex;
+}
+
+
+#navright > li.dropdown > a {
+	top: -10px;
+	position: fixed;
+}
+
+#new_item {
+	width: 31.25rem;
+	// margin-top: 0.8rem;
+	margin-right: 0;
+	display: inline-flex;
+}
+
+#navbar > ul > div.nav.navbar-nav.navbar-right {
+	// display: flex;
+	// justify-content: flex-end;
+	// position: absolute;
+	float: right !important;
+  // right: 30px
+}
 
 #registration {
 	justify-content: center;
@@ -39,7 +112,7 @@ body > div.container > div:nth-child(6) {
 
 #register_already:before {
 	font-size: 5vh;
-	content:"\2709";
+	content:'\2709';
 }
 
 #register_already { 
@@ -48,6 +121,15 @@ body > div.container > div:nth-child(6) {
 	max-width: 5vw;
 	}
 }
+
+
+#navright {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	margin-left: 50rem;
+}
+
 body{
 	padding-top:75px;
 }
@@ -61,10 +143,29 @@ body > nav > div {
 }
 
 .profile_pic {	
-  width: 60px;
-  height: 60px;
-  border: 2px solid;
+  width: 5rem;
+  height: 5rem;
+  border: 2px solid $green;
   border-radius: 50%;
+  filter: saturate(300%)
+}
+
+#navbar > ul > div.nav.navbar-nav.navbar-right > li.dropdown.open > a {
+	background-color: transparent;
+}
+#navbar > ul > div.nav.navbar-nav.navbar-right > li.dropdown.open > ul > li:nth-child(1) > a,
+#navbar > ul > div.nav.navbar-nav.navbar-right > li.dropdown.open > ul > li:nth-child(2) > a {
+	&:hover {
+		background-color: darken($gray, 10%);
+	}
+}
+
+#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(1) > a { color: lighten($pink,20%); }
+#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(2) > a { color: darken($gray, 10%); }
+#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(3) > a { color: lighten(rgb(40, 96, 144),40%); }
+
+#navbar > ul > li {
+	padding-top: 0.5625rem;
 }
 
 footer.footer-distributed {
@@ -78,6 +179,8 @@ footer.footer-distributed {
 
 	h2 {
 		font-size: 4vh;
+		font-family: $font-stack;
+		color: lighten($black,30%);
 	}
 
 	p {
@@ -89,11 +192,64 @@ footer.footer-distributed {
 
 	i {
 		font-size: 7vh;
-		color: #00d9c0;
 		margin-bottom: 5vh;
+		background-color: transparent;
+		filter: drop-shadow(3px 3px 1px rgba(0,0,0,.5));
 	}
+
+	i.fa.fa-wrench::before { 
+		color: lighten(rgb(40, 96, 144),30%); 
+
+	}
+	i.fa.fa-money::before {	
+		color: #00d9c0; 
+	}
+	i.fa.fa-user::before{ color: $pink;}
 }
 
+#search_map > div > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(1) > div {
+	background-color: red;
+}
+
+#rent{ 
+	color: darken($gray, 50%); 
+}
+
+#neighbours{
+	color: $pink;
+}
+
+#makemoney{
+	color: $green;
+}
+
+#youown{
+	color: white;
+}
+
+.spaceit {
+
+	background-color: lighten(rgb(40, 96, 144),30%);
+}
+
+#motto > h1 > span:nth-child(1),
+#motto > h1 > span:nth-child(2) {
+	padding: 0 5px;	
+	line-height: 50px;
+}
+
+#motto > h1 > span:nth-child(1) {
+	z-index: 10;
+}
+#motto > h1 > span:nth-child(2) {
+	z-index: 5;
+	padding: 0 5px;		
+}
+
+
+		
+
+		
 
 
 
