@@ -16,14 +16,8 @@ form.conversations {
 // }
 		form{
 			height: 100%;
-			display: flex;
-			// align-content:center;
 			justify-content: center;
 			align-items: stretch;
-			// margin-bottom: 100px;
-			input {
-				// border: 1px solid black;
-			}
 		}
 
 		#flex_form > form > label:nth-child(5) {
