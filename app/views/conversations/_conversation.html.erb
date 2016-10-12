@@ -1,7 +1,7 @@
 <div class="media">
   <div class="media-left">
-    <a href="#">
-      <img class="media-object" src="http://placehold.it/64x64" alt="...">
+    <a href="<%= user_path(conversation.originator) %>">
+      <img class="media-object" src=<%= conversation.originator.avatar.thumb.url %> alt="...">
     </a>
   </div>
   <div class="media-body">
@@ -10,7 +10,7 @@
       <small><b>Subject: </b><%= conversation.subject %></small><br>
       <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
     </h4>
-    <%= truncate conversation.messages.last.body, length: 145 %>
+    <b><%= truncate conversation.messages.last.body, length: 145 %></b>
     <%= link_to "View", conversation_path(conversation)  %>
   </div>
 </div>
