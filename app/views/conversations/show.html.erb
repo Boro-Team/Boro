@@ -1,14 +1,4 @@
-<div class="row">
-  <div class="spacer"></div>
-  <div class="col-md-6 text-right">
-    <% if conversation.is_trashed?(current_user) %>
-        <%= link_to 'Unarchive', unarchive_conversation_path(conversation), class: 'btn btn-info', method: :post %>
-    <% else %>
-        <%= link_to 'Move to Archive', archive_conversation_path(conversation), class: 'btn btn-danger', method: :post,
-                    data: {confirm: 'Are you sure?'} %>
-    <% end %>
-  </div>
-</div>
+
 <div class="row">
   <div class="spacer"></div>
   <div class="col-md-8">
@@ -30,12 +20,21 @@
             <div class="form-group">
               <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
             </div>
+
+            <% if conversation.is_trashed?(current_user) %>
+              <%= link_to 'Unarchive', unarchive_conversation_path(conversation), class: 'btn btn-info pull-left', method: :post %>
+            <% else %>
+              <%= link_to 'Move to Archive', archive_conversation_path(conversation), class: 'btn btn-danger pull-left', method: :post,
+                    data: {confirm: 'Are you sure?'} %>
+            <% end %>
+
             <%= f.submit "Reply", class: 'btn btn-danger pull-right' %>
         <% end %>
         <div class="clearfix"></div>
       </div>
     </div>
   </div>
+</div>
 
 
 
