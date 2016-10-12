@@ -18,6 +18,14 @@ Category:
 <h3><%= @item.price_per_day %> MYR</h3>
 <!-- < %= image_tag ((User.find(@item.user_id)).avatar.medium.url) %> -->
 
+
+<div class="row">
+  <div class="spacer"></div>
+  <div class="col-md-12">
+    <%= link_to "Ask a question about this item", new_conversation_path(item_id: @item.id), class: "btn btn-success" %></div>
+  <div class="spacer"></div>
+</div>
+
 <%= image_tag (@item.avatar.medium.url) %>
 <p><%= link_to "RENT THIS", new_item_rental_path(@item.id), method: :get, :class => "button success" %></p>
 
