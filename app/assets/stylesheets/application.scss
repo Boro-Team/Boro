@@ -350,7 +350,19 @@ body > nav {
 #navbar > ul > div.nav.navbar-nav.navbar-left > li > form {
 	background-color: transparent;
 	border: none;
-
 }
+
+#dd {
+	top: 3.125rem;
+}
+
+#navright > li.dropdown.open > ul > li:nth-child(3) > a {
+	&:hover{
+		background-color: #3b5998;
+		color: #f7f7f7;
+	}
+}
+
+
 
 

@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'drop-down-menu', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker-standalone.css' %>
   <%= google_webfonts_init({google: ['Comfortaa']}) %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
@@ -74,11 +75,15 @@
               <% if signed_in? %>
               <li class="dropdown">
                 <% if current_user.avatar.present? %>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.thumb.url, :class => "img-circle profile_pic" %></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <%= image_tag current_user.avatar.thumb.url, :class => "img-circle profile_pic" %>
+                </a>
                 <%else%>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt=""></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt="">
+                </a>
                 <%end%>
-                <ul class="dropdown-menu">
+                <ul id="dd" class="dropdown-menu">
                   <li>
                     <%= link_to "Messages", mailboxes_inbox_path %>
                     <span class="label label-danger message_block"><%=unread_messages_count%></span>
@@ -88,15 +93,16 @@
                 </ul>
               </li>
               <% else %>             
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt="">
-              </a>
-
-              <ul class="dropdown-menu">
-                <li style="color: white;"><a href="/users/sign_up">Sign Up</a></li>
-                <li style="color: white;"><a href="/users/sign_in">Log In</a></li>
-                <li style="color: white;"><a href="/users/auth/facebook">Login with Facebook</a></li>
-              </ul>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt="">
+                </a>              
+                <ul class="dropdown-menu">
+                  <li style="color: white;"><a href="/users/sign_up">Sign Up</a></li>
+                  <li style="color: white;"><a href="/users/sign_in">Log In</a></li>
+                  <li style="color: white;"><a href="/users/auth/facebook">Login with Facebook</a></li>
+                </ul>
+              </li>
               <% end %>
             </div>
           </ul>
