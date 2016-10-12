@@ -32,15 +32,15 @@
 	</div>
 <%= @error if @error %>
 
-<div style='width: 800px;'>
-  <div id="search_map" style='width: 800px; height: 500px;'></div>
+<div>
+  <div id="search_map"></div>
 </div>
 <% end %>
 <br>
 <br>
 <table>
 	<tr>
-		<th style="text-align: center;">Pic</th>
+		<th>Pic</th>
 		<th>Title</th>
 		<th>Category</th>
 		<th>Description</th>
@@ -52,19 +52,21 @@
 		<% @item.each do |i| %>
 	<tr>
 		<td><%= image_tag (i.avatar.thumb.url) %></td>	
-		<td><%= link_to "#{i.title}", item_path(i.id) %></td>
+		<td><%= link_to "#{i.title}", item_path(i.id)  %></td>
 		<td><%= link_to "#{i.tag_list.first}", tags_path(i.tag_list.first) %></td>
-		<td style="text-align: center;"><%= link_to "#{i.description}", item_path(i.id)%></td>
+		<td style="text-align: center;">
+			<%= truncate(i.description, length: 21) %>
+		</td>
 		<td style="text-align: center;"><%= i.price_per_day %></td>
-		<td style="text-align: center;"><%= link_to "Show", item_path(i.id), method: :get, :class => "button success" %></td>
+		<td style="text-align: center;"><%= link_to "Show", item_path(i.id), method: :get, :class => "btn-lg btn-primary" %></td>
 
 			<% if current_user.id == i.user_id %>
-				<td style="text-align: center;"><%= link_to "Edit", edit_item_path(i.id), method: :get, :class => "button warning" %></td>
-				<td style="text-align: center;""><%= link_to "Delete", item_path(i.id), method: :delete, :class => "button alert" %></td>
+				<td style="text-align: center;"><%= link_to "Edit", edit_item_path(i.id), method: :get, :class => "btn-lg btn-warning" %></td>
+				<td style="text-align: center;""><%= link_to "Delete", item_path(i.id), method: :delete, :class => "btn-lg btn-danger" %></td>
 			<% else %>
-				<td style="text-align: center;"><%= link_to "Book", new_item_rental_path(i.id), method: :get, :class => "button" %></td>
-<!-- 				<td style="text-align: center;"">< %= link_to "Delete", item_path(i.id), method: :delete, :class => "button alert" %></td>
- -->	<% end %>
+				<td style="text-align: center;"><%= link_to "Book", new_item_rental_path(i.id), method: :get, :class => "btn-lg btn-success" %></td>
+				<td style="text-align: center;""><%= link_to "Delete", item_path(i.id), method: :delete, :class => "btn-lg btn-danger" %></td>
+	<% end %>
 	</tr>
 	<% end %>
 </table>
