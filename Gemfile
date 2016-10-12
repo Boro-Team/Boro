@@ -57,6 +57,8 @@ gem 'acts-as-taggable-on', '~> 4.0'
 gem 'geocoder'
 gem 'gmaps4rails'
 
+gem 'mailboxer'
+
 group :production do
 	gem 'rails_12factor'
 	gem 'unicorn'
@@ -66,9 +68,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
-
-gem 'random-location'
-gem 'faker'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

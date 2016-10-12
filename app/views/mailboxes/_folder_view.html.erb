@@ -1,0 +1,21 @@
+<div id="mailboxes">
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'mailboxes/folders' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <% if is_conversation %>
+            <%= render 'conversations/form' %>
+        <% else %>
+            <%= render partial: 'conversations/conversation', collection: messages %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

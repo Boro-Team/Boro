@@ -38,7 +38,7 @@ body {
 	font-family: $font-stack;
 	color: $black;
 	background-color: white; 	
-	padding-top: 4.5rem;
+	padding-top: 7.5rem;
 
 	.container-fluid{
 		display: flex;
@@ -139,13 +139,6 @@ body > div.container > div:nth-child(6) {
 	text-align: center;
 }
 
-.col-sm-6{
-	// font-size: 26px;
-}
-
-.col-sm-3{
-	font-size: 18px;
-}
 
 #registration {
 	justify-content: center;
@@ -293,7 +286,14 @@ body > nav:after {
 	border-bottom: 1px solid black;
 }
 
-		
-
-		
-
+.set-pic{
+	height: 200px;
+	width: 260px;
+	border: 3px solid;
+	border-color: $black;
+	filter: saturate(100%)
+}
+ 
+.set-pic:hover {
+  filter: saturate(10%)
+}

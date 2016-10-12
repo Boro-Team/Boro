@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-
+  validates :locality, presence: true
   geocoded_by :location
   after_validation :geocode 
   
@@ -59,6 +59,24 @@ class User < ActiveRecord::Base
     else
       return '<a href="/users/'+self.id.to_s+'">Lending '+self.items.count.to_s+' items!</a><br>'
     end
+  end
+
+  acts_as_messageable
+
+  def full_name
+  if first_name.present?
+    [*first_name.capitalize, last_name.capitalize].join(" ")
+  else 
+    test full name
+  end    
+end
+
+  def mailboxer_name
+    self.full_name
+  end
+
+  def mailboxer_email(object)
+    self.email
   end
 
 end

@@ -30,48 +30,58 @@
 			<% end %>
 			</div>
 	</div>
-<%= @error if @error %>
 
 <div>
   <div id="search_map" style="overflow: hidden"></div>
 </div>
 <% end %>
 <br>
-<br>
-<table>
-	<tr>
-		<th>Pic</th>
-		<th>Title</th>
-		<th>Category</th>
-		<th>Description</th>
-		<th>Price/Day</th>
-		<th style="text-align: center;">Show</th>
-		<th style="text-align: center;">Edit</th>
-		<th style="text-align: center;">Delete</th>
-	</tr>
-		<% @item.each do |i| %>
-	<tr>
-		<td><%= image_tag (i.avatar.thumb.url) %></td>	
-		<td><%= link_to "#{i.title}", item_path(i.id)  %></td>
-		<td><%= link_to "#{i.tag_list.first}", tags_path(i.tag_list.first) %></td>
-		<td style="text-align: center;">
-			<%= truncate(i.description, length: 21) %>
-		</td>
-		<td style="text-align: center;"><%= i.price_per_day %></td>
-		<td style="text-align: center;"><%= link_to "Show", item_path(i.id), method: :get, :class => "btn-lg btn-primary" %></td>
 
-			<% if current_user.id == i.user_id %>
-				<td style="text-align: center;"><%= link_to "Edit", edit_item_path(i.id), method: :get, :class => "btn-lg btn-warning" %></td>
-				<td style="text-align: center;""><%= link_to "Delete", item_path(i.id), method: :delete, :class => "btn-lg btn-danger" %></td>
+
+<hgroup class="mb20">
+		<h1>Search Results</h1>
+
+		<% if @error.blank? %>
+					<h2 class="lead"><strong class="text-danger"><%= @item.count %></strong> results were found for the search for <strong class="text-danger"><%= params[:term] %></strong></h2>
+			
 			<% else %>
-				<td style="text-align: center;"><%= link_to "Book", new_item_rental_path(i.id), method: :get, :class => "btn-lg btn-success" %></td>
-				<td style="text-align: center;""><%= link_to "Delete", item_path(i.id), method: :delete, :class => "btn-lg btn-danger" %></td>
-	<% end %>
-	</tr>
-	<% end %>
-</table> 
+			<h2 class="lead"><strong class="text-danger"><%= @error.first %></h2>
+		<% end %>					
+	</hgroup>
 
-<%= @error if @error %>
+    <section class="col-xs-12 col-sm-6 col-md-12">
+		
+		<% @item.each do |i| %>
+		
+
+
+		<article class="search-result row">
+			<div class="col-xs-12 col-sm-12 col-md-2">
+				<a><%= link_to image_tag(i.avatar.thumb.url), item_path(i.id) %></a>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-2">
+				<ul class="meta-search">
+					<li><i class="fa fa-money fa-2"></i><span style="font-size: 20px"> $<%= i.price_per_day %></span></li>
+					<li><i class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality %></span></li>
+					<li><i class="fa fa-tag fa-1"></i> <span><%= i.tag_list.first %></span></li>
+					<li><i class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality %></span></li>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-5 searchblock">
+				<h3><%= link_to "#{i.title}", item_path(i.id)  %></h3>
+				<p><%= truncate(i.description, length: 21) %></p>						
+                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-1 searchblock">
+				<%= link_to "Boro", item_path(i.id), method: :get, :class => "btn-lg btn-success" %>
+			</div>
+			<span class="clearfix borda"></span>
+		</article>
+	<% end %>
+
+
+	</section>
+
 
 <script type="text/javascript">
 buildMap(<%=raw @hash.to_json %>)

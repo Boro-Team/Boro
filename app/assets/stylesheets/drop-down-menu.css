@@ -8,6 +8,17 @@ font-family:corbel;
 
 }
 
+.message_block{
+margin-top: -20px; 
+float:right;
+margin-right: 45px;
+}
+
+.mailbox_tabs{
+float:right;
+margin-left: 5px;
+
+}
 
 ul.menu li{
 float:left;
@@ -64,4 +75,8 @@ background-color:#46211A;
 content:'\25be';
 color:#ffffff;
 
+}
+
+#mailboxes{
+	padding-top:50px;
 }

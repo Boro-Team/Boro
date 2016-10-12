@@ -7,6 +7,7 @@ class RichMarkerBuilder extends Gmaps.Google.Builders.Marker #inherit from built
   create_marker: ->
     options = _.extend @marker_options(), @rich_marker_options()
     @serviceObject = new RichMarker options #assign marker to @serviceObject
+    @serviceObject.setShadow("")
 
   rich_marker_options: ->
     marker = document.createElement("div")
@@ -19,7 +20,7 @@ class RichMarkerBuilder extends Gmaps.Google.Builders.Marker #inherit from built
     return null unless _.isString @args.infowindow
 
     boxText = document.createElement("div")
-    boxText.setAttribute('class', 'marker_container') #to customize
+    boxText.setAttribute('class', 'info_window') #to customize
     boxText.innerHTML = @args.infowindow
     @infowindow = new InfoBox(@infobox(boxText))
 

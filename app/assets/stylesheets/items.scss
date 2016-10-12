@@ -44,6 +44,17 @@ tbody {
 	}
 }
 
+#search_map {
+		width: 75vw;
+		height: 34.7vw;
+		margin: auto;
+		box-shadow: -10px 5px 0 0 lighten(#00d9c0, 30%),
+								-20px 10px 0 0 lighten(#ff4365, 30%),
+								-30px 20px 0 0 lighten(rgb(40, 96, 144),30%);
+
+			div{
+			}
+	}
 
 body > div.container > div:nth-child(6) {
 	// display: block;
@@ -73,7 +84,9 @@ body > div.container > table > tbody > tr:nth-child(4) > td:nth-child(7),
 body > div.container > table > tbody > tr:nth-child(3) > td:nth-child(8) {}
 
 
-// .marker_container {border: 3px solid green; padding: 2px; background: white; border-radius: 10px; font-size: 14px;}
+.marker_container {border: 3px solid green; padding: 2px; background: white; border-radius: 10px; font-size: 14px;}
+
+.info_window {border: 3px solid green; padding: 2px; background: white; border-radius: 10px; font-size: 14px;}
 
 #geo { width: 50%; }
 
@@ -123,3 +136,6 @@ td {
 .btn-success {
 	background-color: #00d9c0;
 }
+
+
+.fa.fa-money.fa-2:before {font-size: 20px;}
