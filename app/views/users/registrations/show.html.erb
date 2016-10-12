@@ -1,5 +1,6 @@
 <div class="container">
-
+ 
+<% if @user != current_user %>
   <% if @user.avatar.present? %>
 	  <h2><%= @user.first_name %> <%= @user.last_name %>
 	    <img src="<%= @user.avatar.thumb.url %>" class="img-circle" alt="">
@@ -7,7 +8,15 @@
 		<h2><%= @user.first_name %> <%= @user.last_name %>
 	<% end %>
 has <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for rent</h2>
-
+<% else %> 
+  <% if @user.avatar.present? %>
+    <h2>
+      <img src="<%= @user.avatar.thumb.url %>" class="img-circle" alt="">
+  <% else %>
+    <h2>
+  <% end %>
+You have <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for rent</h2>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -33,4 +42,6 @@ has <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %> for 
 
 </tbody>
 </table>
+<br><h2 style="margin-left: 12REM"> Your rental history </h2>
 </div>
+

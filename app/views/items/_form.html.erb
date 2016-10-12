@@ -1,22 +1,24 @@
+<div class="row">
+    <div class="center-block col-md-4" style="float: none; padding-left: 4REM;"> 
 <%= form_for @item do |form| %>
 
 <div>
   <%= form.label :title %>
-  <%= form.text_field :title, placeholder: "Enter Title" %>
+  <%= form.text_field :title, placeholder: "Enter Title", class: "form-control form-control-lg"  %><br>
 
   <%= form.label :description %>
-  <%= form.text_field :description, placeholder: "Describe your good" %>
+  <%= form.text_field :description, placeholder: "Describe your good", class: "form-control form-control-lg" %><br>
 
 </div>
 
 <div class="control">
-  <%= form.label :price_per_day %>
-  <%= form.number_field :price_per_day, placeholder: "Enter desired price per day" %>
+  <%= form.label :price_per_day %><br>
+  <%= form.number_field :price_per_day, placeholder: "Enter desired price per day", class: "form-control form-control-lg" %><br>
 </div>
 
 <div class="field">
   <%= form.label :upload_image %><br />
-  <%= form.file_field :avatar %> 
+  <%= form.file_field :avatar %> <br>
 </div>
 
 
@@ -25,4 +27,6 @@
 </div>
 
 <% end %>
-
+<br><%= link_to "Delete this item", item_path(@item), method: :delete %>
+</div>
+</div>
