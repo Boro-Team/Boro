@@ -6,17 +6,18 @@
 
 <script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'></script>
 
+<div id="body_index">
 
-
-<%= form_tag("/users", method: "get") do %>
+<div class="form-inline"> <!-- id="flex_form" -->
+<%= form_tag("/users", method: "get", class:"input-group-addon") do %>
   <%= label_tag(:location, "Find users in:") %>
-	<input id="geo" type="text" placeholder="Type in an address" size="90" />
+	<input id="geo" class="form-control" type="text" placeholder="Type in an address" />
   <%= hidden_field_tag(:formatted_address) %>
   <%= label_tag(:range, "Within how many km:") %>
-  <%= text_field_tag(:range) %>
+  <%= select_tag("range", "<option>0</option><option>10</option><option>20</option><option>50</option><option>100</option>".html_safe,class:"form-control")%>
   <%= submit_tag("Search") %>
 <% end %>
-
+</div>
 
 <div> <!-- style='width: 800px;' -->
   <div id="search_map"></div> <!-- style='width: 800px; height: 400px;' -->
@@ -32,15 +33,17 @@
 	</hgroup>
 
     <section class="col-xs-12 col-sm-6 col-md-12">
+    <% @users.each do |u| %>
 		<article class="search-result row">
 			<div class="col-xs-12 col-sm-12 col-md-3">
-				<a href="#" title="Lorem ipsum" class="thumbnail"><img src="http://lorempixel.com/250/140/people" alt="Lorem ipsum" /></a>
+				<%= link_to image_tag(u.avatar.thumb.url, class: "img-circle") + "#{u.first_name} #{u.last_name}", user_path(u.id) %>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-2">
 				<ul class="meta-search">
-					<li><i class="glyphicon glyphicon-calendar"></i> <span>02/15/2014</span></li>
-					<li><i class="glyphicon glyphicon-time"></i> <span>4:28 pm</span></li>
-					<li><i class="glyphicon glyphicon-tags"></i> <span>People</span></li>
+					<li>
+					<i class="fa fa-calendar"></i>Joined on <span><%= u.created_at.strftime("%d %B %Y") %></span></li>
+					<li><i class="fa fa-time"></i>From <span><%= u.locality %></span></li>
+					<li><i class="fa fa-tags"></i>Has <span><%= u.items.count %> item<%= puts "s" if (u.items.count > 0) %> for rent</span></li>
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7 excerpet">
@@ -50,10 +53,10 @@
 			</div>
 			<span class="clearfix borda"></span>
 		</article>
-	
+		<% end %>
 	</section>
 </div>
-
+</div>
 
 <!-- END -->
 <script type="text/javascript">
