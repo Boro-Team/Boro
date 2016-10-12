@@ -29,54 +29,50 @@
   <meta name="apple-mobile-web-app-title" content="Boro">
   <meta name="application-name" content="Boro">
   <meta name="theme-color" content="#ffffff">
-  
-  
 </head>
 <body>
-
-
   <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        
-          <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a id="logo" class="navbar-brand" href="/"><span>b</span><span>o</span><span>r</span><span>o</span></a>
-    </div>
-
+    <nav class="navbar navbar-default navbar-fixed-top"> <!-- -->
+      <div class="container-fluid">        
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a id="logo" class="navbar-brand" href="/"><span>b</span><span>o</span><span>r</span><span>o</span></a>
+        </div>
         <!-- Added data-* and aria into #navbar -->
-        <div id="navbar" class="navbar-collapse collapsed" >
+        <div id="navbar" class="navbar-collapse collapsed col-lg-12" >
           <ul class="nav navbar-nav">
             <div class="nav navbar-nav navbar-left">
-              <li>
-                <a id="logo" class="navbar-brand" href="/">
-                  
-                </a>
+<!-- SEARCH BAR TEMPLATE -->
+              <li class="form-inline row col-lg-4" style="margin: 0;"> <!--id="search_items"-->
+                  <%= form_tag("/items", method: "get", class:"input-group-addon") do %>
+                  <%= text_field_tag(:term, params[:term], placeholder:"What are you looking for?" , style: "width: 300px", class: "form-control")%>
+                  <input id="geo" class="form-control" type="text" placeholder="Where are you looking?" />
+                  <%= hidden_field_tag(:formatted_address) %>
+                  <%= hidden_field_tag(:postal_code) %>
+                  <%= hidden_field_tag(:locality) %>
+                  <%= hidden_field_tag(:administrative_area_level_1) %>
+                  <%= hidden_field_tag(:country) %>
+    
+                  <%= submit_tag("Search", class: 'btn btn-primary') %>
+                  <% end %>      
               </li>
             </div>
-
-            <li>
-              <%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
-              <%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
-              <%= f.submit 'search', class: 'btn btn-primary' %>
-              <% end %>
-            </li>
-
-            <div id="navright" class="nav navbar-nav navbar-right"> 
+<!-- END -->
+            <div id="navright" class="nav navbar-nav navbar-right" style="margin: 0;"> 
               <li><a class="btn" href="/items">Local Rentables</a></li> 
               <li><a class="btn" href="/users">Users in the <span>b</span><span>o</span><span>r</span><span>o</span></a></li> 
               <li><a class="btn" href="/items/new">Rent Your Things!</a></li> 
 
-
                <!-- DROPDOWN MENU BELOW -->
-              <li class="dropdown">
+
               <% if signed_in? %>
+              <li class="dropdown">
                 <% if current_user.avatar.present? %>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.thumb.url, :class => "img-circle profile_pic" %></a>
                 <%else%>
@@ -90,21 +86,20 @@
                   <li><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></li>
                   <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
                 </ul>
-                </li>
-              <% else %>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt=""></span></a>
+              </li>
+              <% else %>             
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt="">
+              </a>
+
               <ul class="dropdown-menu">
                 <li style="color: white;"><a href="/users/sign_up">Sign Up</a></li>
                 <li style="color: white;"><a href="/users/sign_in">Log In</a></li>
                 <li style="color: white;"><a href="/users/auth/facebook">Login with Facebook</a></li>
               </ul>
-                            </li>
               <% end %>
-
-              </div>
-
+            </div>
           </ul>
-
         </div><!--/.nav-collapse -->
       </div>
     </nav>
