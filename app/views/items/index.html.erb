@@ -24,7 +24,7 @@
 	</div>
 		<% end %>
 	</div>
-</div>
+
 
 
 
@@ -37,7 +37,7 @@
 <% end %>
 <br>
 
-
+<div class = "container">
 <hgroup class="mb20 fluid-container">
 		<h1 class="col-lg-12" style="text-align: center; margin-top: 4.5rem;">Search Results</h1>
 		<% if @error.blank? %>
@@ -47,36 +47,40 @@
 		<% end %>					
 	</hgroup>
 
-  <section class="fluid-container"> <!--col-xs-12 col-sm-6 col-md-12-->
-		
-	<% @item.each do |i| %>
-		<article class="search-result row">
-			<div class="col-xs-12 col-sm-12 col-md-2">
-				<a><%= link_to image_tag(i.avatar.thumb.url), item_path(i.id) %></a>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-2">
-				<ul class="meta-search">
-					<li><i class="fa fa-money fa-2"></i><span style="font-size: 20px"> MYR<%= i.price_per_day %></span></li>
-					<li><i class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality if i.user.locality %></span></li>
-					<li><i class="fa fa-tag fa-1"></i> <span><%= i.tag_list.first %></span></li>
-					<li><i class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality %></span></li>
-				</ul>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-5 searchblock">
-				<h3><%= link_to "#{i.title}", item_path(i.id)  %></h3>
-				<p><%= truncate(i.description, length: 21) %></p>						
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-1 searchblock"><br><br>
-				<%= link_to "Boro", item_path(i.id), method: :get, :class => "btn-lg btn-success" %>
-			</div>
-			<span class="clearfix borda"></span>
-		</article>
-	<% end %>
 
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center;"><h3>Photo</h3></th>
+      <th style="text-align: center;"><h3></h3></th>
+      <th style="text-align: center;"><h3>Title</h3></th>
+      <th style="text-align: center;"><h3>Description</h3></th>
+      <th style="text-align: center;"><h3>Price (MYR)</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @item.each do |i|%>
+  <tr style="text-align: center;">
+    <td><%= link_to image_tag(i.avatar.thumb.url), item_path(i.id) %></td>
+        <td><ul class="meta-search">
+    					<li><i style="text-align: left;" class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality if i.user.locality %></span></li>
+    					<li><i style="text-align: left;" class="fa fa-tag fa-1"></i> <span><%= i.tag_list.first %></span></li>
+    				</ul>
+    		</td>
+    <td><a href="/items/<%= i.id %>"><h3><%= i.title %></h3></a></td>
+    
+    <td style="width: 40%;"><p><%= truncate(i.description, length: 160) %></p></td>
+    <td><h3>
+      <%= i.price_per_day %>
+    </h3></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
 
-	</section>
 
 
 <script type="text/javascript">
 buildMap(<%=raw @hash.to_json %>)
 </script>
+</div>
