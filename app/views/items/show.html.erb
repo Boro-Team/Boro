@@ -41,7 +41,7 @@
       <h2><%= @item.user.first_name %></h2>
       <% if @item.user.avatar.present? %>
         <span>
-        <img src="<%= @user.avatar.thumb.url %>" class="img-circle" alt="">
+        <img src="<%= @item.user.avatar.thumb.url %>" class="img-circle" alt="">
         </span>
       <% else %>
         <img class="avatar" src="http://placehold.it/64x64">
@@ -55,13 +55,16 @@
 
   </div>
 </div>
+ 
+  <% if @item.user==current_user %>
   <div>
 
   <!--   < % if @item.avatars.present? %>
   < % @item.avatars.each do |a| %> -->
   <!--       <img src="< %= a.large.url %>" alt=""> -->
+
   <%= link_to "Edit", edit_item_path(@item.id), method: :get %>
   <%= link_to "Delete", item_path(@item.id), method: :delete %>
 </div>
-
+<% end %>
 </div>
