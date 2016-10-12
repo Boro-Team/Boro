@@ -3,16 +3,40 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#search_items {
+	// display: flex;
+	justify-content: center;
+	// height: 10vh;
+	margin-top: 4rem;
+}
+
+#search_items > div > form > div > div > button,#basic-addon3, #search_items > div > form > div > span.input-group-btn > input  {
+	// height: 10vh;
+	border-radius: 0px;
+}
+
+#range { 
+border-color: transparent;
+background-color: transparent;
+border-radius: 0;
+}
+
+#search_map {
+	margin: 0 auto;
+	width: 80vw;
+	height: 34.7vw;
+	box-shadow: -10px 5px 0 0 lighten(#00d9c0, 30%),
+								-20px 10px 0 0 lighten(#ff4365, 30%),
+								-30px 20px 0 0 lighten(rgb(40, 96, 144),30%);
+	}
 
 body > div.container > div:nth-child(6) {
 	width: 55.5vw;
-
-
-	
 }
 
 
 tbody { 
+
 	tr { 
 		td {
 			text-align: center;

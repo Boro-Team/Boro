@@ -23,6 +23,7 @@
 @import "welcome";
 @import "drop-down-menu";
 
+
 $font-stack: "Open Sans", Helvetica;
 $title : "Comfortaa"; 
 
@@ -138,13 +139,6 @@ body > div.container > div:nth-child(6) {
 	text-align: center;
 }
 
-.col-sm-6{
-
-}
-
-.col-sm-3{
-	font-size: 18px;
-}
 
 #registration {
 	justify-content: center;
@@ -244,7 +238,8 @@ footer.footer-distributed {
 	i.fa.fa-user::before{ color: $pink;}
 }
 
-
+#search_map > div > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(1) > div {
+}
 
 .spaceit {
 
