@@ -4,8 +4,8 @@
     <div class="media">
       <div class="media-left">
         <!-- user avators can go here -->
-        <a href="<%= user_path(message.sender) %>">
-          <img class="media-object" src=<%= message.sender.avatar.thumb.url %> alt="...">
+        <a href="#">
+          <img class="media-object" src="http://placehold.it/64x64" alt="...">
         </a>
       </div>
       <div class="media-body">
@@ -14,7 +14,7 @@
           <small><b>Subject: </b><%= message.subject %></small><br>
           <small><b>Date: </b><%=  message.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
         </h4>
-        <b><%= message.body %></b>
+        <%= message.body %>
       </div>
     </div>
 <% end %>
