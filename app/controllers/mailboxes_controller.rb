@@ -11,8 +11,8 @@ class MailboxesController < ApplicationController
     @active = :sent
   end
 
-  def trash
-    @archive = mailbox.archive
+  def archive
+    @archive = mailbox.trash
     @active = :archive
   end
 end
