@@ -8,17 +8,7 @@ body > div.container > div:nth-child(6) {
 	width: 55.5vw;
 
 
-	#search_map {
-		width: 100vw;
-		height: 34.7vw;
-
-		box-shadow: -10px 5px 0 0 lighten(#00d9c0, 30%),
-								-20px 10px 0 0 lighten(#ff4365, 30%),
-								-30px 20px 0 0 lighten(rgb(40, 96, 144),30%);
-
-			div{
-			}
-	}
+	
 }
 
 
@@ -30,6 +20,17 @@ tbody {
 	}
 }
 
+#search_map {
+		width: 75vw;
+		height: 34.7vw;
+		margin: auto;
+		box-shadow: -10px 5px 0 0 lighten(#00d9c0, 30%),
+								-20px 10px 0 0 lighten(#ff4365, 30%),
+								-30px 20px 0 0 lighten(rgb(40, 96, 144),30%);
+
+			div{
+			}
+	}
 
 body > div.container > div:nth-child(6) {
 	// display: block;
