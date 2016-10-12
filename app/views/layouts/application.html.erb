@@ -6,7 +6,7 @@
   <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'drop-down-menu', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
-  <%= google_webfonts_init({google: ['Comfortaa','Open Sans']}) %>
+  <%= google_webfonts_init({google: ['Comfortaa']}) %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png">
@@ -34,56 +34,66 @@
 </head>
 <body>
 
-    <!-- Fixed navbar -->
+
+  <!-- Fixed navbar -->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         
+          <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a id="logo" class="navbar-brand" href="/"><span>b</span><span>o</span><span>r</span><span>o</span></a>
+    </div>
+
         <!-- Added data-* and aria into #navbar -->
-        <div id="navbar" class="navbar-collapse collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <div id="navbar" class="navbar-collapse collapsed" >
           <ul class="nav navbar-nav">
             <div class="nav navbar-nav navbar-left">
               <li>
-              	<a id="logo" class="navbar-brand" href="/">
-                	<span>b</span><span>o</span><span>r</span><span>o</span>
+                <a id="logo" class="navbar-brand" href="/">
+                  
                 </a>
               </li>
             </div>
 
             <li>
-            	<%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
-            	<%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
-           		<%= f.submit 'search', class: 'btn btn-primary' %>
-           		<% end %>
+              <%= form_for Item.new, method: :get, url: search_path, class: "navbar-form navbar-left" do |f| %>
+              <%= text_field_tag :term, params[:term], placeholder:"What are you looking for?" %>
+              <%= f.submit 'search', class: 'btn btn-primary' %>
+              <% end %>
             </li>
 
-	          <div id="navright" class="nav navbar-nav navbar-right"> 
-	            <li><a class="btn" href="/items">Local Rentables</a></li> 
-	            <li><a class="btn" href="/users">Users in the <span>b</span><span>o</span><span>r</span><span>o</span></a></li> 
-	            <li><a class="btn" href="/items/new">Rent Your Things!</a></li> 
+            <div id="navright" class="nav navbar-nav navbar-right"> 
+              <li><a class="btn" href="/items">Local Rentables</a></li> 
+              <li><a class="btn" href="/users">Users in the <span>b</span><span>o</span><span>r</span><span>o</span></a></li> 
+              <li><a class="btn" href="/items/new">Rent Your Things!</a></li> 
 
 
-	             <!-- DROPDOWN MENU BELOW -->
-	            <li class="dropdown">
-	            <% if signed_in? %>
-	            	<% if current_user.avatar.present? %>
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.thumb.url, :class => "img-circle profile_pic" %><span class="caret"></span></a>
+               <!-- DROPDOWN MENU BELOW -->
+              <li class="dropdown">
+              <% if signed_in? %>
+                <% if current_user.avatar.present? %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.thumb.url, :class => "img-circle profile_pic" %><span class="caret"></span></a>
               <%else%>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt=""><span class="caret"></span></a>
               <%end%>
-
-              <ul class="dropdown-menu">
-
-                <li><%= link_to "Messages", mailboxes_inbox_path %><span class="label label-danger message_block"><%=unread_messages_count%></span></li>
-
-                <li><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></li>
-                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
-            
-              <% else %>
-            <li><a href="/users/sign_up">Sign Up</a></li>
-            <li><a href="/users/sign_in">Log In</a></li>
-            <% end %>
-            
-            </div>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Messages", mailboxes_inbox_path %><span class="label label-danger message_block"><%=unread_messages_count%></span></li>
+                  <li><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></li>
+                  <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
+                </ul>
+              </li>
+                <% else %>
+              <li><a href="/users/sign_up">Sign Up</a></li>
+              <li><a href="/users/sign_in">Log In</a></li>
+              <% end %>
+              
+              </div>
 
           </ul>
 
@@ -95,8 +105,6 @@
 <% end %>
 
   <%= yield %>
-
-
 
   <!-- GOOGLE MAPS STATIC -->
 
@@ -199,5 +207,41 @@
     </script>
 
  <!-- GEOCOMPLETE END -->
+
+<!-- MODAL REGISTRATION -->
+
+<!-- <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Welcome to your Boro </h4>
+      </div>
+
+      <p class="modal-body">
+        < %= link_to new_user_registration_path, class: "button", id: "register_email", action: :new, method: :get do %>
+        <i class="fi-mail">Sign up with an email address</i>
+        < % end %>
+      </p>
+
+      <p>
+        < %= link_to user_facebook_omniauth_callback_path, class: "button", id:"register_fb" do %>
+        <i class="fi-social-facebook">Connect With Facebook</i>
+        < % end %>
+      </p>
+
+      <span id="register_already" class="lead">
+        I already have an account < %= link_to 'Log in', user_session_path, class: "button" %> 
+      </span>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 </body>
 </html>
