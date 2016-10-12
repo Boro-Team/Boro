@@ -2,6 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#body_index {
+	margin-top: 4.5rem;
+	width: 100%;
+}
+
+// #flex-form {
+// 	margin: 0 20rem;
+// }
+		form{
+			height: 100%;
+			display: flex;
+			// align-content:center;
+			justify-content: center;
+			align-items: stretch;
+			// margin-bottom: 100px;
+			input {
+				// border: 1px solid black;
+			}
+		}
+
+		#flex_form > form > label:nth-child(5) {
+			margin: 0 5px;
+		}
+
+		#geo {
+			text-indent: 3vw;
+		}
+
+		#search_map {
+			margin-top: 4.5rem;
+		}
+
+#range {
+	background-color: white;
+	border: 1px lightgray solid;
+}
+
+
+
 .avatar {
 	width: 50px;
 	height: 50px;
@@ -30,70 +69,46 @@ fieldset label { display: block; margin: 0.5em 0 0em; }
 fieldset input { width: 95%; }
 
 
-// REGISTRATION MODAL
-
-#registration {
-	color: dimgray;
-	width: 30vw;
-
--webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-
-	h1 { 
-		text-align: center;
-		margin-bottom: 5vh;
-	}
-
-	p {
-		position: relative;
-		text-align: center;
-		width: 100%;
-		border-radius: 0px;
-
-		a {
-			width: 100%;
-
-			i {
-				font-size: 1.3vw;
-				// color: red;
-
-				&:before {
-					text-align: left;
-					// margin-right: 1vw;
-					float: left;
-				}
-			}
-		}
-	}
+body > div.container.is-paddingless.is-clearfix > div:nth-child(2) > div > div.media {
+	border: green solid 10px;
+	height: 10vw;
+	width: 10vw;
+	filter: drop-shadow(16px 16px 10px rgba(0,0,0,0.9));
 }
 
-#register_email {
-	z-index: 1000;
-	background-color: white;
-	border-radius: 3px;
-	border-color: rgb(41, 159, 194);
-	i {
-		color: rgb(41, 159, 194);
-	}
+
+// USERS RESULTS FROM BOOTSNIPP
+
+.container { margin-top: 20px; }
+.mb20 { margin-bottom: 20px; } 
+
+hgroup { padding-left: 15px; border-bottom: 1px solid #ccc; }
+hgroup h1 { font: 500 normal 1.625em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin-top: 0; line-height: 1.15; }
+hgroup h2.lead { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; color: #2a3644; margin: 0; padding-bottom: 10px; }
+
+.search-result .thumbnail { border-radius: 0 !important; }
+.search-result:first-child { margin-top: 0 !important; }
+.search-result { margin-top: 20px; }
+.search-result .col-md-2 { border-right: 1px dotted #ccc; min-height: 140px; }
+.search-result ul { padding-left: 0 !important; list-style: none;  }
+.search-result ul li { font: 400 normal .85em "Roboto",Arial,Verdana,sans-serif;  line-height: 30px; }
+.search-result ul li i { padding-right: 5px; }
+.search-result .col-md-7 { position: relative; }
+.search-result h3 { font: 500 normal 1.375em "Roboto",Arial,Verdana,sans-serif; margin-top: 0 !important; margin-bottom: 10px !important; }
+.search-result h3 > a, .search-result i { color: #248dc1 !important; }
+.search-result p { font: normal normal 1.125em "Roboto",Arial,Verdana,sans-serif; } 
+.search-result span.plus { position: absolute; right: 0; top: 126px; }
+.search-result span.plus a { background-color: #248dc1; padding: 5px 5px 3px 5px; }
+.search-result span.plus a:hover { background-color: #414141; }
+.search-result span.plus a i { color: #fff !important; }
+.search-result span.border { display: block; width: 97%; margin: 0 15px; border-bottom: 1px dotted #ccc; }
+
+.img-circle {
+	clear: both;
+	border: 3px solid #248dc1;
+	margin: 0 1rem;
 }
 
-#register_fb {
-	z-index: 1000;
-	background-color: rgb(59, 89, 152);
-	border-radius: 3px;
-	border-color: rgb(59, 89, 152);
-	i {
-		color: white;
-	}	
-}
 
-#register_already {
-	float: right;
-	color: dimgray;
-	a {
-		background-color: rgb(74, 131, 28);
-		margin-left: 10px;
-	}
-}
+
 

@@ -29,13 +29,7 @@
     <td><%= i.description %></td>
     <td><%= i.price_per_day %> <b>MYR</b></td>
   </tr>
-<!-- < % if current_user.id != @user.user_id %> -->
 <% end %>
 
-<div>
 
-
-    <%= link_to "Edit", edit_user_path(@user.id), method: :get %>
-    <%= link_to "Delete", user_path(@user.id), method: :delete %>
-</div>
 

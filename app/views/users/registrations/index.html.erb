@@ -1,0 +1,42 @@
+<div class="container is-paddingless is-clearfix">
+<% @users.each do |u|%>
+<div class="card is-inline-flex">
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <% if u.avatar.present? %>
+        <img src="<%= u.avatar[0].large.url%>" alt=""> <!-- WILL BE l.photo when it is really populated -->
+      <% else %>
+        <img src="https://placeholdit.imgix.net/~text?txtsize=60&txt=640%C3%97480&w=640&h=480" alt="">  
+      <% end %>       
+    </figure>
+  </div>
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+      
+        <figure class="image is-32x32">
+    <% if u.avatar.present? %>            
+          <img src="<%= u.avatar[0].large.url%>" alt="Image">
+    <% else %>        
+          <img src="http://placekitten.com/32/32" alt="">
+    <% end %>          
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-5"><a href="/users/<%= u.id %>"><%= u.firstname %> <%= u.lastname %></a></p>
+      </div>
+    </div>
+
+    <div class="content">Intro text<br><a href="/users/<%= u.id %>">Owner's Profile</a>.<br>
+    <% if u.id == current_user.id %>
+      <a class="button is-warning" href="/users/<%= current_user.id %>/edit">EDIT</a>
+      <a class="button is-danger" href="#">DELETE</a>      
+    <% end %>
+      <a href="#">#travel</a> <a href="#">#dream</a>
+      <br>
+      <small>11:09 PM - 1 Jan 2016</small>
+    </div>
+  </div>
+</div>
+<%end%>
+</div>
