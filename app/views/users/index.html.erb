@@ -26,34 +26,35 @@
 <!-- USERS INDEX -->
 
 <div class="container">
-
   <hgroup class="mb20 fluid-container">
 			<h1 class="col-lg-12" style="text-align: center; margin-top: 4.5rem;">Search Results</h1>
-			<h2 class="lead"><strong class="text-danger">3</strong> Users were found for the search for <strong class="text-danger">USER</strong></h2>								
+			<h2 class="lead"><strong class="text-danger">@users.count</strong> Users were found								
 	</hgroup>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th style="text-align: center;"><h3>Name</h3></th>
+      <th style="text-align: center;"><h3>Member Since</h3></th>
+      <th style="text-align: center;"><h3>Lives in</h3></th>
+      <th style="text-align: center;"><h3>No. of items to Boro</h3></th>
 
-    <section class="col-xs-12 col-sm-6 col-md-12">
-    <% @users.each do |u| %>
-		<article class="row">
-		<div class="col-xs-12 col-sm-12 col-md-3"></div>
-			<div class="col-xs-12 col-sm-12 col-md-3">
-				<%= link_to image_tag(u.avatar.thumb.url, class: "img-circle") + "#{u.first_name} #{u.last_name}", user_path(u.id) %>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-2">
-				<ul class="meta-search">
-					<li>
-					<i class="fa fa-calendar"></i>Joined on <span><%= u.created_at.strftime("%d %B %Y") %></span></li>
-					<li><i class="fa fa-time"></i>From <span><%= u.locality %></span></li>
-					<li><i class="fa fa-tags"></i>Has <span><%= u.items.count %> item<%= "s" unless (u.items.count == 1) %> for rent</span></li>
-				</ul>
-			</div>
-	
-			<span class="clearfix borda"></span>
-		</article>
-		<hr>
-		<% end %>
-	</section>
-</div>
+    </tr>
+  </thead>
+  <tbody>
+<% @users.each do |u|%>
+  <tr style="text-align: center;">
+    <td style="text-align: left;><%= link_to image_tag(u.avatar.thumb.url, class: "img-circle") + "#{u.first_name} #{u.last_name}", user_path(u.id) %></td>
+    <td><i class="fa fa-calendar"></i><span><%= u.created_at.strftime("%d %B %Y") %></span></li></td>
+    <td>	<i class="fa fa-location-arrow fa-1"></i><span><%= u.locality %></span></li>
+		</td>
+    <td><i class="fa fa-tags"></i><span><%= u.items.count %> item<%= "s" unless (u.items.count == 1) %></span></td>
+
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+
 </div>
 
 <!-- END -->
