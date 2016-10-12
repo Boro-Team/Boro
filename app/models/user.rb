@@ -61,5 +61,23 @@ class User < ActiveRecord::Base
     end
   end
 
+  acts_as_messageable
+
+  def full_name
+  if first_name.present?
+    [*first_name.capitalize, last_name.capitalize].join(" ")
+  else 
+    test full name
+  end    
+end
+
+  def mailboxer_name
+    self.full_name
+  end
+
+  def mailboxer_email(object)
+    self.email
+  end
+
 end
 

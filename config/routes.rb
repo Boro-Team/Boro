@@ -17,6 +17,20 @@ Rails.application.routes.draw do
    get "/items/tags/:tag_id" => "items#tag", as: "tags"
    get '/search', to: 'items#search'
 
+  # mailbox folder routes
+  get "mailboxes/inbox" => "mailboxes#inbox", as: :mailboxes_inbox
+  get "mailboxes/sent" => "mailboxes#sent", as: :mailboxes_sent
+  get "mailboxes/archive" => "mailboxes#archive", as: :mailboxes_archive
+
+  # conversations
+  resources :conversations do
+    member do
+      post :reply
+      post :archive
+      post :unarchive
+    end
+  end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
