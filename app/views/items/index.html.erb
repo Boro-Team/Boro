@@ -57,7 +57,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-2">
 				<ul class="meta-search">
 					<li><i class="fa fa-money fa-2"></i><span style="font-size: 20px"> MYR<%= i.price_per_day %></span></li>
-					<li><i class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality %></span></li>
+					<li><i class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality if i.user.locality %></span></li>
 					<li><i class="fa fa-tag fa-1"></i> <span><%= i.tag_list.first %></span></li>
 					<li><i class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality %></span></li>
 				</ul>
