@@ -37,7 +37,9 @@ body {
 	// display: flex;
 	font-family: $font-stack;
 	color: $black;
-	background-color: white; 	
+	background-color: #FFFFF3;
+	/*background-color: lighten($green, 40%); 	*/
+	/*background-color: darken($gray, 50%);*/
 	padding-top: 7.5rem;
 
 	.container-fluid{
@@ -52,6 +54,8 @@ body {
 	#logo { 
 		font-family: $title;
 		margin-top: -0.5rem;
+		font-size: 30px;
+		margin-top: 3px;
 		span:nth-child(1) { color: $green;}
 		span:nth-child(2) { color: $pink;}
 		span:nth-child(3){ color: darken($gray, 50%);}
@@ -107,7 +111,8 @@ body > div.container > div:nth-child(6) {
 }
 
 .hero_container {
-	padding-top: 30px;
+	/*padding-top: 30px;*/
+	margin-top: -35px;
 	padding-bottom:420px;
 	background-color:lightblue;
 
@@ -126,14 +131,15 @@ body > div.container > div:nth-child(6) {
 }
 
 .titles {
-	background-color: #FFFFF3;
+	background-color: rgba(255, 255, 0, 0.5);
 	color: #030301;
 	font-family:Helvetica; 
 	text-align: center;
 }
 
 .sets {
-	background-color: lighten(#B7AD99, 20%);
+	/*background-color: ;*/
+	background-color: #FFFFF3;
 	color: #030301;
 	font-family:Helvetica; 
 	text-align: center;
@@ -241,10 +247,7 @@ footer.footer-distributed {
 #search_map > div > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(1) > div {
 }
 
-.spaceit {
 
-	background-color: lighten(rgb(40, 96, 144),30%);
-}
 
 #motto > h1 > span:nth-child(1),
 #motto > h1 > span:nth-child(2) {
@@ -296,4 +299,25 @@ body > nav:after {
  
 .set-pic:hover {
   filter: saturate(10%)
+}
+
+.set-title {
+  font-size: 26px;
+  font-family: $title;
+}
+.set-subtitle {
+  font-size: 18px;
+  font-family: $title;
+}
+
+#main-title{
+	background-color: rgba(255, 255, 0, 0.2);
+/*	padding-top:280px;*/
+	color: #FFFFF3;
+	font-size: 40px;
+	height: 90px;
+}
+
+.footer-color{
+	background-color: rgba(255, 255, 0, 0.5);
 }
