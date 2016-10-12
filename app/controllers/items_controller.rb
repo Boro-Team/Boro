@@ -64,6 +64,7 @@ before_action :set_item, only: [:update, :edit, :destroy]
 
 
       @nb_pages_needed = items.count / items_per_page
+      @nb_pages_needed+=1 if items.count / items_per_page > 0
       if params[:tag]
         @item=[]
         items.each do |i|

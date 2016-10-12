@@ -77,7 +77,11 @@
 <% end %>
 </tbody>
 </table>
-
+Go to page:  
+  <% (1..@nb_pages_needed).each do |page| %>
+    <%= link_to page, controller: 'items', action: 'index', page: page %>
+  <% end %>
+<br><br><br>
 
 
 <script type="text/javascript">
