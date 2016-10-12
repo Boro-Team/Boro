@@ -78,21 +78,29 @@
               <li class="dropdown">
               <% if signed_in? %>
                 <% if current_user.avatar.present? %>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.thumb.url, :class => "img-circle profile_pic" %><span class="caret"></span></a>
-              <%else%>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt=""><span class="caret"></span></a>
-              <%end%>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag current_user.avatar.thumb.url, :class => "img-circle profile_pic" %></a>
+                <%else%>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt=""></span></a>
+                <%end%>
                 <ul class="dropdown-menu">
-                  <li><%= link_to "Messages", mailboxes_inbox_path %><span class="label label-danger message_block"><%=unread_messages_count%></span></li>
+                  <li>
+                    <%= link_to "Messages", mailboxes_inbox_path %>
+                    <span class="label label-danger message_block"><%=unread_messages_count%></span>
+                  </li>
                   <li><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></li>
                   <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
                 </ul>
-              </li>
-                <% else %>
-              <li><a href="/users/sign_up">Sign Up</a></li>
-              <li><a href="/users/sign_in">Log In</a></li>
+                </li>
+              <% else %>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt=""></span></a>
+              <ul class="dropdown-menu">
+                <li style="color: white;"><a href="/users/sign_up">Sign Up</a></li>
+                <li style="color: white;"><a href="/users/sign_in">Log In</a></li>
+                <li style="color: white;"><a href="/users/auth/facebook">Login with Facebook</a></li>
+              </ul>
+                            </li>
               <% end %>
-              
+
               </div>
 
           </ul>

@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :locality, presence: true
+  # validates :locality, presence: true
   geocoded_by :location
   after_validation :geocode 
   
