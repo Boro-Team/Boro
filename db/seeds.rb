@@ -52,4 +52,3 @@ for r in (1..30)
 								:total_price => tot )
 end
 
-

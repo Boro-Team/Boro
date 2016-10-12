@@ -33,10 +33,11 @@ $green	: #00d9c0;
 $gray		: #fffff3;
 
 body {
-	display: flex;
+	// display: flex;
 	font-family: $font-stack;
 	color: $black;
-	background-color: lighten($gray, 2%); 	
+	background-color: white; 	
+	padding-top: 4.5rem;
 
 	.container-fluid{
 		display: flex;
@@ -48,6 +49,7 @@ body {
 }
 
 	#logo { 
+		font-family: $title;
 		margin-top: -0.5rem;
 		span:nth-child(1) { color: $green;}
 		span:nth-child(2) { color: $pink;}
@@ -55,10 +57,7 @@ body {
 		span:nth-child(4){ color: white; }
 	}
 
-#navright > li:nth-child(2) > a > span:nth-child(1){ color: $green;}
-#navright > li:nth-child(2) > a > span:nth-child(2){ color: $pink;}
-#navright > li:nth-child(2) > a > span:nth-child(3) { color: darken($gray, 50%);}
-#navright > li:nth-child(2) > a > span:nth-child(4) { color: white; }
+
 
 	#new_item > input.btn.btn-primary {
 		border-radius: 0px;
@@ -106,6 +105,47 @@ body > div.container > div:nth-child(6) {
   // right: 30px
 }
 
+.hero_container {
+	padding-top: 30px;
+	padding-bottom:420px;
+	background-color:lightblue;
+
+	color:white;
+	font-size: 18px;
+
+	background: url(https://static.pexels.com/photos/34692/pexels-photo.jpg) no-repeat center center;
+  background-size: cover;
+	filter: saturate(100%);
+
+	text-align: center;
+	height: 600px;
+	font-family:Helvetica; 
+	width: 100%;
+	z-index: 1000;
+}
+
+.titles {
+	background-color: #FFFFF3;
+	color: #030301;
+	font-family:Helvetica; 
+	text-align: center;
+}
+
+.sets {
+	background-color: lighten(#B7AD99, 20%);
+	color: #030301;
+	font-family:Helvetica; 
+	text-align: center;
+}
+
+.col-sm-6{
+	font-size: 26px;
+}
+
+.col-sm-3{
+	font-size: 18px;
+}
+
 #registration {
 	justify-content: center;
 	display: flex;
@@ -127,24 +167,16 @@ body > div.container > div:nth-child(6) {
 	}
 }
 
-
-#navright {
-	display: flex;
-	flex-wrap: nowrap;
-	justify-content: flex-end;
-	margin-left: 50rem;
-}
-
-body{
-	padding-top:75px;
-}
-
 .invisible_span {
 	display: none;
 }
 
 body > nav > div {
 	font-family: "Comfortaa";	
+}
+
+.navbar{
+	background-color: lighten(#B7AD99, 20%);
 }
 
 .profile_pic {	
@@ -165,9 +197,9 @@ body > nav > div {
 	}
 }
 
-#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(1) > a { color: lighten($pink,20%); }
-#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(2) > a { color: darken($gray, 10%); }
-#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(3) > a { color: lighten(rgb(40, 96, 144),40%); }
+#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(1) > a:hover { color: lighten($pink,20%); }
+#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(2) > a:hover { color: darken($gray, 10%); }
+#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(3) > a:hover { color: lighten(rgb(40, 96, 144),40%); }
 
 #navbar > ul > li {
 	padding-top: 0.5625rem;
@@ -216,22 +248,6 @@ footer.footer-distributed {
 	background-color: red;
 }
 
-#rent{ 
-	color: darken($gray, 50%); 
-}
-
-#neighbours{
-	color: $pink;
-}
-
-#makemoney{
-	color: $green;
-}
-
-#youown{
-	color: white;
-}
-
 .spaceit {
 
 	background-color: lighten(rgb(40, 96, 144),30%);
@@ -252,9 +268,32 @@ footer.footer-distributed {
 }
 
 
-		
+#navright > li:nth-child(1),
+#navright > li:nth-child(2),
+#navright > li:nth-child(3) {
+	color: white;
+}
+
+#navright > li:nth-child(2) > a > span:nth-child(1){ color: $green;}
+#navright > li:nth-child(2) > a > span:nth-child(2){ color: $pink;}
+#navright > li:nth-child(2) > a > span:nth-child(3) { color: darken($gray, 50%);}
+#navright > li:nth-child(2) > a > span:nth-child(4) { color: white; }
+
+#navright {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+	margin-left: 50rem;
+
+	font-family: $title;
+	color: white;
+}
+
+body > nav:after {
+	border-bottom: 1px solid black;
+}
 
 		
 
-
+		
 
