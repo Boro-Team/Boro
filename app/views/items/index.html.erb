@@ -45,7 +45,7 @@
 					<h2 class="lead"><strong class="text-danger"><%= @item.count %></strong> results were found for the search for <strong class="text-danger"><%= params[:term] %></strong></h2>
 			
 			<% else %>
-			<h2 class="lead"><strong class="text-danger"><%= @error.first %></strong></h2>
+			<h2 class="lead"><strong class="text-danger"><%= @error.first %></h2>
 		<% end %>					
 	</hgroup>
 
@@ -61,7 +61,7 @@
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-2">
 				<ul class="meta-search">
-					<li><i class="fa fa-money fa-2"></i><span style="font-size: 20px"> MYR<%= i.price_per_day %></span></li>
+					<li><i class="fa fa-money fa-2"></i><span style="font-size: 20px"> $<%= i.price_per_day %></span></li>
 					<li><i class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality %></span></li>
 					<li><i class="fa fa-tag fa-1"></i> <span><%= i.tag_list.first %></span></li>
 					<li><i class="fa fa-location-arrow fa-1"></i> <span><%= i.user.locality %></span></li>
@@ -70,8 +70,9 @@
 			<div class="col-xs-12 col-sm-12 col-md-5 searchblock">
 				<h3><%= link_to "#{i.title}", item_path(i.id)  %></h3>
 				<p><%= truncate(i.description, length: 21) %></p>						
+                <span class="plus"><a href="#" title="Lorem ipsum"><i class="glyphicon glyphicon-plus"></i></a></span>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-1 searchblock"><br><br>
+			<div class="col-xs-12 col-sm-12 col-md-1 searchblock">
 				<%= link_to "Boro", item_path(i.id), method: :get, :class => "btn-lg btn-success" %>
 			</div>
 			<span class="clearfix borda"></span>
