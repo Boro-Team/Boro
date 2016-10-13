@@ -1,3 +1,4 @@
+<div class="container">
 <h3>Your Rental has been accepted and registered !</h3>
 
     <p>Item name: <%= link_to @rental.item.title, item_path(@rental.item) %></p>
@@ -5,7 +6,7 @@
     <p>From: <%= @rental.start_date %></p>
 
     <p>To: <%= @rental.end_date %></p>
-
+</div>
 <!--     <strong>Payment Status:</strong>
       < % if (! @rental.payments) || (@rental.payments.where(status: :authorized).count == 0)  %>
       <span class="button is-primary"> NOT PAID </span>
