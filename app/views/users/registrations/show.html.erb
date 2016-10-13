@@ -70,7 +70,7 @@ You have <%= @user.items.count %> item<%= "s" unless (@user.items.count == 1) %>
   <tbody>
 <% @user.rentals.each do |i|%>
   <tr style="text-align: center;">
-    <td><a href="/items/<%= i.id %>"><h3><%= i.item.title %></h3></a></td>
+    <td><a href="/items/<%= i.item.id %>"><h3><%= i.item.title %></h3></a></td>
     <td><h3><%= i.start_date %></h3></td>
     <td><h3><%= i.end_date %></h3></td>
     <td><h3>
