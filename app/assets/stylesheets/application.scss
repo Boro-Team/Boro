@@ -191,6 +191,7 @@ body > nav > div {
 }
 
 .profile_pic {  
+  position: static;
   width: 7rem;
   height:7rem;
   border: 5px solid $black;
@@ -442,12 +443,6 @@ body > nav {
   width: 100%;
 
   background-color: transparent;
-}
-
-#custom-bootstrap-menu > div > div.collapse.navbar-collapse.navbar-menubuilder > ul > li.dropdown.open {
-  position: fixed;
-  top: 1rem;
-  right: 4rem;
 }
 
 
