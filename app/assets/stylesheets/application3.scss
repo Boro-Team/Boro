@@ -1,0 +1,371 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require bootstrap-datepicker
+ */
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-datepicker";
+@import "items";
+@import "rentals";
+@import "users";
+@import "welcome";
+@import "drop-down-menu"; 
+
+
+$font-stack: "Open Sans", Helvetica;
+$title : "Comfortaa"; 
+
+$beige	: #b7ad99;
+$pink		: #ff4365;
+$black	: #030301;
+$green	: #00d9c0;
+$gray		: #fffff3;
+
+body {
+	// display: flex;
+	font-family: $font-stack;
+	color: $black;
+	background-color: #FFFFF3;
+	/*background-color: lighten($green, 40%); 	*/
+	/*background-color: darken($gray, 50%);*/
+	padding-top: 7.5rem;
+
+	.container-fluid{
+		display: flex;
+		border-sizing: border-box;
+	}
+
+	#navbar > ul {
+	margin-top: 0.6rem;
+}
+
+	#logo { 
+		font-family: $title;
+		margin-top: -0.5rem;
+		font-size: 30px;
+		margin-top: 3px;
+		span:nth-child(1) { color: $green;}
+		span:nth-child(2) { color: $pink;}
+		span:nth-child(3){ color: darken($gray, 50%);}
+		span:nth-child(4){ color: white; }
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $title;
+	}
+
+	input, form, a {
+		font-family: $font-stack;
+	}
+
+	nav.navbar-default { 
+		background-color: darken($beige, 78%);
+		a.btn {
+			color: lighten($green, 70%);
+		}
+	}
+}
+
+body > div.container > div:nth-child(6) {
+	display: flex;
+}
+
+
+// #navright > li.dropdown > a {
+// 	float: right;
+// 	top: -20px;
+// }
+
+
+
+// #navbar > ul > div.nav.navbar-nav.navbar-right {
+// 	// display: flex;
+// 	// justify-content: flex-end;
+// 	// position: absolute;
+// 	float: right !important;
+//   // right: 30px
+// }
+
+// .hero_container {
+// 	/*padding-top: 30px;*/
+// 	margin-top: -35px;
+// 	padding-bottom:420px;
+// 	background-color:lightblue;
+
+// 	color:white;
+// 	font-size: 18px;
+
+// 	background: url(https://static.pexels.com/photos/34692/pexels-photo.jpg) no-repeat center center;
+//   background-size: cover;
+// 	filter: saturate(100%);
+
+// 	text-align: center;
+// 	height: 600px;
+// 	font-family:Helvetica; 
+// 	width: 100%;
+// 	z-index: 1000;
+// }
+
+// .titles {
+// 	background-color: rgba(255, 255, 0, 0.5);
+// 	color: #030301;
+// 	font-family:Helvetica; 
+// 	text-align: center;
+// }
+
+.sets {
+	/*background-color: ;*/
+	background-color: #FFFFF3;
+	color: #030301;
+	font-family:Helvetica; 
+	text-align: center;
+}
+
+
+#registration {
+	justify-content: center;
+	display: flex;
+	max-width: 30vw;
+	max-height: 40vh;
+	text-align: center;
+	margin: 0;
+}
+
+#register_already:before {
+	font-size: 5vh;
+	content:'\2709';
+}
+
+#register_already { 
+	a {
+	text-align: center;
+	max-width: 5vw;
+	}
+}
+
+.invisible_span {
+	display: none;
+}
+
+body > nav > div {
+	font-family: "Comfortaa";	
+	height: 4rem;
+}
+
+.navbar{
+	background-color: lighten(#B7AD99, 20%);
+}
+
+.profile_pic {	
+  width: 7rem;
+  height:7rem;
+  border: 5px solid $black;
+  border-radius: 50%;
+  filter: saturate(300%)
+}
+
+#navbar > ul > div.nav.navbar-nav.navbar-right > li.dropdown.open > a {
+	background-color: transparent;
+}
+#navbar > ul > div.nav.navbar-nav.navbar-right > li.dropdown.open > ul > li:nth-child(1) > a,
+#navbar > ul > div.nav.navbar-nav.navbar-right > li.dropdown.open > ul > li:nth-child(2) > a {
+	&:hover {
+		background-color: darken($gray, 10%);
+	}
+}
+
+#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(1) > a:hover { color: lighten($pink,20%); }
+#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(2) > a:hover { color: darken($gray, 10%); }
+#navbar > ul > div.nav.navbar-nav.navbar-right > li:nth-child(3) > a:hover { color: lighten(rgb(40, 96, 144),40%); }
+
+#navbar > ul > li {
+	padding-top: 0.5625rem;
+}
+
+footer.footer-distributed {
+	display: flex;
+	margin-left: 2vw;
+	margin-right: 2vw;
+	margin-top: 10vh;
+	margin-bottom: 5vh;
+	text-align: center;
+	justify-content: center;
+
+	h2 {
+		font-size: 4vh;
+		font-family: $font-stack;
+		color: lighten($black,30%);
+	}
+
+	p {
+		color: #030301;
+		width: 18vw;
+		font-size: 1vh;
+		margin: 0 5vw;
+	}
+
+	i {
+		font-size: 7vh;
+		margin-bottom: 5vh;
+		background-color: transparent;
+		filter: drop-shadow(3px 3px 1px rgba(0,0,0,.5));
+	}
+
+	i.fa.fa-wrench::before { 
+		color: lighten(rgb(40, 96, 144),30%); 
+
+	}
+	i.fa.fa-money::before {	
+		color: #00d9c0; 
+	}
+	i.fa.fa-user::before{ color: $pink;}
+}
+
+#search_map > div > div > div:nth-child(1) > div:nth-child(4) > div:nth-child(3) > div:nth-child(1) > div {
+}
+
+
+
+#motto > h1 > span:nth-child(1),
+#motto > h1 > span:nth-child(2) {
+	padding: 0 5px;	
+	line-height: 50px;
+}
+
+#motto > h1 > span:nth-child(1) {
+	z-index: 10;
+}
+#motto > h1 > span:nth-child(2) {
+	z-index: 5;
+	padding: 0 5px;		
+}
+
+
+#navright > li:nth-child(1),
+#navright > li:nth-child(2),
+#navright > li:nth-child(3) {
+	color: white;
+}
+
+#navright > li:nth-child(2) > a > span:nth-child(1){ color: $green;}
+#navright > li:nth-child(2) > a > span:nth-child(2){ color: $pink;}
+#navright > li:nth-child(2) > a > span:nth-child(3) { color: darken($gray, 50%);}
+#navright > li:nth-child(2) > a > span:nth-child(4) { color: white; }
+
+// #navright {
+// 	display: flex;
+// 	flex-wrap: nowrap;
+// 	justify-content: flex-end;
+// 	margin-left: 50rem;
+
+// 	font-family: $title;
+// 	color: white;
+// }
+
+
+
+.set-pic{
+	height: 200px;
+	width: 260px;
+	border: 3px solid;
+	border-color: $black;
+	filter: saturate(100%)
+}
+ 
+.set-pic:hover {
+  filter: saturate(10%)
+}
+
+.set-title {
+  font-size: 26px;
+  font-family: $title;
+}
+.set-subtitle {
+  font-size: 18px;
+  font-family: $title;
+}
+
+#main-title{
+	background-color: rgba(255, 255, 0, 0.2);
+/*	padding-top:280px;*/
+	color: #FFFFF3;
+	font-size: 40px;
+	height: 90px;
+}
+
+
+.new-item-title{
+	background-color: rgba(255, 255, 0, 0.5);
+	text-align: center;
+/*	padding-top:280px;*/
+	/*color: #FFFFF3;*/
+	/*font-size: 40px;*/
+	/*height: 90px;*/
+}
+
+.footer-color{
+	background-color: rgba(255, 255, 0, 0.5);
+}
+
+#dat {
+	visibility: hidden;
+}
+
+
+
+
+// body > nav {
+// 	padding-bottom: 1.5rem;
+// 		border-bottom: 1px solid black;
+// }
+
+// #navbar > ul > div.nav.navbar-nav.navbar-left {
+// 	width: 50%;
+// 	display: inline;
+// 	margin: 0;
+// 	background-color: transparent;
+// }
+
+// #navright > a {
+// 	width: 3.25rem;
+// 	height: 3.25rem;
+// 	display: inline;
+// }
+
+// #navbar > ul > div.nav.navbar-nav.navbar-left > li > form {
+// 	background-color: transparent;
+// 	border: none;
+// }
+
+// #dd {
+// 	top: 3.125rem;
+// }
+
+// #navright > li.dropdown.open > ul > li:nth-child(3) > a {
+// 	&:hover{
+// 		background-color: #3b5998;
+// 		color: #f7f7f7;
+// 	}
+// }
+
+// #p_p_d {
+// 	font-family: "Comfortaa";
+// }
+
+.new-item-title{
+    background-color: rgba(255, 255, 0, 0.5);
+    text-align: center;
+}
+

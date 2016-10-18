@@ -2,7 +2,7 @@
 <html>
 <head>
    <title>bORO</title>
-   <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+   <%= javascript_include_tag '//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js' %>
   <%= stylesheet_link_tag 'bootstrap', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'drop-down-menu', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
@@ -28,33 +28,32 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js'></script>
   <script src="https://use.fontawesome.com/61b8a9195a.js"></script>
+  <script>document.write('<script src="http://' + (location.host || '${1:localhost}').split(':')[0] + ':${2:35729}/livereload.js?snipver=1"></' + 'script>')</script>
   <meta name="apple-mobile-web-app-title" content="Boro">
   <meta name="application-name" content="Boro">
   <meta name="theme-color" content="#ffffff">
-</head>
+</head> <!-- head -->
 <body>
   <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top"> <!-- -->
-      <div class="container-fluid">        
-        <!-- Brand and toggle get grouped for better mobile display -->
+    <div id="custom-bootstrap-menu" class="navbar navbar-default " role="navigation">
+    <div class="container-fluid row">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <a id="logo" class="navbar-brand" href="/"><span>b</span><span>o</span><span>r</span><span>o</span></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+          <span class="sr-only">
+            Toggle navigation
+          </span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+            </button>
         </div>
-        <!-- Added data-* and aria into #navbar -->
-        <div id="navbar" class="navbar-collapse collapsed col-lg-12" >
-          <ul class="nav navbar-nav">
-            <div class="nav navbar-nav navbar-left">
-<!-- SEARCH BAR TEMPLATE -->
-              <li class="form-inline row col-lg-4" style="margin: 0;"> <!--id="search_items"-->
-                  <%= form_tag("/items", method: "get", class:"input-group-addon") do %>
-                  <%= text_field_tag(:term, params[:term], placeholder:"What are you looking for?" , style: "width: 300px", class: "form-control")%>
-                  <input id="geo" class="form-control" type="text" placeholder="Where are you looking?" />
+        <div class="collapse navbar-collapse navbar-menubuilder">
+            <ul class="nav navbar-nav navbar-left">
+                <li>
+                  <%= form_tag("/items", method: "get", class:"input-group-addon form-inline",id:"geo") do %>
+                  <%= text_field_tag(:term, params[:term], placeholder:"What are you looking for?" , class: "form-control")%>
+                  <input class="form-control" type="text" placeholder="Where are you looking?" />
                   <%= hidden_field_tag(:formatted_address) %>
                   <%= hidden_field_tag(:postal_code) %>
                   <%= hidden_field_tag(:locality) %>
@@ -62,22 +61,16 @@
                   <%= hidden_field_tag(:country) %>
     
                   <%= submit_tag("Search", class: 'btn btn-primary') %>
-                  <% end %>      
-              </li>
-            </div>
-<!-- END -->
-            <div id="navright" class="nav navbar-nav navbar-right" style="margin: 0;"> 
-              <li><a class="btn" href="/items">Local Rentables</a></li> 
-              <li><a class="btn" href="/users">Users in the <span>b</span><span>o</span><span>r</span><span>o</span></a></li> 
-              <li><a class="btn" href="/items/new">Rent Your Things!</a></li> 
-
-               <!-- DROPDOWN MENU BELOW -->
-
+                  <% end %>    
+                </li>
+                <li><a href="/items">Local Rentables</a></li> 
+                <li><a href="/users">Users in the <span class="boro_name"><span>b</span><span>o</span><span>r</span><span>o</span></span></a></li> 
+                <li><a href="/items/new">Rent Your Things!</a></li> 
               <% if signed_in? %>
-              <li class="dropdown">
+              <li class="dropdown" style="float: right;">
                 <% if current_user.avatar.present? %>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <%= image_tag current_user.avatar.thumb.url, :class => "img-circle profile_pic" %>
+                <a href="#" class="dropdown-toggle visible-md-*" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <%= image_tag current_user.avatar.thumb.url, :class => "img-circle" %>
                 </a>
                 <%else%>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -97,7 +90,7 @@
               <% else %>             
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <img class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt="">
+                  <img id="avatar" class="img-circle profile_pic" src="https://placeholdit.imgix.net/~text?txtsize=8&txt=64%C3%9764&w=64&h=64" alt="">
                 </a>              
                 <ul class="dropdown-menu">
                   <li style="color: white;"><a href="/users/sign_up">Sign Up</a></li>
@@ -106,11 +99,11 @@
                 </ul>
               </li>
               <% end %>
-            </div>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+
+            </ul>
+        </div>
+    </div>
+</div>
 <% flash.each do |key, value| %>
   <%= content_tag :div, value, class: "flash #{key}" %>
 <% end %>
@@ -218,41 +211,6 @@
     </script>
 
  <!-- GEOCOMPLETE END -->
-
-<!-- MODAL REGISTRATION -->
-
-<!-- <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Welcome to your Boro </h4>
-      </div>
-
-      <p class="modal-body">
-        < %= link_to new_user_registration_path, class: "button", id: "register_email", action: :new, method: :get do %>
-        <i class="fi-mail">Sign up with an email address</i>
-        < % end %>
-      </p>
-
-      <p>
-        < %= link_to user_facebook_omniauth_callback_path, class: "button", id:"register_fb" do %>
-        <i class="fi-social-facebook">Connect With Facebook</i>
-        < % end %>
-      </p>
-
-      <span id="register_already" class="lead">
-        I already have an account < %= link_to 'Log in', user_session_path, class: "button" %> 
-      </span>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 </body>
 </html>

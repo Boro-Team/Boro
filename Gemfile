@@ -48,6 +48,8 @@ gem 'google-webfonts-rails'
 
 gem 'acts-as-taggable-on', '~> 4.0'
 
+gem 'slim-rails'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

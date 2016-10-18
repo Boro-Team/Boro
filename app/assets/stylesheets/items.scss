@@ -2,7 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+	#new_item > input.btn.btn-primary {
+		border-radius: 0px;
+		border: 1px solid rgb(40, 96, 144);
+	}
+#new_item {
+	width: 31.25rem;
+	// margin-top: 0.8rem;
+	margin-right: 0;
+}
 #search_items {
 	// display: flex;
 	justify-content: center;
