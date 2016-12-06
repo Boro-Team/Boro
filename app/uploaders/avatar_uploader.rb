@@ -3,7 +3,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  storage :fog
+  # storage :fog
+  storage :aws
   
   version :large do
     process resize_to_limit: [800, 800]
