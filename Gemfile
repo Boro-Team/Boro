@@ -39,6 +39,7 @@ gem 'omniauth-facebook'
 
 gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 gem 'mini_magick'
+gem "fog-aws"
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
