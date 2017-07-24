@@ -11,6 +11,54 @@
  html, body, ul {
  	display: block;
  	color: black;
-
  }
+
+ // HERO CONTAINER  
+.hero_container {
+  margin-top: -2.43vw;
+  background-color:lightblue;
+
+  color:white;
+  font-size: 18px;
+
+  background: url(https://static.pexels.com/photos/34692/pexels-photo.jpg) no-repeat center center;
+  background-size: cover;
+  filter: saturate(100%);
+  filter: hue-rotate(20deg);
+
+  text-align: center;
+  height: 600px;
+  font-family:Helvetica; 
+  width: 100%;
+  
+  	.navigation {
+  		#main-title {
+  			border: 3px white solid;
+  			border-radius: 10px;
+  			background-color: rgba(255,255,255,0.2);
+
+  			width: 50%;
+
+  			margin: 0 auto;
+  			padding-bottom: 2vh;
+
+
+  		}
+  	}
+  } //hero container
+
+  .titles {
+  background-color: lighten(#ffff00, 25%);
+  color: #030301;
+  font-family:Helvetica; 
+  text-align: center;
+  } //titles
+
+  .sets {
+  /*background-color: ;*/
+  background-color: #FFFFF3;
+  color: #030301;
+  font-family:Helvetica; 
+  text-align: center;
+}
 

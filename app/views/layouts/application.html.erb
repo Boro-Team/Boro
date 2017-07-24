@@ -34,26 +34,20 @@
 </head>
 <body>
   <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top"> <!-- -->
-      <div class="container-fluid">        
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a id="logo" class="navbar-brand" href="/"><span>b</span><span>o</span><span>r</span><span>o</span></a>
+  <!-- TEMPLATE -->
+<div id="custom-bootstrap-menu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid row">
+        <div class="navbar-header col-xs-12">
+          <a id="logo" class="navbar-brand col-xs-10" href="/"><span>b</span><span>o</span><span>r</span><span>o</span></a>
+            <button type="button" class="navbar-toggle col-xs-2" data-toggle="collapse" data-target=".navbar-menubuilder"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+            </button>
         </div>
-        <!-- Added data-* and aria into #navbar -->
-        <div id="navbar" class="navbar-collapse collapsed col-lg-12" >
-          <ul class="nav navbar-nav">
-            <div class="nav navbar-nav navbar-left">
-<!-- SEARCH BAR TEMPLATE -->
-              <li class="form-inline row col-lg-4" style="margin: 0;"> <!--id="search_items"-->
+        <div class="collapse navbar-collapse navbar-menubuilder">
+            <ul class="nav navbar-nav navbar-left">
+
+              <li>
                   <%= form_tag("/items", method: "get", class:"input-group-addon") do %>
-                  <%= text_field_tag(:term, params[:term], placeholder:"What are you looking for?" , style: "width: 300px", class: "form-control")%>
+                  <%= text_field_tag(:term, params[:term], placeholder:"What are you looking for?", class: "form-control",id:"mainsearch")%>
                   <input id="geo" class="form-control" type="text" placeholder="Where are you looking?" />
                   <%= hidden_field_tag(:formatted_address) %>
                   <%= hidden_field_tag(:postal_code) %>
@@ -61,18 +55,19 @@
                   <%= hidden_field_tag(:administrative_area_level_1) %>
                   <%= hidden_field_tag(:country) %>
     
-                  <%= submit_tag("Search", class: 'btn btn-primary') %>
-                  <% end %>      
-              </li>
-            </div>
-<!-- END -->
-            <div id="navright" class="nav navbar-nav navbar-right" style="margin: 0;"> 
-              <li><a class="btn" href="/items">Local Rentables</a></li> 
-              <li><a class="btn" href="/users">Users in the <span>b</span><span>o</span><span>r</span><span>o</span></a></li> 
-              <li><a class="btn" href="/items/new">Rent Your Things!</a></li> 
+                  <%= submit_tag("Search", class: 'btn btn-primary', id:"submit_1" ) %>
+                  <% end %> 
 
-               <!-- DROPDOWN MENU BELOW -->
 
+
+                <li><a class="btn" href="/items">Local Rentables</a>
+                </li>
+                <li><a class="btn" href="/users">Users in the <span>b</span><span>o</span><span>r</span><span>o</span></a>
+                </li>
+                <li><a class="btn" href="/items/new">Rent Your Things!</a>
+                </li>
+<!--                 <li><a href="/contact">Contact Us</a>
+                </li> -->
               <% if signed_in? %>
               <li class="dropdown">
                 <% if current_user.avatar.present? %>
@@ -93,7 +88,7 @@
                   <li><%= link_to "Edit Profile", edit_user_registration_path(current_user)%></li>
                   <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete%></li>
                 </ul>
-              </li>
+              </li> 
               <% else %>             
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -106,11 +101,12 @@
                 </ul>
               </li>
               <% end %>
-            </div>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- FIN TEPLATYE -->
 <% flash.each do |key, value| %>
   <%= content_tag :div, value, class: "flash #{key}" %>
 <% end %>
@@ -218,41 +214,11 @@
     </script>
 
  <!-- GEOCOMPLETE END -->
-
-<!-- MODAL REGISTRATION -->
-
-<!-- <div class="modal fade" id="registration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel">Welcome to your Boro </h4>
-      </div>
-
-      <p class="modal-body">
-        < %= link_to new_user_registration_path, class: "button", id: "register_email", action: :new, method: :get do %>
-        <i class="fi-mail">Sign up with an email address</i>
-        < % end %>
-      </p>
-
-      <p>
-        < %= link_to user_facebook_omniauth_callback_path, class: "button", id:"register_fb" do %>
-        <i class="fi-social-facebook">Connect With Facebook</i>
-        < % end %>
-      </p>
-
-      <span id="register_already" class="lead">
-        I already have an account < %= link_to 'Log in', user_session_path, class: "button" %> 
-      </span>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+<script>
+  $("#custom-bootstrap-menu > div > div.navbar-header.col-xs-12 > button").click(function(){
+    $(this).toggleClass("collapse");
+    });
+</script>
 
 </body>
 </html>
